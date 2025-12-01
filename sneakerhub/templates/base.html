@@ -1,44 +1,45 @@
+{% load static %}
+
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{% block title %}SneakerHub{% endblock %}</title>
-        <link href="{% static 'css/tailwind.css' %}" rel="stylesheet">
-    </head>
-    <body class="bg-white text-gray-900">
-        <header class="border-b">
-            <div class="container mx-auto px-4 py-4 flex items-center justify-between">
-                <a href="{% url 'home' %}" class="text-2xl font-bold">SneakerHub</a>
-                <nav class="space-x-4">
-                    <a href="{% url 'sneakers:list' %}">Shop</a>
-                    <a href="{% url 'brands:list' %}">Brands</a>
-                    <a href="{% url 'cart:view' %}">Cart (<span id="cart-count">{{ cart.count|default:0 }}</span>)</a>
-                    {% if user.is_authenticated %}
-                        <a href="{% url 'accounts:profile' %}">Account</a>
-                        <a href="{% url 'logout' %}">Logout</a>
-                    {% else %}
-                        <a href="{% url 'login' %}">Login</a>
-                        <a href="{% url 'register' %}">Register</a>
-                    {% endif %}
-                </nav>
-            </div>
-        </header>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}SneakerHub{% endblock %}</title>
 
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+</head>
+<body class="bg-white text-gray-900">
 
-        <main class="container mx-auto px-4 py-8">
-            {% block content %}{% endblock %}
-        </main>
+<header class="site-header">
+    <div class="container header-inner">
+        <a href="" class="logo">SneakerHub</a>
+        <nav class="nav">
+            <a href="">Shop</a>
+            <a href="">Brands</a>
+            <a href="">Cart (<span id="cart-count">{{ cart.count|default:0 }}</span>)</a>
+            {% if user.is_authenticated %}
+                <a href="">Account</a>
+                <a href="">Logout</a>
+            {% else %}
+                <a href="">Login</a>
+                <a href="">Register</a>
+            {% endif %}
+        </nav>
+    </div>
+</header>
 
+<main class="container main-content">
+    {% block content %}{% endblock %}
+</main>
 
-        <footer class="border-t mt-12">
-            <div class="container mx-auto px-4 py-6 text-sm text-gray-600">
-                © {{ now.year }} SneakerHub — Crafted for sneaker lovers
-            </div>
-        </footer>
+<footer class="site-footer">
+    <div class="container footer-inner">
+        © {{ now.year }} SneakerHub — Crafted for sneaker lovers
+    </div>
+</footer>
 
-
-        <script src="{% static 'js/app.js' %}"></script>
-        {% block scripts %}{% endblock %}
-    </body>
+<script src="{% static 'js/app.js' %}"></script>
+{% block scripts %}{% endblock %}
+</body>
 </html>
