@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Marketplace • SneakerHub{% endblock %}
+
+{% block content %}
+<section class="marketplace-intro">
+    <h1>Explore Our Marketplace</h1>
+    <p>Discover a wide range of sneakers from various brands. Find your perfect pair today!</p>
+</section>
+<section class="sneaker-listings">
+    <h2>Available Sneakers</h2>
+
+    <div class="sneaker-grid">
+        {% for sneaker in sneakers %}
+        <article class="card">
+            <a href="">
+                <img src="" alt="{{ sneaker.name }}" class="card-img">
+            </a>
+            <div class="card-body">
+                <h3>{{ sneaker.name }}</h3>
+                <p class="brand">{{ sneaker.brand.name }}</p>
+                <div class="card-footer">
+                    <span class="price">£{{ sneaker.price }}</span>
+                    <a href="" class="view-link">View</a>
+                </div>
+            </div>
+        </article>
+
+        {% empty %}
+        <p>No sneakers available at the moment. Please check back later.</p>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

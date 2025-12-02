@@ -17,8 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from core.views import homePage
+from marketplace.views import marketplaceView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', homePage.as_view(), name='home'),
+    path('marketplace/', marketplaceView, name='marketplace'),
 ]

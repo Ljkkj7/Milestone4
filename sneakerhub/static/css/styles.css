@@ -38,11 +38,12 @@ body {
 .nav a {
     margin-left: 16px;
     text-decoration: none;
-    color: #333;
+    color: #000;
 }
 
 .nav a:hover {
-    color: #000;
+    font-weight: bold;
+    transform: translateX(4px);
 }
 
 /* Main content */
@@ -72,6 +73,7 @@ body {
     gap: 32px;
     align-items: center;
     margin-bottom: 48px;
+    text-align: center;
 }
 
 @media (min-width: 768px) {
@@ -84,18 +86,18 @@ body {
     font-size: 36px;
     font-weight: 800;
     margin-bottom: 16px;
+    text-align: center;
 }
 
 .hero-text p {
     margin-bottom: 24px;
+    margin-top: 48px;
     font-size: 16px;
     color: #444;
 }
 
 .hero-image img {
     width: 100%;
-    border-radius: 10px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
 }
 
 /* ---------------------------
@@ -109,10 +111,12 @@ body {
     border-radius: 6px;
     text-decoration: none;
     font-weight: bold;
+    border: 2px solid #000;
 }
 
 .btn-primary:hover {
-    background: #333;
+    background: #fff;
+    color: #000;
 }
 
 /* ---------------------------

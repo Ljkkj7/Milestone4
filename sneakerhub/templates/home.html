@@ -5,13 +5,14 @@
 {% block content %}
 <section class="hero">
     <div class="hero-text">
-        <h1>Sneaker drops, curated for you</h1>
+        <h1>Small creators & big brands.</h1>
+        <h1>All in one place.</h1>
         <p>Discover the latest releases and classic trainers from top brands. Free shipping on orders over £75.</p>
-        <a href="" class="btn-primary">Shop now</a>
+        <a href="{% url 'marketplace' %}" class="btn-primary">Shop now</a>
     </div>
 
     <div class="hero-image">
-        <img src="" alt="Sneakers hero">
+        <img src="{% static 'images/sneakerhubsquare.png' %}" alt="Sneakers hero">
     </div>
 </section>
 
