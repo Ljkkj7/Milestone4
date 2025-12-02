@@ -119,6 +119,24 @@ body {
     color: #000;
 }
 
+.btn-secondary {
+    display: inline-block;
+    background: #fff;
+    color: #000;
+    padding: 6px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    border: 2px solid #000;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.btn-secondary:hover {
+    background: #000;
+    color: #fff;
+}
+
 /* ---------------------------
    FEATURED GRID
 ---------------------------- */
@@ -205,4 +223,28 @@ body {
 
 .view-link:hover {
     text-decoration: underline;
+}
+
+/* ---------------------------
+   FILTER SELECT STYLING
+---------------------------- */
+
+.filter-search-bar {
+    margin-bottom: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.filter-select {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    margin-right: 16px;
+    margin-bottom: 16px;
+}
+
+.filter-select:hover {
+    border-color: #000;
 }

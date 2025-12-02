@@ -8,20 +8,57 @@
     <p>Discover a wide range of sneakers from various brands. Find your perfect pair today!</p>
 </section>
 <section class="sneaker-listings">
-    <h2>Available Sneakers</h2>
+
+    <form method="get" class="filter-search-bar">
+        <select name="brand" class="filter-select">
+            <option value="">All Brands</option>
+            {% for brand in brands %}
+            <option value="{{ brand }}" {% if brand == selected_brand %}selected{% endif %}>{{ brand }}</option>
+            {% endfor %}
+        </select>
+        <select class="filter-select">
+            <option value="">All Sizes</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+        </select>
+        <select class="filter-select">
+            <option value="">Price Range</option>
+            <option value="0-50">£0 - £50</option>
+            <option value="51-100">£51 - £100</option>
+            <option value="101-150">£101 - £150</option>
+            <option value="151+">£151+</option>
+        </select>
+        <select class="filter-select">
+            <option value="">Sort By</option>
+            <option value="newest">Newest Arrivals</option>
+            <option value="price-low-high">Price: Low to High</option>
+            <option value="price-high-low">Price: High to Low</option>
+        </select>
+        <select class="filter-select">
+            <option value="">Shoe Type</option>
+            <option value="sneakers">Sneakers</option>
+            <option value="boots">Boots</option>
+            <option value="sandals">Sandals</option>
+            <option value="formal">Formal Shoes</option>
+        </select>
+        <button class="btn-secondary" type="submit">Filter</button>
+    </form>
 
     <div class="sneaker-grid">
         {% for sneaker in sneakers %}
         <article class="card">
-            <a href="">
-                <img src="" alt="{{ sneaker.name }}" class="card-img">
+            <a href="{}">
+                <img src="{{ sneaker.image.url }}" alt="{{ sneaker.name }}" class="card-img">
             </a>
             <div class="card-body">
                 <h3>{{ sneaker.name }}</h3>
-                <p class="brand">{{ sneaker.brand.name }}</p>
+                <p class="brand">{{ sneaker.brand }}</p>
                 <div class="card-footer">
                     <span class="price">£{{ sneaker.price }}</span>
-                    <a href="" class="view-link">View</a>
                 </div>
             </div>
         </article>
