@@ -1,9 +1,8 @@
 from django.contrib import admin
-from .models import *
+from .models import Sneaker
 
-# Register your models here.
-admin.site.register(Sneaker)
 
+@admin.register(Sneaker)
 class SneakerAdmin(admin.ModelAdmin):
     list_display = ('name', 'brand', 'size', 'price', 'owner', 'created_at')
     search_fields = ('name', 'brand', 'owner__username')
