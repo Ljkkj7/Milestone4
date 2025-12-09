@@ -3,5 +3,18 @@
 {% block title %}{{ sneaker.name }} • SneakerHub{% endblock %}
 
 {% block content %}
-
+<section class="sneaker-detail">
+    <div class="sneaker-header"> 
+    </div>
+    <div class="sneaker-image">
+        <img src="{{ sneaker.image.url }}" alt="{{ sneaker.name }}">
+    </div>
+    <div class="sneaker-info">
+        <h1>{{ sneaker.name }}</h1>
+        <p class="brand">{{ sneaker.brand }}</p>
+        <p class="price">Price: £{{ sneaker.price }}</p>
+        <p class="description">{{ sneaker.description }}</p>
+        <button class="btn-primary">Add to Cart</button>
+    </div>
+</section>
 {% endblock %}
