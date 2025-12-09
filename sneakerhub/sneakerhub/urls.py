@@ -19,10 +19,11 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 from core.views import homePage
-from marketplace.views import marketplaceView
+from marketplace.views import marketplaceView, sneakerDetailView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', homePage.as_view(), name='home'),
     path('marketplace/', marketplaceView, name='marketplace'),
+    path('sneaker/<int:sneaker_id>/', sneakerDetailView, name='sneaker_detail'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
