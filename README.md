@@ -2,23 +2,23 @@
 
 ## 📘 Project Overview
 
-SneakerHub is a full-stack e-commerce web application designed for sneaker enthusiasts and small retailers. It allows users to browse, search, and purchase trainers from multiple brands. The site integrates with Stripe for payments and provides user authentication, product reviews, and order management.
+SneakerHub is a full-stack e-commerce web application designed for sneaker enthusiasts and small retailers/brands. It allows users to browse, search, and purchase trainers from independent listers (2nd hand) & independent/small brands or creators. The site integrates with Stripe for payments and provides user authentication, product reviews, and order management.
 
 ---
 
 ## 🎯 Purpose & Target Audience
 
-**Purpose:** Provide a functional and stylish online storefront for sneaker lovers and retailers.
+**Purpose:** Provide a user friendly and easy to use marketplace for people to list old/collectable shoes. To allow creators/artitst's to list their products for money instead of managing their own brand website.
 **Target audience:** Sneaker collectors, streetwear enthusiasts, small footwear retailers.
 
 ---
 
 ## 🧱 Tech Stack
 
-**Frontend:** HTML5, Tailwind CSS (or Bootstrap), JavaScript, Django Templates
+**Frontend:** HTML5, CSS, JavaScript, Django Templates
 **Backend:** Python 3.11+, Django 4.x
 **Database:** PostgreSQL (production) / SQLite (development)
-**Payments:** Stripe Checkout / Payment Intents API
+**Payments:** Stripe Checkout
 **Deployment:** Render / Heroku / Railway
 **Version Control:** Git & GitHub
 **Testing:** Django TestCase / pytest-django
@@ -28,21 +28,14 @@ SneakerHub is a full-stack e-commerce web application designed for sneaker enthu
 ## 🗂️ Project Structure
 
 ```
-sneakerhub/
-├─ apps/
+MS4/
+├─ Sneakerhub/
 │  ├─ core/
-│  ├─ sneakers/
-│  ├─ brands/
-│  ├─ cart/
-│  ├─ checkout/
-│  ├─ orders/
-│  └─ accounts/
+│  ├─ marketplace/
+│  └─ sneakerhub/
 ├─ templates/
-│  ├─ base.html
-│  ├─ sneakers/
-│  ├─ cart/
-│  └─ checkout/
 ├─ static/
+├─ media/
 ├─ manage.py
 └─ requirements.txt
 ```
