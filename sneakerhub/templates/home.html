@@ -15,29 +15,16 @@
         <img src="{% static 'images/sneakerhubsquare.png' %}" alt="Sneakers hero">
     </div>
 </section>
-
-<section class="featured-section">
-    <h2>Featured sneakers</h2>
-
-    <div class="featured-grid">
-        {% for sneaker in featured_sneakers %}
-        <article class="card">
-            <a href="">
-                <img src="" alt="{{ sneaker.name }}" class="card-img">
-            </a>
-            <div class="card-body">
-                <h3>{{ sneaker.name }}</h3>
-                <p class="brand">{{ sneaker.brand.name }}</p>
-                <div class="card-footer">
-                    <span class="price">£{{ sneaker.price }}</span>
-                    <a href="" class="view-link">View</a>
-                </div>
-            </div>
-        </article>
-
-        {% empty %}
-        <p>No featured sneakers yet.</p>
-        {% endfor %}
+<section class="signup-cta">
+    <div class="creator-signup">
+        <h2>Are you a creator?</h2>
+        <p>Join SneakerHub today and showcase your unique sneaker designs to a global audience. Sign up now to start selling!</p>
+        <a href="" class="btn-secondary">Sign Up</a>
+    </div>
+    <div class="customer-signup">
+        <h2>New to SneakerHub?</h2>
+        <p>Create an account to browse, buy or even sell your own shoes!</p>
+        <a href="" class="btn-secondary">Create Account</a>
     </div>
 </section>
 {% endblock %}
