@@ -11,10 +11,15 @@
     </div>
     <div class="sneaker-info">
         <h1>{{ sneaker.name }}</h1>
-        <p class="brand">{{ sneaker.brand }}</p>
-        <p class="price">Price: £{{ sneaker.price }}</p>
-        <p class="description">{{ sneaker.description }}</p>
+        <div class="sneaker-info-brand-price">
+            <p class="brand">{{ sneaker.brand }} -</p>
+            <p class="price">£{{ sneaker.price }}</p>
+        </div>
         <button class="btn-primary">Add to Cart</button>
     </div>
+</section>
+<section class="sneaker-description">
+    <h2>Description</h2>
+    <p>{{ sneaker.description }}</p>
 </section>
 {% endblock %}
