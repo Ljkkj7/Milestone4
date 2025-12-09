@@ -257,3 +257,11 @@ body {
 .filter-select:hover {
     border-color: #000;
 }
+
+/* ---------------------------
+   MARKETPLACE INTRO STYLING
+---------------------------- */
+
+.marketplace-intro {
+    text-align: center;
+}
