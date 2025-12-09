@@ -47,25 +47,5 @@
         </select>
         <button class="btn-secondary" type="submit">Filter</button>
     </form>
-
-    <div class="sneaker-grid">
-        {% for sneaker in sneakers %}
-        <article class="card">
-            <a href="{% url 'sneaker_detail' sneaker.id %}">
-                <img src="{{ sneaker.image.url }}" alt="{{ sneaker.name }}" class="card-img">
-            </a>
-            <div class="card-body">
-                <h3>{{ sneaker.name }}</h3>
-                <p class="brand">{{ sneaker.brand }}</p>
-                <div class="card-footer">
-                    <span class="price">£{{ sneaker.price }}</span>
-                </div>
-            </div>
-        </article>
-
-        {% empty %}
-        <p>No sneakers available at the moment. Please check back later.</p>
-        {% endfor %}
-    </div>
 </section>
 {% endblock %}
