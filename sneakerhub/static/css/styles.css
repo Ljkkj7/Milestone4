@@ -266,15 +266,22 @@ body {
     text-align: center;
 }
 
+/* ---------------------------
+   SNEAKER DETAIL STYLING
+---------------------------- */
+
 .sneaker-detail {
     display: flex;
     gap: 32px;
     margin-top: 32px;
+    margin-left: 100px;
 }
 
 .sneaker-info {
     max-width: 600px;
+    margin-left: 100px;
     align-content: center;
+    text-align: center;
 }
 
 .sneaker-info-brand-price {
@@ -283,6 +290,7 @@ body {
 
 .sneaker-info-brand-price p {
     margin-right: 10px;
+    margin-bottom: 24px;
 }
 
 .sneaker-image {
@@ -298,4 +306,14 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+/* ---------------------------
+   SNEAKER DESCRIPTION STYLING
+---------------------------- */
+
+.sneaker-description {
+    margin-top: 24px;
+    line-height: 1.6;
+    text-align: center;
 }

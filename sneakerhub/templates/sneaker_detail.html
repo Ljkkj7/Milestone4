@@ -4,15 +4,14 @@
 
 {% block content %}
 <section class="sneaker-detail">
-    <div class="sneaker-header"> 
-    </div>
     <div class="sneaker-image">
         <img src="{{ sneaker.image.url }}" alt="{{ sneaker.name }}">
     </div>
     <div class="sneaker-info">
         <h1>{{ sneaker.name }}</h1>
         <div class="sneaker-info-brand-price">
-            <p class="brand">{{ sneaker.brand }} -</p>
+            <p class="brand">{{ sneaker.brand }} //</p>
+            <p class="size">Size: {{ sneaker.size|floatformat }} //</p>
             <p class="price">£{{ sneaker.price }}</p>
         </div>
         <button class="btn-primary">Add to Cart</button>

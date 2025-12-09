@@ -16,7 +16,7 @@
         <a href="{% url 'home' %}" class="logo">SneakerHub</a>
         <nav class="nav">
             <a href="{% url 'marketplace' %}">Marketplace</a>
-            <a href="">Brands</a>
+            <a href="">Creators</a>
             <a href="">Cart (<span id="cart-count">{{ cart.count|default:0 }}</span>)</a>
             {% if user.is_authenticated %}
                 <a href="">Account</a>
