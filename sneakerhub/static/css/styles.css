@@ -171,9 +171,18 @@ body {
 /* ---------------------------
    CARD STYLING
 ---------------------------- */
+
+.sneaker-grid {
+    display: flex;
+    margin: 10px;
+    flex-direction: row;
+}
+
 .card {
     border: 1px solid #e5e5e5;
     border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
     overflow: hidden;
     background: #fff;
     transition: transform 0.2s ease;
