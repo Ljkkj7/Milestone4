@@ -36,3 +36,12 @@ def brandReturn(request, brand_name):
         'brand_name': brand_name,
     }
     return render(request, 'marketplace.html', context)
+
+
+def sneakerDetailView(request, sneaker_id):
+    # Detail view for a single sneaker
+    sneaker = Sneaker.objects.get(id=sneaker_id)
+    context = {
+        'sneaker': sneaker,
+    }
+    return render(request, 'sneaker_detail.html', context)
