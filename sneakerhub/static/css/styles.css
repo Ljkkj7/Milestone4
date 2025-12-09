@@ -317,3 +317,21 @@ body {
     line-height: 1.6;
     text-align: center;
 }
+
+/* ---------------------------
+   CUSTOMER/SELLER SIGNUP STYLING
+---------------------------- */
+
+.signup-cta {
+    display: flex;
+    flex-direction: row;
+}
+
+.creator-signup, .customer-signup {
+    flex: 1;
+    padding: 24px;
+    border: 1px solid #e5e5e5;
+    border-radius: 10px;
+    margin: 10px;
+    text-align: center;
+}
