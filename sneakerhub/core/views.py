@@ -58,6 +58,21 @@ def customerSignupView(request):
     return render(request, 'signup.html', {'form': form})
 
 
+def customerLoginView(request):
+    """Customer login view"""
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('marketplace')
+        else:
+            error_message = "Invalid username or password."
+            return render(request, 'login.html', {'error_message': error_message})
+    return render(request, 'login.html')
+
+
 def customerLogoutView(request):
     """Customer logout view"""
     logout(request)
