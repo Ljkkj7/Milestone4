@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from core.views import homePage, customerSignupView
+from core.views import homePage, customerSignupView, customerLogoutView
 from marketplace.views import marketplaceView, sneakerDetailView
 
 urlpatterns = [
@@ -27,4 +27,5 @@ urlpatterns = [
     path('marketplace/', marketplaceView, name='marketplace'),
     path('sneaker/<int:sneaker_id>/', sneakerDetailView, name='sneaker_detail'),
     path('customer_signup/', customerSignupView, name='signup'),
+    path('customer_logout/', customerLogoutView, name='logout'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

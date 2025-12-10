@@ -33,7 +33,6 @@ class CustomerUserCreationForm(UserCreationForm):
             raise forms.ValidationError("Password must contain at least one digit.")
         return password2
 
-
     def save(self, commit=True):
         user = super().save(commit=False)
         user.email = self.cleaned_data['email']
@@ -57,3 +56,9 @@ def customerSignupView(request):
     else:
         form = CustomerUserCreationForm()
     return render(request, 'signup.html', {'form': form})
+
+
+def customerLogoutView(request):
+    """Customer logout view"""
+    logout(request)
+    return redirect('home')
