@@ -22,7 +22,7 @@
                 <a href="">Account</a>
                 <a href="{% url 'logout' %}">Logout</a>
             {% else %}
-                <a href="">Login</a>
+                <a href="{% url 'login' %}">Login</a>
                 <a href="{% url 'signup' %}">Register</a>
             {% endif %}
         </nav>
