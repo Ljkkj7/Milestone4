@@ -4,23 +4,29 @@
 
 {% block content %}
 <section class="profile-section">
-    <div class="profile-container">
+    <div class="profile-header">
         <h1>{{ user.username|title }}</h1>
         <p>Member since: {{ user.date_joined|date:"F j, Y" }}</p>
     </div>
 </section>
-<section class="profile-items">
-    <div class="profile-sneakers">
-        <h2>Your Listings</h2>
-        {% if user.listings %}
-            <ul>
-                {% for listing in user.listings %}
-                    <li>{{ listing.name }}</li>
-                {% endfor %}
-            </ul>
-        {% else %}
-            <p>You have no sneakers listed yet.</p>
-        {% endif %}
+<section class="profile-container">
+    <div class="profile-items">
+        <div class="profile-listings-left">
+            <h2>Your Listings</h2>
+            {% if user.listings %}
+                <ul>
+                    {% for listing in user.listings %}
+                        <li>{{ listing.name }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>You have no sneakers listed yet.</p>
+            {% endif %}
+        </div>
+        <div class="profile-listings-right">
+            <h2>Create a listing</h2>
+            <a href="" class="btn-primary">List a Sneaker</a>
+        </div>
     </div>
     <div class="profile-orders">
         <h2>Your Orders</h2>
