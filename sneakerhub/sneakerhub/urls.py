@@ -20,6 +20,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from core.views import homePage, customerSignupView, customerLogoutView, customerLoginView
 from marketplace.views import marketplaceView, sneakerDetailView
+from account.views import accountPageView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,4 +30,5 @@ urlpatterns = [
     path('customer_signup/', customerSignupView, name='signup'),
     path('customer_logout/', customerLogoutView, name='logout'),
     path('customer_login/', customerLoginView, name='login'),
+    path('account/<int:user_id>/', accountPageView, name='account'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
