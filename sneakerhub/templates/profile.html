@@ -6,26 +6,44 @@
 <section class="profile-section">
     <div class="profile-header">
         <h1>{{ user.username|title }}</h1>
-        <p>Member since: {{ user.date_joined|date:"F j, Y" }}</p>
+        <p class="profile-subtitle">Member since {{ user.date_joined|date:"F j, Y" }}</p>
     </div>
 </section>
+
 <section class="profile-container">
-    <div class="profile-listings">
-        <div class="profile-listings-left">
+    <div class="profile-grid">
+        <!-- Left: Listings -->
+        <div class="profile-card">
             <h2>Your Listings</h2>
-            {% if user.listings %}
-                <ul>
-                    {% for listing in user.listings %}
-                        <li>{{ listing.name }}</li>
+            {% if user.sneakers.all %}
+                <div class="profile-listings-grid">
+                    {% for sneaker in user.sneakers.all %}
+                        <div class="profile-listing-item">
+                            {% if sneaker.image %}
+                                <img src="{{ sneaker.image.url }}" alt="{{ sneaker.name }}" class="listing-thumb">
+                            {% else %}
+                                <div class="listing-thumb-placeholder">No Image</div>
+                            {% endif %}
+                            <h3>{{ sneaker.brand }} {{ sneaker.name }}</h3>
+                            <p class="listing-size">Size {{ sneaker.size }}</p>
+                            <p class="listing-price">£{{ sneaker.price }}</p>
+                            <div class="listing-actions">
+                                <a href="{% url 'sneaker_detail' sneaker.id %}" class="btn-secondary">View</a>
+                            </div>
+                        </div>
                     {% endfor %}
-                </ul>
+                </div>
             {% else %}
-                <p>You have no sneakers listed yet.</p>
+                <p class="no-data">You have no sneakers listed yet.</p>
+                <a href="" class="btn-primary">List a Sneaker</a>
             {% endif %}
         </div>
-        <div class="profile-listings-right">
-            <h2>Create a listing</h2>
-            <a href="" class="btn-primary">List a Sneaker</a>
+
+        <!-- Right: Create Listing -->
+        <div class="profile-card profile-card-action">
+            <h2>List a Sneaker</h2>
+            <p>Sell your sneakers on SneakerHub. Reach thousands of collectors and sneaker enthusiasts.</p>
+            <a href="" class="btn-primary btn-large">Create a Listing</a>
         </div>
     </div>
     <div class="profile-orders">
