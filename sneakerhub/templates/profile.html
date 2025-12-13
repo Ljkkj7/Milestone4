@@ -9,7 +9,7 @@
         <p>Member since: {{ user.date_joined|date:"F j, Y" }}</p>
     </div>
 </section>
-<section>
+<section class="profile-items">
     <div class="profile-sneakers">
         <h2>Your Listings</h2>
         {% if user.listings %}
@@ -20,6 +20,18 @@
             </ul>
         {% else %}
             <p>You have no sneakers listed yet.</p>
+        {% endif %}
+    </div>
+    <div class="profile-orders">
+        <h2>Your Orders</h2>
+        {% if user.orders %}
+            <ul>
+                {% for order in user.orders %}
+                    <li>Order #{{ order.id }} - £{{ order.total }} - {{ order.date|date:"F j, Y" }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>You have no orders yet.</p>
         {% endif %}
     </div>
 </section>
