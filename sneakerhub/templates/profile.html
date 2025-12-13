@@ -3,5 +3,24 @@
 {% block title %}{{ user.username|title }} • Profile{% endblock %}
 
 {% block content %}
-
+<section class="profile-section">
+    <div class="profile-container">
+        <h1>{{ user.username|title }}</h1>
+        <p>Member since: {{ user.date_joined|date:"F j, Y" }}</p>
+    </div>
+</section>
+<section>
+    <div class="profile-sneakers">
+        <h2>Your Listings</h2>
+        {% if user.listings %}
+            <ul>
+                {% for listing in user.listings %}
+                    <li>{{ listing.name }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>You have no sneakers listed yet.</p>
+        {% endif %}
+    </div>
+</section>
 {% endblock %}
