@@ -723,6 +723,7 @@ body {
 }
 .form-actions .create-btn {
     order: 2;
+    margin-top: 2%;
 }
 
 @media (max-width: 600px) {
