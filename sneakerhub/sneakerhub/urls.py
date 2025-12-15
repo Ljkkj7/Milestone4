@@ -21,6 +21,7 @@ from django.conf.urls.static import static
 from core.views import homePage, customerSignupView, customerLogoutView, customerLoginView
 from marketplace.views import marketplaceView, sneakerDetailView
 from account.views import accountPageView
+from listings.views import listingsPageView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -31,4 +32,5 @@ urlpatterns = [
     path('customer_logout/', customerLogoutView, name='logout'),
     path('customer_login/', customerLoginView, name='login'),
     path('account/<int:user_id>/', accountPageView, name='account'),
+    path('listings/create/', listingsPageView, name='create_listing'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
