@@ -16,16 +16,26 @@
     </div>
 </section>
 <section class="signup-cta">
-    <div class="creator-signup">
-        <h2>Are you a creator?</h2>
-        <p>Join SneakerHub today and showcase your unique sneaker designs to a global audience. Sign up now to start selling!</p>
-        <a href="" class="btn-secondary">Sign Up</a>
-    </div>
-    <div class="customer-signup">
-        <h2>New to SneakerHub?</h2>
-        <p>Create an account to browse, buy or even sell your own shoes!</p>
-        <a href="{% url 'signup' %}" class="btn-secondary">Create Account</a>
-    </div>
+    {% if not user.is_authenticated %}
+        <div class="customer-signup">
+            <h2>New to SneakerHub?</h2>
+            <p>Create an account to browse, buy or even sell your own shoes!</p>
+            <a href="{% url 'signup' %}" class="btn-secondary">Create Account</a>
+        </div>
+        <div class="creator-signup">
+            <h2>Are you a creator?</h2>
+            <p>Join SneakerHub today and showcase your unique sneaker designs to a global audience. Sign up now to start selling!</p>
+            <a href="" class="btn-secondary">Sign Up</a>
+        </div>
+    {% else %}
+        <!-- Display some personalized content -->
+        <p class="welcome-back">Welcome back, {{ user.username|title }}!</p>
+        <div class="creator-signup">
+            <h2>Thinking about being a creator?</h2>
+            <p>Join SneakerHub today and showcase your unique sneaker designs to a global audience. Sign up now to start selling!</p>
+            <a href="" class="btn-secondary">Sign Up</a>
+        </div>
+    {% endif %}
 </section>
 <section class="featured-creators">
 </section>

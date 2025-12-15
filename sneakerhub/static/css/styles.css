@@ -318,6 +318,18 @@ body {
     text-align: center;
 }
 
+    .listing-management p {
+    display: inline-flex;
+    font-size: 10px;
+    margin: 10px; 
+}
+
+.listing-management a {
+    text-decoration: none;
+    color: black;
+    font-style: italic;
+}
+
 /* ---------------------------
    CUSTOMER/SELLER SIGNUP STYLING
 ---------------------------- */
@@ -575,3 +587,4 @@ body {
         display: inline-block;
         font-size: 12px;
     }
+ 
