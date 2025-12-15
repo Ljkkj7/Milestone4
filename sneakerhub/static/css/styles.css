@@ -657,11 +657,13 @@ body {
 .create-card h1 {
     font-size: 28px;
     margin-bottom: 6px;
+    text-align: center;
 }
 
 .create-listing-subtitle {
     color: #666;
     margin-bottom: 18px;
+    text-align: center;
 }
 
 .create-listing-form .form-group {
