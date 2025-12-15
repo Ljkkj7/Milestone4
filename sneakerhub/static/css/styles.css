@@ -640,3 +640,75 @@ body {
 .no-data {
     text-align: center;
 }
+
+/* ---------------------------
+   LISTING CREATION STYLING
+---------------------------- */
+
+.create-card {
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 10px;
+    padding: 28px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.create-card h1 {
+    font-size: 28px;
+    margin-bottom: 6px;
+}
+
+.create-listing-subtitle {
+    color: #666;
+    margin-bottom: 18px;
+}
+
+.create-listing-form .form-group {
+    margin-bottom: 16px;
+}
+
+.create-listing-form label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+.create-listing-form input[type="text"],
+.create-listing-form input[type="number"],
+.create-listing-form input[type="file"],
+.create-listing-form textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.form-row {
+    display: flex;
+    gap: 16px;
+}
+
+.form-half {
+    flex: 1;
+}
+
+.form-actions {
+    margin-top: 18px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.create-listing-form input:focus,
+.create-listing-form textarea:focus {
+    outline: none;
+    border-color: #000;
+    box-shadow: 0 0 0 3px rgba(0,0,0,0.03);
+}
+
+@media (max-width: 600px) {
+    .form-row { flex-direction: column; }
+}
