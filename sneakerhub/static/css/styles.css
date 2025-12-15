@@ -709,6 +709,28 @@ body {
     box-shadow: 0 0 0 3px rgba(0,0,0,0.03);
 }
 
+/* Make primary button align left and cancel on the right */
+.form-actions {
+    margin-top: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.form-actions .btn-primary {
+    order: 1;
+}
+.form-actions .create-btn {
+    order: 2;
+}
+
+@media (max-width: 600px) {
+    .form-actions { flex-direction: column; align-items: stretch; }
+    .form-actions .create-btn { width: 100%; }
+    .form-actions .btn-primary { width: 100%; }
+}
+
 @media (max-width: 600px) {
     .form-row { flex-direction: column; }
 }

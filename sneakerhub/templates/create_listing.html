@@ -44,12 +44,37 @@
                 </div>
 
                 <div class="form-actions">
-                    <button type="submit" class="btn-primary btn-large">Create Listing</button>
-                    <a href="{% url 'marketplace' %}" class="btn-secondary">Cancel</a>
+                    <button type="submit" class="btn-primary">Create Listing</button>
+                    <a href="{% url 'marketplace' %}" class="btn-secondary create-btn">Cancel</a>
                 </div>
             </form>
         </div>
     </div>
 </section>
+ 
+<style>
+    /* Align create left, cancel right; stack on small screens */
+    .form-actions {
+        margin-top: 18px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+    }
+
+    /* Make primary button align left and cancel on the right */
+    .form-actions .btn-primary {
+        order: 1;
+    }
+    .form-actions .create-btn {
+        order: 2;
+    }
+
+    @media (max-width: 600px) {
+        .form-actions { flex-direction: column; align-items: stretch; }
+        .form-actions .create-btn { width: 100%; }
+        .form-actions .btn-primary { width: 100%; }
+    }
+</style>
 
 {% endblock %}
