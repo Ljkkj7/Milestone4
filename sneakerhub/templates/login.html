@@ -7,9 +7,9 @@
         <h1>Welcome Back</h1>
         <p class="auth-subtitle">Log in to your SneakerHub account</p>
 
-        {% if error %}
+        {% if error_message %}
             <div class="form-error-box">
-                <p>{{ error }}</p>
+                <p>{{ error_message }}</p>
             </div>
         {% endif %}
 
