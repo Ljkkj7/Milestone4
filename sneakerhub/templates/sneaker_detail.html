@@ -14,7 +14,7 @@
             <p class="size">Size: {{ sneaker.size|floatformat }} //</p>
             <p class="price">£{{ sneaker.price }}</p>
         </div>
-        <button class="btn-primary">Add to Cart</button>
+        <button class="btn-primary cart">Add to Cart</button>
         {% if sneaker in user.sneakers.all %}
             <div class="listing-management">
                 <hr>

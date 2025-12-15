@@ -112,11 +112,16 @@ body {
     text-decoration: none;
     font-weight: bold;
     border: 2px solid #000;
+    cursor: pointer;
 }
 
 .btn-primary:hover {
     background: #fff;
     color: #000;
+}
+
+.btn-primary.cart {
+    margin-bottom: 10px;
 }
 
 .btn-secondary {
@@ -169,7 +174,7 @@ body {
 }
 
 /* ---------------------------
-   CARD STYLING
+   SNEAKER CARD STYLING
 ---------------------------- */
 
 .sneaker-grid {
