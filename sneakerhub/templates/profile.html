@@ -46,17 +46,26 @@
             <a href="" class="btn-primary btn-large">Create a Listing</a>
         </div>
     </div>
-    <div class="profile-orders">
-        <h2>Your Orders</h2>
-        {% if user.orders %}
-            <ul>
-                {% for order in user.orders %}
-                    <li>Order #{{ order.id }} - £{{ order.total }} - {{ order.date|date:"F j, Y" }}</li>
-                {% endfor %}
-            </ul>
-        {% else %}
-            <p>You have no orders yet.</p>
-        {% endif %}
+    <div class="profile-grid">
+        <!-- Orders -->
+        <div class="profile-card">
+            <h2>Your Orders</h2>
+            {% if user.orders %}
+                <div class="profile-orders-list">
+                    {% for order in user.orders %}
+                        <div class="order-item">
+                            <div class="order-header">
+                                <span class="order-id">Order #{{ order.id }}</span>
+                                <span class="order-price">£{{ order.total }}</span>
+                            </div>
+                            <p class="order-date">{{ order.date|date:"F j, Y" }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p class="no-data">You have no orders yet.</p>
+            {% endif %}
+        </div>
     </div>
     <div class="profile-wishlist">
         <h2>Your Wishlist</h2>
