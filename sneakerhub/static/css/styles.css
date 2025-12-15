@@ -630,3 +630,7 @@ body {
     font-size: 14px;
     color: #999;
 }
+
+.no-data {
+    text-align: center;
+}
