@@ -63,3 +63,15 @@ class ListingCreationFormTests(TestCase):
         }
         form = ListingCreationForm(data=form_data)
         self.assertTrue(form.is_valid())
+
+    def test_form_accepts_optional_image(self):
+        """Test form is valid without an image file."""
+        form_data = {
+            'name': 'Air Jordan 1',
+            'brand': 'Nike',
+            'size': '10.5',
+            'price': '150.00',
+            'description': 'A classic sneaker in great condition.',
+        }
+        form = ListingCreationForm(data=form_data)
+        self.assertTrue(form.is_valid())
