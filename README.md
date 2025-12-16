@@ -32,6 +32,8 @@ MS4/
 ├─ Sneakerhub/
 │  ├─ core/
 │  ├─ marketplace/
+│  ├─ account/
+│  ├─ listings/
 │  └─ sneakerhub/
 ├─ templates/
 ├─ static/
