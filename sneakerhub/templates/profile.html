@@ -16,22 +16,30 @@
         <div class="profile-card">
             <h2>Your Listings</h2>
             {% if user.sneakers.all %}
-                <div class="profile-listings-grid">
-                    {% for sneaker in user.sneakers.all %}
-                        <div class="profile-listing-item">
-                            {% if sneaker.image %}
-                                <img src="{{ sneaker.image.url }}" alt="{{ sneaker.name }}" class="listing-thumb">
-                            {% else %}
-                                <div class="listing-thumb-placeholder">No Image</div>
-                            {% endif %}
-                            <h3>{{ sneaker.brand }} {{ sneaker.name }}</h3>
-                            <p class="listing-size">Size {{ sneaker.size|floatformat }}</p>
-                            <p class="listing-price">£{{ sneaker.price }}</p>
-                            <div class="listing-actions">
-                                <a href="{% url 'sneaker_detail' sneaker.id %}" class="btn-secondary">View</a>
+                <div class="listings-carousel-container">
+                    <div class="listings-carousel">
+                        {% for sneaker in user.sneakers.all %}
+                            <div class="carousel-item">
+                                <div class="profile-listing-item">
+                                    {% if sneaker.image %}
+                                        <img src="{{ sneaker.image.url }}" alt="{{ sneaker.name }}" class="listing-thumb">
+                                    {% else %}
+                                        <div class="listing-thumb-placeholder">No Image</div>
+                                    {% endif %}
+                                    <h3>{{ sneaker.brand }} {{ sneaker.name }}</h3>
+                                    <p class="listing-size">Size {{ sneaker.size|floatformat }}</p>
+                                    <p class="listing-price">£{{ sneaker.price }}</p>
+                                    <div class="listing-actions">
+                                        <a href="{% url 'sneaker_detail' sneaker.id %}" class="btn-secondary">View</a>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    {% endfor %}
+                        {% endfor %}
+                    </div>
+                    <button class="carousel-btn carousel-prev" onclick="carouselPrev()">&lt;</button>
+                    <button class="carousel-btn carousel-next" onclick="carouselNext()">&gt;</button>
+                </div>
+                <div class="carousel-indicators">
                 </div>
             {% else %}
                 <p class="no-data">You have no sneakers listed yet.</p>
@@ -89,4 +97,8 @@
         {% endif %}
     </div>
 </section>
+
+{% block scripts %}
+<script src="{% static 'js/carousel.js' %}"></script>
+{% endblock %}
 {% endblock %}
