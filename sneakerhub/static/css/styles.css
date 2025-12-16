@@ -183,6 +183,11 @@ body {
     margin-bottom: 10px;
 }
 
+.btn-secondary.cart:hover {
+    background: #BEE5B0;
+    color: black;
+}
+
 .btn-secondary {
     display: inline-block;
     background: #fff;
@@ -440,6 +445,7 @@ body {
 }
 
 .sneaker-info-brand-price {
+    justify-content: center;
     display: flex;
 }
 
@@ -905,33 +911,41 @@ body {
 
 .create-card {
     background: #fff;
-    border: 1px solid #e5e5e5;
-    border-radius: 10px;
-    padding: 28px;
-    max-width: 800px;
+    border: 2px solid #000;
+    border-radius: 0;
+    padding: 40px;
+    max-width: 700px;
     margin: 0 auto;
 }
 
 .create-card h1 {
-    font-size: 28px;
-    margin-bottom: 6px;
+    font-size: 36px;
+    margin-bottom: 12px;
     text-align: center;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
 }
 
 .create-listing-subtitle {
     color: #666;
-    margin-bottom: 18px;
+    margin-bottom: 32px;
     text-align: center;
+    font-size: 14px;
+    line-height: 1.6;
 }
 
 .create-listing-form .form-group {
-    margin-bottom: 16px;
+    margin-bottom: 24px;
 }
 
 .create-listing-form label {
     display: block;
-    margin-bottom: 6px;
-    font-weight: 600;
+    margin-bottom: 8px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 13px;
 }
 
 .create-listing-form input[type="text"],
@@ -939,11 +953,13 @@ body {
 .create-listing-form input[type="file"],
 .create-listing-form textarea {
     width: 100%;
-    padding: 10px 12px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
+    padding: 12px 14px;
+    border: 2px solid #000;
+    border-radius: 0;
     font-size: 14px;
     box-sizing: border-box;
+    font-family: inherit;
+    transition: all 0.3s ease;
 }
 
 .form-row {
@@ -956,26 +972,18 @@ body {
 }
 
 .form-actions {
-    margin-top: 18px;
+    margin-top: 32px;
     display: flex;
-    gap: 12px;
+    justify-content: space-between;
     align-items: center;
+    gap: 12px;
 }
 
 .create-listing-form input:focus,
 .create-listing-form textarea:focus {
     outline: none;
     border-color: #000;
-    box-shadow: 0 0 0 3px rgba(0,0,0,0.03);
-}
-
-/* Make primary button align left and cancel on the right */
-.form-actions {
-    margin-top: 18px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .form-actions .btn-primary {
