@@ -145,6 +145,7 @@ python manage.py test
 ### Test coverage:
 
 - Models (Sneaker, Brand, Order)
+- Form Usage (Listing CRUD)
 - Cart logic (add, remove, update)
 - Checkout integration (mock Stripe webhooks)
 - Authentication and permissions
