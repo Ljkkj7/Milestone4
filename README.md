@@ -111,7 +111,8 @@ python manage.py runserver
 ER Diagram example:
 
 ```
-Brand 1—∞ Sneaker 1—∞ SneakerReview
+User 1—∞ Sneaker
+User 1—∞ UserReview
 Sneaker ∞—∞ Order (via OrderItem)
 Order 1—1 Payment
 ```
