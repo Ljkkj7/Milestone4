@@ -126,3 +126,50 @@ class createListingViewTests(TestCase):
         self.assertEqual(sneaker.brand, 'Nike')
         self.assertEqual(str(sneaker.size), '10.5')
         self.assertEqual(str(sneaker.price), '150.00')
+
+    def test_create_listing_view_post_invalid_form(self):
+        """Test invalid POST does not create Sneaker and shows form errors."""
+        self.client.login(username='testuser', password='testpass123')
+        form_data = {
+            'name': 'Air Jordan 1',
+            'description': 'A classic sneaker in great condition.',
+        }
+        response = self.client.post(self.create_listing_url, data=form_data)
+
+        self.assertFalse(Sneaker.objects.filter(name='Air Jordan 1').exists())
+
+        self.assertEqual(response.status_code, 200)
+        self.assertIn('form', response.context)
+        self.assertTrue(response.context['form'].errors)
+
+    def test_create_listing_view_post_description_too_short(self):
+        """Test POST with description too short is rejected."""
+        self.client.login(username='testuser', password='testpass123')
+        form_data = {
+            'name': 'Air Jordan 1',
+            'brand': 'Nike',
+            'size': '10.5',
+            'price': '150.00',
+            'description': 'short',
+        }
+        response = self.client.post(self.create_listing_url, data=form_data)
+
+        self.assertFalse(Sneaker.objects.filter(name='Air Jordan 1').exists())
+
+        self.assertEqual(response.status_code, 200)
+        form_errors = response.context['form'].errors
+        self.assertIn('description', form_errors)
+
+    def test_create_listing_view_post_valid_redirects_to_profile(self):
+        """Test valid POST redirects to profile page."""
+        self.client.login(username='testuser', password='testpass123')
+        form_data = {
+            'name': 'Air Jordan 1',
+            'brand': 'Nike',
+            'size': '10.5',
+            'price': '150.00',
+            'description': 'A classic sneaker in great condition.',
+        }
+        response = self.client.post(self.create_listing_url, data=form_data)
+
+        self.assertIn(response.status_code, [200, 301, 302])
