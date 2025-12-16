@@ -25,7 +25,7 @@
                                 <div class="listing-thumb-placeholder">No Image</div>
                             {% endif %}
                             <h3>{{ sneaker.brand }} {{ sneaker.name }}</h3>
-                            <p class="listing-size">Size {{ sneaker.size }}</p>
+                            <p class="listing-size">Size {{ sneaker.size|floatformat }}</p>
                             <p class="listing-price">£{{ sneaker.price }}</p>
                             <div class="listing-actions">
                                 <a href="{% url 'sneaker_detail' sneaker.id %}" class="btn-secondary">View</a>
