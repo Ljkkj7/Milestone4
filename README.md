@@ -89,10 +89,11 @@ python manage.py runserver
 
 ## 🧩 Features
 
-- Browse sneakers by brand, size, and color
+- Browse sneakers by brand, size, and price range
 - Add sneakers to cart and checkout securely with Stripe
 - User authentication and profiles
-- Product CRUD (admin/staff)
+- Product CRUD - User marketplace listings
+- Brand CRUD - Manage products & brand page
 - Order management and receipts
 - Product reviews and star ratings
 - Responsive & accessible UI
@@ -103,9 +104,8 @@ python manage.py runserver
 
 **Core Models:**
 
-- `Brand` — sneaker brand (Nike, Adidas, etc.)
-- `Sneaker` — product details (price, stock, size, color, release_date)
-- `SneakerReview` — user reviews
+- `Sneaker` — product details (name, brand, size, price, image, created_at, updated_at, owner)
+- `UserReview` — user reviews
 - `Order`, `OrderItem`, `Payment` — order and transaction data
 
 ER Diagram example:
