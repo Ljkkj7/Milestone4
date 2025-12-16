@@ -16,7 +16,7 @@
         <a href="{% if user.is_authenticated %}{% url 'marketplace' %}{% else %}{% url 'home' %}{% endif %}" class="logo">SneakerHub</a>
         <nav class="nav">
             <a href="{% url 'marketplace' %}">Marketplace</a>
-            <a href="">Creators</a>
+            <a href="">Creator Space</a>
             <a href="">Cart (<span id="cart-count">{{ cart.count|default:0 }}</span>)</a>
             {% if user.is_authenticated %}
                 <a href="{% url 'account' user.id %}">Account</a>
