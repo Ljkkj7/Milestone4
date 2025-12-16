@@ -1,4 +1,6 @@
-from django.test import TestCase
+from django.test import TestCase, Client
+from django.contrib.auth.models import User
+from django.urls import reverse
 from .forms import ListingCreationForm
 
 
@@ -75,3 +77,16 @@ class ListingCreationFormTests(TestCase):
         }
         form = ListingCreationForm(data=form_data)
         self.assertTrue(form.is_valid())
+
+class createListingViewTests(TestCase):
+    """Test suite for createListingView."""
+
+    def setUp(self):
+        """Set up test client and user."""
+        self.client = Client()
+        self.user = User.objects.create_user(
+            username='testuser',
+            email='testuser@example.com',
+            password='testpass123'
+        )
+        self.create_listing_url = reverse('create_listing')
