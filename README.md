@@ -2,7 +2,7 @@
 
 ## 📘 Project Overview
 
-SneakerHub is a full-stack e-commerce web application designed for sneaker enthusiasts and small retailers/brands. It allows users to browse, search, and purchase trainers from independent listers (2nd hand) & independent/small brands or creators. The site integrates with Stripe for payments and provides user authentication, product reviews, and order management.
+SneakerHub is a full-stack e-commerce web application designed for sneaker enthusiasts and small retailers/brands. It allows users to browse, search, and purchase trainers from independent listers (2nd hand) & independent/small brands or creators. The site integrates with Stripe for payments and provides user authentication, product & user reviews, and order management.
 
 ---
 
