@@ -166,6 +166,7 @@ body {
     letter-spacing: 0.5px;
     font-size: 13px;
     transition: all 0.3s ease;
+    margin-bottom: 10px;
 }
 
 .btn-primary:hover {
@@ -511,6 +512,21 @@ body {
     border-radius: 10px;
     margin: 10px;
     text-align: center;
+}
+
+.creator-signup h2, .customer-signup h2 {
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+}
+
+.creator-signup p, .customer-signup p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 24px;
+    line-height: 1.6;
 }
 
 /* ---------------------------
