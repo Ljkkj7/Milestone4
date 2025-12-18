@@ -2,7 +2,7 @@
 let carouselIndex = 0;
 
 function getItemsPerSlide() {
-    if (window.innerWidth < 900) return 1; // 1 item for mobile and tablet
+    if (window.innerWidth < 1024) return 1; // 1 item for mobile, tablet & laptop
     return 2; // default for larger screens
 }
 
