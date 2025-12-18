@@ -83,6 +83,43 @@ body {
     width: 100%;
 }
 
+/* Mobile hamburger toggle (hidden on desktop) */
+.menu-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+}
+
+.menu-toggle .hamburger {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #000;
+    position: relative;
+}
+.menu-toggle .hamburger::before,
+.menu-toggle .hamburger::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 24px;
+    height: 2px;
+    background: #000;
+    transition: transform 0.2s ease;
+}
+.menu-toggle .hamburger::before { top: -7px; }
+.menu-toggle .hamburger::after { top: 7px; }
+
+/* Mobile nav panel */
+.mobile-nav {
+    display: none;
+}
+
+/* Prevent body scroll when menu open */
+.no-scroll { overflow: hidden; }
+
 /* Responsive nav */
 @media (max-width: 768px) {
     .nav {
@@ -93,6 +130,31 @@ body {
     .nav a {
         font-size: 12px;
     }
+
+    /* Show hamburger and hide desktop nav on mobile */
+    .menu-toggle { display: block; }
+    .nav { display: none; }
+
+    /* mobile nav panel styles */
+    .mobile-nav {
+        display: block;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 340px;
+        height: 100%;
+        background: #fff;
+        box-shadow: -6px 0 20px rgba(0,0,0,0.2);
+        z-index: 2000;
+        transition: right 0.25s ease;
+        padding: 28px 20px;
+    }
+
+    .mobile-nav--open { right: 0; }
+
+    .mobile-nav .mobile-nav-links { display: flex; flex-direction: column; gap: 18px; }
+    .mobile-nav .mobile-nav-links a { font-size: 16px; }
 }
 
 /* Main content */
