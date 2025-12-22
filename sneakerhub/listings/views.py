@@ -30,3 +30,16 @@ def deleteListingView(request, sneaker_id):
     
     # GET request - show confirmation page or redirect back
     return redirect('account', user_id=request.user.id)
+
+def editListingView(request, sneaker_id):
+    """Handle editing of a sneaker listing."""
+    sneaker = get_object_or_404(Sneaker, id=sneaker_id, owner=request.user)
+    
+    if request.method == 'POST':
+        form = ListingCreationForm(request.POST, request.FILES, instance=sneaker)
+        if form.is_valid():
+            form.save()
+            return redirect('sneaker_detail', sneaker_id=sneaker.id)
+    else:
+        form = ListingCreationForm(instance=sneaker)
+    return render(request, 'edit_listing.html', {'form': form, 'sneaker': sneaker})
