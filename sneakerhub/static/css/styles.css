@@ -853,6 +853,36 @@ body {
     box-sizing: border-box;
 }
 
+.cart-subtotal {
+    margin: 0;
+    font-weight: 800;
+    font-size: 16px;
+    text-align: center;
+}
+
+.cart-summary {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    align-items: center;
+    margin-top: 12px;
+}
+
+.cart-summary .btn-secondary {
+    margin-top: 10px;
+}
+
+.cart-summary p {
+    margin: 0;
+    font-weight: 800;
+    font-size: 16px;
+}
+
+.cart-empty {
+    text-align: center;
+    padding: 48px 0;
+}
+
 
 
     .profile-listing-item {
