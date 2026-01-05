@@ -812,6 +812,8 @@ body {
     font-weight: 900;
     margin-bottom: 18px;
     text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 2px;
 }
 
 .cart-table {
