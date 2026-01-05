@@ -10,6 +10,7 @@
         <table class="cart-table">
             <thead>
                 <tr>
+                    <th></th>
                     <th>Product</th>
                     <th>Price</th>
                     <th>Quantity</th>
@@ -20,6 +21,7 @@
             <tbody>
                 {% for item in items %}
                     <tr>
+                        <td><image src="{{ item.sneaker.image.url|default_if_none:'No Image' }}" alt="{{ item.sneaker.name }}" style="width: 100px; height: auto;"></td>
                         <td>{{ item.sneaker.brand }} {{ item.sneaker.name }}</td>
                         <td>£{{ item.sneaker.price }}</td>
                         <td>{{ item.quantity }}</td>
