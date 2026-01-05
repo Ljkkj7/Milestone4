@@ -162,6 +162,18 @@ Below is an overview of each test suite in the project, what they cover, and whe
 
   - Purpose: Validate the `ListingCreationForm` and the `create_listing` view logic used when users create new sneaker listings.
   - Key test classes & cases:
+    - `ListingCreationFormTests`:
+      - Valid form submission with all required fields.
+      - Missing required fields (e.g., `name`, `brand`, `size`, `price`) should produce form errors.
+      - Description validation: rejects descriptions shorter than a minimum length, accepts exact boundary length.
+      - Optional image handling: form remains valid without an uploaded image.
+    - `createListingViewTests`:
+      - Access control: unauthenticated users are redirected to login.
+      - GET (authenticated): view returns a form instance in context.
+      - POST (authenticated, valid): creates a `Sneaker` instance, sets `owner`, and persists correct field values.
+      - POST (invalid): does not create a `Sneaker`, returns the form with errors.
+      - Edge cases: description-too-short rejected, and successful submissions redirect appropriately.
+  - Important dependencies: `listings.forms.ListingCreationForm`, `marketplace.models.Sneaker`, and the URL name `create_listing`.
 
 - **Marketplace tests**: [marketplace/tests.py](marketplace/tests.py#L1-L200)
 
