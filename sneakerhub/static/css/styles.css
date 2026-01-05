@@ -1308,3 +1308,11 @@ body {
 @media (max-width: 600px) {
     .form-row { flex-direction: column; }
 }
+
+/* ---------------------------
+   UTILS
+---------------------------- */
+
+.hidden {
+    display: none !important;
+}

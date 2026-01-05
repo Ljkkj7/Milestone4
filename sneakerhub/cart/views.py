@@ -38,10 +38,10 @@ def add_to_cart(request, sneaker_id):
     cart = _get_cart(request.session)
     key = str(sneaker.id)
     if key in cart:
-        cart[key]['quantity'] = int(cart[key].get('quantity', 0)) + quantity
+        return redirect(reverse('sneaker_detail', kwargs={'sneaker_id': sneaker.id, }) + '?error=already_in_cart')
     else:
         cart[key] = {'quantity': quantity}
-    request.session.modified = True
+    request.session.modified = True 
     return redirect('sneaker_detail', sneaker_id=sneaker.id)
 
 @require_POST

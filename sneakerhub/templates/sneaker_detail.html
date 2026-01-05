@@ -4,6 +4,9 @@
 
 {% block content %}
 <section class="sneaker-detail">
+    <div class="form-error-box hidden">
+        <p></p>
+    </div>
     <div class="sneaker-image">
         <img src="{{ sneaker.image.url }}" alt="{{ sneaker.name }}">
     </div>
@@ -50,4 +53,23 @@
         </div>
     </div>
 </div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const errorContainer = document.querySelector('.form-error-box');
+
+    const errorMessage = urlParams.get('error');
+    if (errorMessage === 'already_in_cart') {
+        const errorBox = document.querySelector('.form-error-box p');
+        errorContainer.classList.remove('hidden');
+        errorBox.textContent = 'This item is already in your cart.';
+    }
+    else if (!errorMessage && errorContainer.classList.contains('hidden')) {
+        errorContainer.classList.add('hidden');
+    }
+</script>
 {% endblock %}
