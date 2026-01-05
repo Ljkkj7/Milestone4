@@ -9,6 +9,6 @@ class ListingCreationForm(forms.ModelForm):
 
     def clean_description(self):
         description = self.cleaned_data.get('description')
-        if description and len(description) < 10:
+        if len(description) < 10:
             raise forms.ValidationError("Description must be at least 10 characters long.")
         return description
