@@ -14,7 +14,10 @@
             <p class="size">Size: {{ sneaker.size|floatformat }} //</p>
             <p class="price">£{{ sneaker.price }}</p>
         </div>
-        <button class="btn-secondary cart">Add to Cart</button>
+        <form method="post" action="">
+            {% csrf_token %}
+            <button class="btn-secondary cart">Add to Cart</button>
+        </form>
         {% if sneaker in user.sneakers.all %}
             <div class="listing-management">
                 <hr>
