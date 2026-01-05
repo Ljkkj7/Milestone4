@@ -179,6 +179,13 @@ Below is an overview of each test suite in the project, what they cover, and whe
 
   - Purpose: Unit tests for the `Sneaker` model, basic marketplace views, and admin-related behavior.
   - Key test classes & cases:
+    - `SneakerModelTests`:
+      - Creation of a `Sneaker` instance with expected field values (`name`, `brand`, `size`, `price`, `owner`).
+    - `SneakerViewTests`:
+      - Basic view smoke test: `marketplace` page returns HTTP 200.
+    - `SneakerAdminTests`:
+      - Admin user creation and login checks to ensure admin site interactions can be performed in tests.
+  - Important dependencies: `marketplace.models.Sneaker`, Django `User` model, and the `marketplace` URL.
 
 - **Account tests**: [account/tests.py](account/tests.py#L1-L60)
 
