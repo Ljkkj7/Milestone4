@@ -42,4 +42,13 @@ def add_to_cart(request, sneaker_id):
     else:
         cart[key] = {'quantity': quantity}
     request.session.modified = True
+    return redirect('sneaker_detail', sneaker_id=sneaker.id)
+
+@require_POST
+def remove_from_cart(request, sneaker_id):
+    cart = _get_cart(request.session)
+    key = str(sneaker_id)
+    if key in cart:
+        del cart[key]
+        request.session.modified = True
     return redirect(reverse('cart:detail'))
