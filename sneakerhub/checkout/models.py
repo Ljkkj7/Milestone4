@@ -34,9 +34,3 @@ class Order(models.Model):
 
     def __str__(self):
         return f"Order {self.id} by {self.user.username}"
-    
-class OrderLineItem(models.Model):
-    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='lineitems')
-    sneaker = models.ForeignKey('marketplace.Sneaker', on_delete=models.CASCADE)
-    quantity = models.IntegerField(null=False, blank=False, default=0)
-    lineitem_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, blank=False, editable=False)
