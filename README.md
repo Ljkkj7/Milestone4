@@ -214,12 +214,6 @@ Below is an overview of each test suite in the project, what they cover, and whe
 
 ---
 
-## 🧰 Developer Workflow
-
-- Use Git feature branches (e.g. `feature/checkout`, `fix/payment-error`).
-
----
-
 ## 📖 Documentation
 
 - `README.md` — project overview & setup
