@@ -1,0 +1,1 @@
+from marketplace.models import Sneaker

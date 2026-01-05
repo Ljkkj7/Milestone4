@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Your Cart • SneakerHub{% endblock %}
+
+{% block content %}
+<section class="cart">
+    <h1>Your Cart</h1>
+    {% if items %}
+        <table class="cart-table">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                    <tr>
+                        <td>{{ item.sneaker.brand }} {{ item.sneaker.name }}</td>
+                        <td>£{{ item.sneaker.price }}</td>
+                        <td>
+                            <form method="post" action="">
+                                {% csrf_token %}
+                                <input type="number" name="quantity" min="0" value="{{ item.quantity }}" style="width:60px;">
+                                <button class="btn-primary" type="submit">Update</button>
+                            </form>
+                        </td>
+                        <td>£{{ item.line_total|floatformat:2 }}</td>
+                        <td>
+                            <form method="post" action="">
+                                {% csrf_token %}
+                                <button class="btn-secondary" type="submit">Remove</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="cart-summary">
+            <p><strong>Subtotal:</strong> £{{ total|floatformat:2 }}</p>
+            <a href="/" class="btn-secondary">Continue shopping</a>
+            <a href="#" class="btn-primary">Proceed to checkout</a>
+        </div>
+    {% else %}
+        <p>Your cart is empty.</p>
+        <a href="/" class="btn-secondary">Continue shopping</a>
+    {% endif %}
+</section>
+{% endblock %}

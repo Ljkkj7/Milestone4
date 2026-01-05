@@ -14,8 +14,9 @@
             <p class="size">Size: {{ sneaker.size|floatformat }} //</p>
             <p class="price">£{{ sneaker.price }}</p>
         </div>
-        <form method="post" action="">
+        <form method="post" action="{% url 'cart:add' sneaker.id %}">
             {% csrf_token %}
+            <input type="hidden" name="next" value="{% url 'sneaker_detail' sneaker.id %}">
             <button class="btn-secondary cart">Add to Cart</button>
         </form>
         {% if sneaker in user.sneakers.all %}
