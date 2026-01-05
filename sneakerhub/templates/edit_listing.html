@@ -59,4 +59,26 @@
         </div>
     </div>
 </section>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const listing = {
+        name: "{{ sneaker.name|default:''|escapejs }}",
+        brand: "{{ sneaker.brand|default:''|escapejs }}",
+        size: "{{ sneaker.size|default:''|escapejs }}",
+        price: "{{ sneaker.price|default:''|escapejs }}",
+        description: "{{ sneaker.description|default:''|escapejs }}"
+    };
+
+    Object.keys(listing).forEach(function (key) {
+        const selector = '[name="' + key + '"]';
+        const field = document.querySelector(selector);
+        if (!field) return;
+
+        const tag = field.tagName.toLowerCase();
+        if (tag === 'input' || tag === 'textarea' || tag === 'select') {
+            field.value = listing[key];
+        }
+    });
+});
+</script>
 {% endblock %}
