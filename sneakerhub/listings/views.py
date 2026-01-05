@@ -31,6 +31,7 @@ def deleteListingView(request, sneaker_id):
     # GET request - show confirmation page or redirect back
     return redirect('account', user_id=request.user.id)
 
+@login_required
 def editListingView(request, sneaker_id):
     """Handle editing of a sneaker listing."""
     sneaker = get_object_or_404(Sneaker, id=sneaker_id, owner=request.user)
