@@ -3,10 +3,10 @@
 {% block title %}{{ sneaker.name }} • SneakerHub{% endblock %}
 
 {% block content %}
+<div class="form-error-box hidden">
+    <p></p>
+</div>
 <section class="sneaker-detail">
-    <div class="form-error-box hidden">
-        <p></p>
-    </div>
     <div class="sneaker-image">
         <img src="{{ sneaker.image.url }}" alt="{{ sneaker.name }}">
     </div>
@@ -20,7 +20,7 @@
         <form method="post" action="{% url 'cart:add' sneaker.id %}">
             {% csrf_token %}
             <input type="hidden" name="next" value="{% url 'sneaker_detail' sneaker.id %}">
-            <button class="btn-secondary cart">Add to Cart</button>
+            <button class="btn-secondary cart-btn">Add to Cart</button>
         </form>
         {% if sneaker in user.sneakers.all %}
             <div class="listing-management">

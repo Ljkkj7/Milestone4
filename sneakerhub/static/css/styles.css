@@ -242,11 +242,11 @@ body {
     transform: translateY(0);
 }
 
-.btn-primary.cart {
+.btn-primary.cart-btn {
     margin-bottom: 10px;
 }
 
-.btn-secondary.cart:hover {
+.btn-secondary.cart-btn:hover {
     background: #BEE5B0;
     color: black;
 }
@@ -665,6 +665,16 @@ body {
         padding: 1rem;
         margin-bottom: 1rem;
         color: #721c24;
+        width: 50%;
+        margin: 0 auto;
+    }
+
+.form-error-box p {
+        margin: 0;
+        font-size: 0.9rem;
+        text-align: center;
+        font-weight: 600;
+        letter-spacing: 1px;
     }
 
 .btn-primary-auth {
