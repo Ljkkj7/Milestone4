@@ -154,6 +154,29 @@ python manage.py test
 
 ---
 
+### Test Suites (per app)
+
+Below is an overview of each test suite in the project, what they cover, and where to find them.
+
+- **Listings tests**: [listings/tests.py](listings/tests.py#L1-L200)
+
+  - Purpose: Validate the `ListingCreationForm` and the `create_listing` view logic used when users create new sneaker listings.
+  - Key test classes & cases:
+
+- **Marketplace tests**: [marketplace/tests.py](marketplace/tests.py#L1-L200)
+
+  - Purpose: Unit tests for the `Sneaker` model, basic marketplace views, and admin-related behavior.
+  - Key test classes & cases:
+
+- **Account tests**: [account/tests.py](account/tests.py#L1-L60)
+
+  - Purpose: Placeholder file currently.
+  - Add tests for authentication flows (signup, login, logout), profile views, and permission checks.
+
+- **Checkout tests**: [checkout/tests.py](checkout/tests.py#L1-L60)
+  - Purpose: Placeholder file currently.
+  - Add tests for cart-to-checkout flow, Stripe webhook handling (use mocks), and order creation/validation.
+
 ## 🚀 Deployment Guide
 
 ### On Render / Heroku
