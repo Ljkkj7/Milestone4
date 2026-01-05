@@ -22,13 +22,7 @@
                     <tr>
                         <td>{{ item.sneaker.brand }} {{ item.sneaker.name }}</td>
                         <td>£{{ item.sneaker.price }}</td>
-                        <td>
-                            <form method="post" action="">
-                                {% csrf_token %}
-                                <input type="number" name="quantity" min="0" value="{{ item.quantity }}" style="width:60px;">
-                                <button class="btn-primary" type="submit">Update</button>
-                            </form>
-                        </td>
+                        <td>{{ item.quantity }}</td>
                         <td>£{{ item.line_total|floatformat:2 }}</td>
                         <td>
                             <form method="post" action="{% url 'cart:remove' item.sneaker.id %}">
