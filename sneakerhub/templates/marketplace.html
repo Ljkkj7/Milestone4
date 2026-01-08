@@ -45,11 +45,11 @@
         {% for sneaker in sneakers %}
         <article class="card">
             <a href="{% url 'sneaker_detail' sneaker.id %}">
-                <img src="{{ sneaker.image.url }}" alt="{{ sneaker.name }}" class="card-img">
+                <img src="{% if sneaker.image %}{{ sneaker.image.url }}{% else %}{% static 'media/sneakerhubsquare.jpg' %}{% endif %}" alt="{{ sneaker.name }}" class="card-img">
             </a>
             <div class="card-body">
                 <h3>{{ sneaker.name }}</h3>
-                <p class="brand">{{ sneaker.brand }}</p>
+                <p class="brand">{{ sneaker.brand }} // {{ sneaker.size|floatformat }}</p>
                 <div class="card-footer">
                     <span class="price">£{{ sneaker.price }}</span>
                 </div>
