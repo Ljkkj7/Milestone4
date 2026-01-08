@@ -43,7 +43,7 @@
         </div>
         <div class="cart-summary">
             <a href="{% url 'marketplace' %}" class="btn-secondary">Continue shopping</a>
-            <a href="#" class="btn-primary">Proceed to checkout</a>
+            <a href="{% url 'checkout:checkout' %}" class="btn-primary">Proceed to checkout</a>
         </div>
     {% else %}
         <div class="cart-empty">

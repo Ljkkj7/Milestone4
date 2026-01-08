@@ -4,7 +4,7 @@ from checkout.models import Order
 class CheckoutForm(forms.ModelForm):
     class Meta:
         model = Order
-        fields = ['full_name', 'email', 'phone_number', 'street_adress1', 'street_adress2', 
+        fields = ['full_name', 'email', 'phone_number', 'street_address1', 'street_address2', 
                   'town_or_city', 'postcode', 'country', 'county']
     
     def __init__(self, *args, **kwargs):
@@ -21,7 +21,7 @@ class CheckoutForm(forms.ModelForm):
             'country': 'Country',
             'county': 'County/State',
         }
-        
+
         self.fields['full_name'].widget.attrs['autofocus'] = True
         for field in self.fields:
             if self.fields[field].required:
