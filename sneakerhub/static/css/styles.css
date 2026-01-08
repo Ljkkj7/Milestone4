@@ -1392,6 +1392,15 @@ body {
     border: 2px solid #000;
 }
 
+.order-item {
+    display: flex;
+}
+
+.order-item-image {
+    margin-right: 10px;
+    margin-top: 20px;
+}
+
 @media (max-width: 600px) {
     .checkout-card { 
         padding: 20px;
