@@ -242,11 +242,11 @@ body {
     transform: translateY(0);
 }
 
-.btn-primary.cart-btn {
+.btn-primary.cart {
     margin-bottom: 10px;
 }
 
-.btn-secondary.cart-btn:hover {
+.btn-secondary.cart:hover {
     background: #BEE5B0;
     color: black;
 }
@@ -674,7 +674,7 @@ body {
         font-size: 0.9rem;
         text-align: center;
         font-weight: 600;
-        letter-spacing: 1px;
+        letter-spacing: 2px;
     }
 
 .btn-primary-auth {

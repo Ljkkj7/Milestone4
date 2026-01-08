@@ -26,6 +26,14 @@ class Order(models.Model):
         """Generate a random, unique order number using UUID"""
         return uuid.uuid4().hex.upper()
     
+    def update_total(self):
+        """Update grand total each time a line item is added"""
+        self.order_total = sum(
+            item.line_total for item in self.lineitems.all()
+        )
+        self.grand_total = self.order_total + self.delivery_cost
+        self.save()
+    
     def save(self, *args, **kwargs):
         """Override the original save method to set the order number if it hasn't been set already."""
         if not self.order_number:
@@ -33,4 +41,17 @@ class Order(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return f"Order {self.id} by {self.user.username}"
+        return self.order_number
+    
+class OrderItem(models.Model):
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='lineitems')
+    sneaker = models.ForeignKey('marketplace.Sneaker', on_delete=models.CASCADE)
+    line_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, blank=False)
+
+    def save(self, *args, **kwargs):
+        """Override the original save method to set the line total."""
+        self.line_total = self.sneaker.price
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return f"OrderItem {self.sneaker}, ID {self.id}, for Order {self.order.order_number}"
