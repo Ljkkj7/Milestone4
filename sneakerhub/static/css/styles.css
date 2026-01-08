@@ -1417,9 +1417,23 @@ body {
     gap: 28px;
 }
 
+.order-summary-card {
+    order: 1;
+}
+
+.checkout-form-card {
+    order: 2;
+}
+
 @media (max-width: 768px) {
     .checkout-layout {
         grid-template-columns: 1fr;
+    }
+    .order-summary-card {
+        order: -1;
+    }
+    .checkout-form-card {
+        order: 0;
     }
 }
 

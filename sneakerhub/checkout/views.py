@@ -15,7 +15,7 @@ def checkoutView(request):
     if request.method == 'POST':
         form = CheckoutForm(request.POST)
         if form.is_valid():
-            return render(request, 'checkout/payment.html')
+            return render(request, 'checkout/payment.html', {'form': form})
     else:
 
         for sneaker_id_str, data in cart.items():
