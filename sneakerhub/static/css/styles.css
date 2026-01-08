@@ -532,6 +532,16 @@ body {
     object-fit: cover;
 }
 
+.sneaker-grid > p {
+    grid-column: 1 / -1;
+    font-size: 18px;
+    color: #666;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    place-items: center; 
+}
+
 /* ---------------------------
    SNEAKER DESCRIPTION STYLING
 ---------------------------- */

@@ -6,21 +6,34 @@ from .models import Sneaker
 def marketplaceView(request):
     # All sneakers (most recent first)
     brand_filter = request.GET.get('brand')
+    size_filter = request.GET.get('size')
+    
+    # Start with all sneakers
+    sneakers = Sneaker.objects.all()
+    
+    # Apply filters independently (can be combined)
     if brand_filter:
-        sneakers = Sneaker.objects.filter(brand=brand_filter).order_by('-created_at')
-    else:
-        sneakers = Sneaker.objects.all().order_by('-created_at')
+        sneakers = sneakers.filter(brand=brand_filter)
+    if size_filter:
+        sneakers = sneakers.filter(size=size_filter)
+    
+    sneakers = sneakers.order_by('-created_at')
     selected_brand = brand_filter or ''
+    selected_size = size_filter or ''
 
     # Distinct brand names from current sneakers
     brands_qs = Sneaker.objects.values_list('brand', flat=True).distinct()
+    size_qs = Sneaker.objects.values_list('size', flat=True).distinct()
     # Convert to a sorted list for predictable template ordering
     brands = sorted([b for b in brands_qs if b])
+    sizes = sorted([s for s in size_qs if s])
 
     context = {
         'sneakers': sneakers,
         'brands': brands,
         'selected_brand': selected_brand,
+        'sizes': sizes,
+        'selected_size': selected_size,
     }
     return render(request, 'marketplace.html', context)
 
@@ -34,6 +47,18 @@ def brandReturn(request, brand_name):
         'sneakers': sneakers,
         'brands': brands,
         'brand_name': brand_name,
+    }
+    return render(request, 'marketplace.html', context)
+
+def sizeReturn(request, size_value):
+    # Return sneakers filtered by a size value
+    sneakers = Sneaker.objects.filter(size=size_value).order_by('-created_at')
+    size_q = Sneaker.objects.values_list('size', flat=True).distinct()
+    sizes = sorted([s for s in size_q if s])
+    context = {
+        'sneakers': sneakers,
+        'sizes': sizes,
+        'size_value': size_value,
     }
     return render(request, 'marketplace.html', context)
 

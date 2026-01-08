@@ -16,14 +16,11 @@
             <option value="{{ brand }}" {% if brand == selected_brand %}selected{% endif %}>{{ brand }}</option>
             {% endfor %}
         </select>
-        <select class="filter-select">
+        <select name="size" class="filter-select">
             <option value="">All Sizes</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-            <option value="11">11</option>
+            {% for size in sizes %}
+            <option value="{{ size }}" {% if size == selected_size %}selected{% endif %}>{{ size }}</option>
+            {% endfor %}
         </select>
         <select class="filter-select">
             <option value="">Price Range</option>
@@ -55,9 +52,8 @@
                 </div>
             </div>
         </article>
-
         {% empty %}
-        <p>No sneakers available at the moment. Please check back later.</p>
+        <p>There is no listings.</p>
         {% endfor %}
     </div>
 </section>
