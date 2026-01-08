@@ -12,6 +12,8 @@ def cart_detail(request):
     cart = _get_cart(request.session)
     items = []
     total = 0
+    shipping = 0
+    grand_total = 0
 
     for sneaker_id_str, data in cart.items():
         try:
@@ -28,7 +30,11 @@ def cart_detail(request):
             'line_total': line_total,
         })
 
-    return render(request, 'cart/cart.html', {'items': items, 'total': total})
+    # Calculate shipping as 10% of subtotal (example policy)
+    shipping = 5.0 if total > 0 else 0
+    grand_total = round(total + shipping, 2)
+
+    return render(request, 'cart/cart.html', {'items': items, 'total': total, 'shipping': shipping, 'grand_total': grand_total})
 
 
 @require_POST

@@ -15,16 +15,16 @@
                         <img src="{{ item.sneaker.image.url|default_if_none:'No Image' }}" alt="{{ item.sneaker.name }}" style="width: 80px; height: auto;">
                     </div>
                     <div class="order-item-details">
-                        <p>{{ item.sneaker.brand }} // {{ item.sneaker.name }} // {{ item.quantity }}</p>
+                        <p>{{ item.sneaker.brand }} // {{ item.sneaker.name }} // {{ item.sneaker.size|floatformat }}</p>
                         <p>£{{ item.line_total|floatformat:2 }}</p>
                     </div>
                 </div>
             {% endfor %}
             <hr>
-            <p><span>Subtotal:</span> £{{ cart.total|default:0|floatformat:2 }}</p>
-            <p><span>Shipping:</span> £0.00</p>
+            <p><span>Subtotal:</span> £{{ total|default:0|floatformat:2 }}</p>
+            <p><span>Shipping:</span> £{{ shipping|default:0|floatformat:2 }}</p>
             <hr>
-            <p class="order-total"><span>Total:</span> £{{ cart.total|default:0|floatformat:2 }}</p>
+            <p class="order-total"><span>Total:</span> £{{ grand_total|default:0|floatformat:2 }}</p>
         </div>
         <div class="checkout-card">
             <h1>Checkout</h1>
