@@ -8,7 +8,11 @@
     <title>{% block title %}SneakerHub{% endblock %}</title>
 
     <link href="{% static 'css/styles.css' %}" rel="stylesheet">
-    <link href="{% static 'css/colors.css' %}" rel="stylesheet">
+    {% block corejs %}
+        <script src="https://js.stripe.com/v3/"></script>
+        <script src="{% static 'js/confirm.js' %}"></script>
+        <script src="{% static 'js/menu.js' %}"></script>
+    {% endblock %}
 </head>
 <body class="bg-white text-gray-900">
 
@@ -46,9 +50,6 @@
     </div>
 </footer>
 
-<script src="{% static 'js/menu.js' %}"></script>
-<script src="{% static 'js/app.js' %}"></script>
-<script src="{% static 'js/confirm.js' %}"></script>
-{% block scripts %}{% endblock %}
+{% block postloadjs %}{% endblock %}
 </body>
 </html>

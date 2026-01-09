@@ -12,12 +12,13 @@ def checkoutView(request):
     items = []
     total = 0.0
 
+    stripe_public_key = 'pk_test_51SmDOCEpPUKTHtsBjc0l2ZUXAC8G3ERAABRlgdEjcAxvgbnLKsHKag5KqsvNdZvLf6PmJfatYbbRGSpZ1i4p7jYP00Njvhwvif'
+
     if request.method == 'POST':
         form = CheckoutForm(request.POST)
         if form.is_valid():
             return render(request, 'checkout/payment.html', {'form': form})
     else:
-
         for sneaker_id_str, data in cart.items():
             try:
                 sneaker_id = int(sneaker_id_str)
@@ -27,16 +28,20 @@ def checkoutView(request):
             quantity = data.get('quantity', 0)
             line_total = float(sneaker.price) * int(quantity)
             total += line_total
+            shipping = 5.0 if total > 0 else 0
+            grand_total = round(total + shipping, 2)
             items.append({
                 'sneaker': sneaker,
                 'quantity': int(quantity),
                 'line_total': line_total,
             })
-
-        # Calculate shipping as 10% of subtotal (example policy)
-        shipping = 5.0 if total > 0 else 0
-        grand_total = round(total + shipping, 2)
-
         form = CheckoutForm()
-
-    return render(request, 'checkout/checkout.html', {'form': form, 'items': items, 'total': total, 'shipping': shipping, 'grand_total': grand_total})
+        context = {
+            'form': form,
+            'items': items,
+            'total': total,
+            'shipping': shipping,
+            'grand_total': grand_total,
+            'stripe_public_key': stripe_public_key
+        }
+    return render(request, 'checkout/checkout.html', context)

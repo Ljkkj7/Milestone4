@@ -1,3 +1,28 @@
+/* Stripe Elements custom styling */
+.stripe-card-wrapper {
+    border: 2px solid #000;
+    border-radius: 0;
+    padding: 12px 14px;
+    background: #fff;
+    font-size: 14px;
+    box-sizing: border-box;
+    font-family: inherit;
+    margin-bottom: 16px;
+    transition: all 0.3s ease;
+}
+
+#card-element {
+    background: transparent;
+    border: none;
+}
+
+
+#card-errors {
+    color: #fa755a;
+    font-size: 13px;
+    margin-top: 8px;
+    min-height: 18px;
+}
 /* Utility basics */
 body {
     margin: 0;
@@ -1402,6 +1427,7 @@ body {
     font-weight: 900;
     text-transform: uppercase;
     border: 2px solid #000;
+    margin: 10px auto;
 }
 
 .order-item {
@@ -1424,7 +1450,21 @@ body {
 }
 
 .checkout-form-card {
+    width: 75%;
     order: 2;
+}
+
+.payment-info-card {
+    margin-top: 20px;
+}
+
+.payment-info-card h1 {
+    text-align: center;
+}
+
+.payment-info-card p {
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 @media (max-width: 768px) {
@@ -1442,11 +1482,11 @@ body {
 @media (max-width: 600px) {
     .checkout-card { 
         padding: 20px;
-        max-width: 100%;
+        max-width: 80%;
         margin: 0 auto;
     }
     .checkout-card .btn-secondary {
-        max-width: 100%;
+        max-width: 80%;
         margin: 0 auto;
         text-align: center;
     }
