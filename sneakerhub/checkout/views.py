@@ -4,6 +4,8 @@ from django.shortcuts import get_object_or_404
 from marketplace.models import Sneaker
 from .forms import CheckoutForm
 from cart.views import _get_cart
+import stripe
+from django.conf import settings
 
 # Create your views here.
 @login_required
@@ -12,12 +14,18 @@ def checkoutView(request):
     items = []
     total = 0.0
 
-    stripe_public_key = 'pk_test_51SmDOCEpPUKTHtsBjc0l2ZUXAC8G3ERAABRlgdEjcAxvgbnLKsHKag5KqsvNdZvLf6PmJfatYbbRGSpZ1i4p7jYP00Njvhwvif'
+    stripe_public_key = settings.STRIPE_PUBLIC_KEY
+    stripe.api_key = settings.STRIPE_SECRET_KEY
 
     if request.method == 'POST':
         form = CheckoutForm(request.POST)
         if form.is_valid():
-            return render(request, 'checkout/payment.html', {'form': form})
+            # Process the payment here (handled via Stripe Elements on frontend)
+            # For simplicity, we assume payment is successful
+            # Clear the cart
+            request.session['cart'] = {}
+            request.session.modified = True
+            return redirect('cart:detail')
     else:
         for sneaker_id_str, data in cart.items():
             try:
@@ -35,6 +43,12 @@ def checkoutView(request):
                 'quantity': int(quantity),
                 'line_total': line_total,
             })
+
+        intent = stripe.PaymentIntent.create(
+            amount=int(grand_total * 100),  # amount in pence
+            currency='gbp',
+        )
+
         form = CheckoutForm()
         context = {
             'form': form,
@@ -42,6 +56,7 @@ def checkoutView(request):
             'total': total,
             'shipping': shipping,
             'grand_total': grand_total,
-            'stripe_public_key': stripe_public_key
+            'stripe_public_key': stripe_public_key,
+            'stripe_client_secret': intent.client_secret,
         }
     return render(request, 'checkout/checkout.html', context)
