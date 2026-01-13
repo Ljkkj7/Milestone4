@@ -9,7 +9,7 @@ def marketplaceView(request):
     size_filter = request.GET.get('size')
     
     # Start with all sneakers
-    sneakers = Sneaker.objects.all()
+    sneakers = Sneaker.objects.filter(is_sold=False)
     
     # Apply filters independently (can be combined)
     if brand_filter:
@@ -24,6 +24,7 @@ def marketplaceView(request):
     # Distinct brand names from current sneakers
     brands_qs = Sneaker.objects.values_list('brand', flat=True).distinct()
     size_qs = Sneaker.objects.values_list('size', flat=True).distinct()
+
     # Convert to a sorted list for predictable template ordering
     brands = sorted([b for b in brands_qs if b])
     sizes = sorted([s for s in size_qs if s])

@@ -15,10 +15,10 @@
         <!-- Left: Listings -->
         <div class="profile-card">
             <h2>Your Listings</h2>
-            {% if user.sneakers.all %}
+            {% if available_sneakers %}
                 <div class="listings-carousel-container">
                     <div class="listings-carousel">
-                        {% for sneaker in user.sneakers.all %}
+                        {% for sneaker in available_sneakers %}
                             <div class="carousel-item">
                                 <div class="profile-listing-item">
                                     {% if sneaker.image %}

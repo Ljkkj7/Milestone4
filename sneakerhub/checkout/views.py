@@ -1,8 +1,10 @@
+from django.contrib import messages
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
 from marketplace.models import Sneaker
 from .forms import CheckoutForm
+from .models import Order, OrderItem
 from cart.views import _get_cart
 import stripe
 from django.conf import settings
@@ -20,16 +22,42 @@ def checkoutView(request):
     if request.method == 'POST':
         form = CheckoutForm(request.POST)
         if form.is_valid():
-            # Process the payment here (handled via Stripe Elements on frontend)
-            # For simplicity, we assume payment is successful
-            # Clear the cart
+            order = form.save(commit=False)
+            order.user = request.user
+            order.save()
 
             delistSoldSneakers(request)
 
+            for item_id, data in cart.items():
+                try:
+                    sneaker = Sneaker.objects.get(id=int(item_id))
+                    if sneaker is not None:
+                        order_line_item = OrderItem(
+                            order=order,
+                            sneaker=sneaker,
+                            line_total=sneaker.price
+                        )
+                        order_line_item.save()
+                except Sneaker.DoesNotExist:
+                    messages.error(request, ( "Sneaker in your cart wasn't found in our database. "
+                                             "Please contact support for assistance."))
+                    order.delete()
+                    return redirect('cart:detail')
+            
             request.session['cart'] = {}
             request.session.modified = True
             return redirect('cart:detail')
+            
+        else:
+            messages.error(request, 'There was an error with your form. Please double check your information.')
+            return redirect('checkout')
+        
     else:
+
+        if not cart:
+            messages.error(request, "Your cart is empty")
+            return redirect('marketplace')
+        
         for sneaker_id_str, data in cart.items():
             try:
                 sneaker_id = int(sneaker_id_str)
