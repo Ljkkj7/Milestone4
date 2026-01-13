@@ -23,6 +23,9 @@ def checkoutView(request):
             # Process the payment here (handled via Stripe Elements on frontend)
             # For simplicity, we assume payment is successful
             # Clear the cart
+
+            delistSoldSneakers(request)
+
             request.session['cart'] = {}
             request.session.modified = True
             return redirect('cart:detail')
@@ -60,3 +63,11 @@ def checkoutView(request):
             'stripe_client_secret': intent.client_secret,
         }
     return render(request, 'checkout/checkout.html', context)
+
+def delistSoldSneakers(request):
+    cart = _get_cart(request.session)
+    for sneaker_id_str in cart.keys():
+        sneaker_id = int(sneaker_id_str)
+        sneaker = get_object_or_404(Sneaker, id=sneaker_id)
+        sneaker.is_sold = True
+        sneaker.save()
