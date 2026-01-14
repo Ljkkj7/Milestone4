@@ -21,6 +21,8 @@
             {% csrf_token %}
             <input type="hidden" name="next" value="{% url 'sneaker_detail' sneaker.id %}">
             <button class="btn-secondary cart-btn">Add to Cart</button>
+            <input type="hidden" name="next" value="">
+            <button class="btn-secondary cart-btn">Add to Wishlist</button>
         </form>
         {% if sneaker in user.sneakers.all %}
             <div class="listing-management">
@@ -40,6 +42,11 @@
 <section class="sneaker-description">
     <h2>Description</h2>
     <p>{{ sneaker.description }}</p>
+</section>
+<section class="sneaker-seller-info">
+    <h2>Seller Information</h2>
+    <p>Sold by: <a href="">{{ sneaker.owner.username }}</a></p>
+    <p>Member since: {{ sneaker.owner.date_joined|date:"F j, Y" }}</p>
 </section>
 
 <!-- Confirmation modal -->

@@ -2,6 +2,7 @@ from django.contrib import messages
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
+from django.core.mail import send_mail
 from marketplace.models import Sneaker
 from .forms import CheckoutForm
 from .models import Order, OrderItem
@@ -38,6 +39,7 @@ def checkoutView(request):
                             line_total=sneaker.price
                         )
                         order_line_item.save()
+                        order.update_total()
                 except Sneaker.DoesNotExist:
                     messages.error(request, ( "Sneaker in your cart wasn't found in our database. "
                                              "Please contact support for assistance."))
@@ -46,6 +48,8 @@ def checkoutView(request):
             
             request.session['cart'] = {}
             request.session.modified = True
+            send_order_confirmation_email(order, cart)
+            messages.success(request, f'Order successfully placed! A confirmation email has been sent to {order.user.email}.')
             return redirect('cart:detail')
             
         else:
@@ -99,3 +103,25 @@ def delistSoldSneakers(request):
         sneaker = get_object_or_404(Sneaker, id=sneaker_id)
         sneaker.is_sold = True
         sneaker.save()
+
+# Send order confirmation email
+def send_order_confirmation_email(order, cart):
+
+    subject = f"Order Confirmation - Order #{order.order_number}"
+    message = f"Dear {order.user.username},\n\n"
+    message += "Thank you for your purchase! Here are your order details:\n\n"
+
+    for item_id, data in cart.items():
+        sneaker = Sneaker.objects.get(id=int(item_id))
+        message += f"- {sneaker.name}: £{sneaker.price}\n"
+
+    message += f"\nTotal Amount: £{order.grand_total}\n\n"
+    message += "We hope you enjoy your new sneakers!\n\nBest regards,\nSneakerHub Team"
+
+    send_mail(
+        subject,
+        message,
+        settings.EMAIL_HOST_USER,
+        [order.email],
+        fail_silently=False,
+    )
