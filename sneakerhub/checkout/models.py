@@ -32,6 +32,7 @@ class Order(models.Model):
         self.order_total = sum(
             item.line_total for item in self.lineitems.all()
         )
+        self.delivery_cost = 5.0 if self.order_total < 100 else 0.0
         self.grand_total = self.order_total + self.delivery_cost
         self.save()
     
