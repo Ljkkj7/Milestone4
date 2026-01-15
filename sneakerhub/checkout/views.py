@@ -49,7 +49,6 @@ def checkoutView(request):
             request.session['cart'] = {}
             request.session.modified = True
             send_order_confirmation_email(order, cart)
-            messages.success(request, f'Order successfully placed! A confirmation email has been sent to {order.user.email}.')
             return redirect('cart:detail')
             
         else:
@@ -107,21 +106,49 @@ def delistSoldSneakers(request):
 # Send order confirmation email
 def send_order_confirmation_email(order, cart):
 
-    subject = f"Order Confirmation - Order #{order.order_number}"
-    message = f"Dear {order.user.username},\n\n"
-    message += "Thank you for your purchase! Here are your order details:\n\n"
+        subject = f"Order Confirmation - Order #{order.order_number}"
+        # Plain text fallback
+        message = f"Dear {order.user.username},\n\n"
+        message += "Thank you for your purchase! Here are your order details:\n\n"
+        for item_id, data in cart.items():
+                sneaker = Sneaker.objects.get(id=int(item_id))
+                message += f"- {sneaker.name}: £{sneaker.price}\n"
+        message += f"\nTotal Amount: £{order.grand_total}\n\n"
+        message += "We hope you enjoy your new sneakers!\n\nBest regards,\nSneakerHub Team"
 
-    for item_id, data in cart.items():
-        sneaker = Sneaker.objects.get(id=int(item_id))
-        message += f"- {sneaker.name}: £{sneaker.price}\n"
+        # HTML email body styled inline to match SneakerHub branding
+        html_message = f"""
+        <div style='font-family: Arial, sans-serif; background: #fff; color: #1a1a1a; max-width: 600px; margin: 0 auto; border: 1px solid #eee; border-radius: 8px; box-shadow: 0 2px 8px #f0f0f0;'>
+            <div style='background: #fff; border-bottom: 2px solid #000; padding: 24px 32px 12px 32px; text-align: center;'>
+                <h1 style='margin: 0; font-size: 28px; font-weight: 900; letter-spacing: -1px; color: #000; text-transform: uppercase;'>SneakerHub</h1>
+            </div>
+            <div style='padding: 32px;'>
+                <h2 style='font-size: 22px; color: #000; margin-top: 0;'>Order Confirmation</h2>
+                <p style='font-size: 16px; color: #1a1a1a;'>Hi <b>{order.user.username}</b>,</p>
+                <p style='font-size: 16px;'>Thank you for your purchase! Here are your order details:</p>
+                <table style='width: 100%; border-collapse: collapse; margin: 24px 0;'>
+                    <thead>
+                        <tr style='background: #f8f8f8;'>
+                            <th style='text-align: left; padding: 8px; border-bottom: 1px solid #ddd;'>Sneaker</th>
+                            <th style='text-align: right; padding: 8px; border-bottom: 1px solid #ddd;'>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {''.join([f"<tr><td style='padding: 8px; border-bottom: 1px solid #f0f0f0;'>{Sneaker.objects.get(id=int(item_id)).name}</td><td style='padding: 8px; text-align: right; border-bottom: 1px solid #f0f0f0;'>£{Sneaker.objects.get(id=int(item_id)).price}</td></tr>" for item_id, data in cart.items()])}
+                    </tbody>
+                </table>
+                <p style='font-size: 16px;'><b>Total Amount:</b> £{order.grand_total}</p>
+                <p style='font-size: 16px;'>We hope you enjoy your new sneakers!</p>
+                <p style='font-size: 15px; color: #888; margin-top: 32px;'>Best regards,<br>SneakerHub Team</p>
+            </div>
+        </div>
+        """
 
-    message += f"\nTotal Amount: £{order.grand_total}\n\n"
-    message += "We hope you enjoy your new sneakers!\n\nBest regards,\nSneakerHub Team"
-
-    send_mail(
-        subject,
-        message,
-        settings.EMAIL_HOST_USER,
-        [order.email],
-        fail_silently=False,
-    )
+        send_mail(
+                subject,
+                message,
+                settings.EMAIL_HOST_USER,
+                [order.email],
+                fail_silently=False,
+                html_message=html_message,
+        )
