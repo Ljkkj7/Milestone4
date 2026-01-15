@@ -21,6 +21,7 @@ def checkoutView(request):
     stripe.api_key = settings.STRIPE_SECRET_KEY
 
     if request.method == 'POST':
+
         form = CheckoutForm(request.POST)
         if form.is_valid():
             order = form.save(commit=False)
@@ -30,6 +31,7 @@ def checkoutView(request):
             delistSoldSneakers(request)
 
             for item_id, data in cart.items():
+
                 try:
                     sneaker = Sneaker.objects.get(id=int(item_id))
                     if sneaker is not None:
@@ -40,6 +42,7 @@ def checkoutView(request):
                         )
                         order_line_item.save()
                         order.update_total()
+
                 except Sneaker.DoesNotExist:
                     messages.error(request, ( "Sneaker in your cart wasn't found in our database. "
                                              "Please contact support for assistance."))
@@ -66,12 +69,16 @@ def checkoutView(request):
                 sneaker_id = int(sneaker_id_str)
             except ValueError:
                 continue
+
             sneaker = get_object_or_404(Sneaker, id=sneaker_id)
+
             quantity = data.get('quantity', 0)
             line_total = float(sneaker.price) * int(quantity)
             total += line_total
-            shipping = 5.0 if total > 0 else 0
+
+            shipping = 5.0 if total < 100 else 0
             grand_total = round(total + shipping, 2)
+            
             items.append({
                 'sneaker': sneaker,
                 'quantity': int(quantity),
@@ -152,3 +159,7 @@ def send_order_confirmation_email(order, cart):
                 fail_silently=False,
                 html_message=html_message,
         )
+
+#@login_required
+#def checkoutSuccessView(request):
+    #return render(request, 'checkout/checkout_success.html')

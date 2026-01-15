@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Checkout Success • SneakerHub{% endblock %}
+
+{% block content %}
+<section class="checkout-success-section">
+    <div class="container">
+        <div class="checkout-success-card">
+            <h1>Thank You for Your Purchase!</h1>
+            <hr>
+            <p>Your order has been successfully placed. A confirmation email has been sent to your email address.</p>
+            <a href="{% url 'marketplace' %}" class="btn-primary">Continue Shopping</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

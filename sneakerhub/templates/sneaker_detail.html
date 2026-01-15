@@ -21,8 +21,11 @@
             {% csrf_token %}
             <input type="hidden" name="next" value="{% url 'sneaker_detail' sneaker.id %}">
             <button class="btn-secondary cart-btn">Add to Cart</button>
-            <input type="hidden" name="next" value="">
-            <button class="btn-secondary cart-btn">Add to Wishlist</button>
+        </form>
+        <form method="post" action="{% url 'wishlist_add' sneaker.id %}">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{% url 'sneaker_detail' sneaker.id %}">
+            <button class="btn-secondary wishlist-btn">Add to Wishlist</button>
         </form>
         {% if sneaker in user.sneakers.all %}
             <div class="listing-management">
