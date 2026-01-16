@@ -14,6 +14,11 @@ document.addEventListener('DOMContentLoaded', function () {
         document.body.classList.add('no-scroll');
         // Focus first actionable element
         if (confirmBtn) confirmBtn.focus();
+            // Auto-close after 5 seconds
+            if (modal._autoCloseTimeout) clearTimeout(modal._autoCloseTimeout);
+            modal._autoCloseTimeout = setTimeout(() => {
+                closeModal();
+            }, 5000);
     }
 
     function closeModal() {
