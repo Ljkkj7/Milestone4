@@ -77,18 +77,20 @@
     <!-- Wishlist -->
     <div class="profile-card">
         <h2>Your Wishlist</h2>
-        {% if user.wishlist %}
+        {% if wishlist_sneakers %}
         <div class="profile-wishlist-grid">
-            {% for sneaker in user.wishlist %}
-                <div class="wishlist-item">
-                {% if sneaker.image %}
-                    <img src="{{ sneaker.image.url }}" alt="{{ sneaker.name }}" class="wishlist-thumb">
-                {% else %}
-                    <div class="wishlist-thumb-placeholder">No Image</div>
-                {% endif %}
-                    <h4>{{ sneaker.brand }} {{ sneaker.name }}</h4>
-                    <p class="wishlist-price">£{{ sneaker.price }}</p>
-                </div>
+            {% for sneaker in wishlist_sneakers %}
+                <a href="{% url 'sneaker_detail' sneaker.id %}">
+                    <div class="wishlist-item">
+                    {% if sneaker.image %}
+                        <img src="{{ sneaker.image.url }}" alt="{{ sneaker.name }}" class="wishlist-thumb">
+                    {% else %}
+                        <div class="wishlist-thumb-placeholder">No Image</div>
+                    {% endif %}
+                        <h4>{{ sneaker.brand }} {{ sneaker.name }}</h4>
+                        <p class="wishlist-price">£{{ sneaker.price }}</p>
+                    </div>
+                </a>
             {% endfor %}
             </div>
         {% else %}

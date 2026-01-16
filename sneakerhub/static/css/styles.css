@@ -436,7 +436,6 @@ body {
 /* ---------------------------
    FILTER SELECT STYLING
 ---------------------------- */
-
 .filter-search-bar {
     margin: 32px 0;
     justify-content: center;
@@ -477,15 +476,93 @@ body {
     border-radius: 0;
     font-size: 13px;
     font-weight: 900;
+}
+
+/* ---------------------------
+   WISHLIST STYLING
+---------------------------- */
+
+.profile-wishlist-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.profile-wishlist-grid a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.wishlist-item {
+    border: 2px solid #000;
+    border-radius: 0;
+    background: #fff;
+    padding: 0;
+    text-align: center;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 240px;
+}
+
+.wishlist-item:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transform: none;
+}
+
+.wishlist-thumb,
+.wishlist-thumb-placeholder {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 0;
+    margin-bottom: 0;
+    background: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.wishlist-thumb {
+    object-fit: cover;
+}
+
+.wishlist-thumb-placeholder {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.wishlist-item h4 {
+    font-size: 13px;
+    font-weight: 700;
+    margin: 12px 12px 4px 12px;
     text-transform: uppercase;
     letter-spacing: 0.3px;
-    background: #fff;
-    color: #000;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    height: auto;
-    margin: 0;
+    line-height: 1.3;
 }
+
+.wishlist-price {
+    font-weight: 900;
+    margin: 12px 12px;
+    font-size: 14px;
+}
+
+@media (max-width: 600px) {
+    .profile-wishlist-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+
+}
+
 
 /* ---------------------------
    MARKETPLACE INTRO STYLING

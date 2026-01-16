@@ -6,12 +6,21 @@ from .models import WishlistItem
 # Create your views here.
 def accountPageView(request, user_id):
     user = request.user
+    sneaker = Sneaker.objects.all()
 
     available_sneakers = user.sneakers.filter(is_sold=False)
+
+    wishlist_items = WishlistItem.objects.filter(user=user)
+    wishlist_sneakers = [item.sneaker_id for item in wishlist_items]
+
+    for sneakers in sneaker:
+        if sneakers.id in wishlist_sneakers:
+            wishlist_sneakers[wishlist_sneakers.index(sneakers.id)] = sneakers
 
     return render(request, 'profile.html', { 
         'user_id': user_id,
         'available_sneakers': available_sneakers,
+        'wishlist_sneakers': wishlist_sneakers,
         })
 
 @login_required

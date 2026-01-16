@@ -42,16 +42,18 @@
         {% endif %}
     </div>
 </section>
+
 <section class="sneaker-description">
     <h2>Description</h2>
     <p>{{ sneaker.description }}</p>
 </section>
+
 <section class="sneaker-seller-info">
     <h2>Seller Information</h2>
+    <!-- Link to sellers profile, will need to use URL query params to fetch public profile instead of personal -->
     <p>Sold by: <a href="">{{ sneaker.owner.username }}</a></p>
     <p>Member since: {{ sneaker.owner.date_joined|date:"F j, Y" }}</p>
 </section>
-
 <!-- Confirmation modal -->
 <div id="confirm-modal" class="confirm-modal" aria-hidden="true">
     <div class="confirm-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="confirm-title">
