@@ -122,6 +122,8 @@
     const errorMessage = urlParams.get('error');
     if (errorMessage === 'already_in_cart') {
         showErrorBox('This item is already in your cart.');
+    } else if (errorMessage === 'already_in_wishlist') {
+        showErrorBox('This item is already in your wishlist.');
     } else {
         hideErrorBox();
     }

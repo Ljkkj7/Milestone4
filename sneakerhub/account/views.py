@@ -1,5 +1,6 @@
 from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse
 from marketplace.models import Sneaker
 from .models import WishlistItem
 
@@ -31,5 +32,7 @@ def addToWishlistView(request, sneaker_id):
     if not WishlistItem.objects.filter(user=user, sneaker=sneaker).exists():
         wishlist_item = WishlistItem(user=user, sneaker=sneaker)
         wishlist_item.save()
+    else:
+        return redirect(reverse('sneaker_detail', kwargs={'sneaker_id': sneaker.id, }) + '?error=already_in_wishlist')
 
     return(redirect('sneaker_detail', sneaker_id=sneaker.id))
