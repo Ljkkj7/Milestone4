@@ -1,3 +1,4 @@
+
 /* Stripe Elements custom styling */
 .stripe-card-wrapper {
     border: 2px solid #000;
@@ -1218,6 +1219,167 @@ body {
     /* Make form actions stack on small screens */
     .form-actions { flex-direction: column; gap: 12px; }
     .form-actions .btn-primary, .form-actions .btn-secondary { width: 100%; }
+}
+
+/* ---------------------------
+    SNEAKER DETAIL PAGE STYLING
+---------------------------- */
+.sneaker-detail-page {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto 40px auto;
+    padding: 0 16px;
+}
+
+.sneaker-detail-card {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    background: #fff;
+    border: 2px solid #000;
+    border-radius: 0;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.07);
+    padding: 32px 32px 32px 32px;
+    align-items: flex-start;
+}
+
+.sneaker-detail-image-wrap {
+    flex: 1 1 340px;
+    max-width: 340px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fafafa;
+    border-radius: 0;
+    border: 1px solid #eee;
+    min-height: 340px;
+}
+
+.sneaker-detail-image {
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    max-height: 340px;
+    object-fit: contain;
+    border-radius: 0;
+    background: #f0f0f0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.sneaker-detail-info {
+    flex: 2 1 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    justify-content: flex-start;
+}
+
+.sneaker-detail-title {
+    font-size: 2rem;
+    font-weight: 900;
+    margin-bottom: 0;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    text-align: center;
+}
+
+.sneaker-detail-meta {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #444;
+    justify-content: center;
+}
+
+.sneaker-detail-meta .brand {
+    color: #888;
+    font-weight: 600;
+}
+.sneaker-detail-meta .price {
+    color: #000;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+}
+.sneaker-detail-meta .size {
+    color: #888;
+}
+
+.sneaker-detail-status {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #000;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.sold {
+    color: #ff4d4f;
+}
+
+.available {
+    color: #52c41a;
+}
+
+.sneaker-detail-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 8px;
+}
+
+.sneaker-detail-action {
+    margin: 0 0 8px 0;
+}
+
+.sneaker-detail-listed-date {
+    color: #999;
+    text-align: center;
+    margin-top: 12px;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+@media (max-width: 900px) {
+    .sneaker-detail-card {
+        flex-direction: column;
+        gap: 24px;
+        padding: 24px 12px;
+        align-items: stretch;
+    }
+    .sneaker-detail-image-wrap {
+        max-width: 100%;
+        min-height: 220px;
+    }
+    .sneaker-detail-image {
+        max-width: 100%;
+        max-height: 220px;
+    }
+}
+
+@media (max-width: 600px) {
+    .sneaker-detail-page {
+        padding: 0 2vw;
+    }
+    .sneaker-detail-card {
+        padding: 12px 2vw;
+        gap: 14px;
+    }
+    .sneaker-detail-title {
+        font-size: 1.2rem;
+    }
+    .sneaker-detail-meta {
+        flex-direction: column;
+        gap: 6px;
+        align-items: center;
+        font-size: 0.98rem;
+    }
 }
  
     /* ---------------------------
