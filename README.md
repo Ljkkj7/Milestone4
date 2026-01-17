@@ -64,7 +64,8 @@ venv\Scripts\activate     # Windows
 ### 3. Install dependencies
 
 ```bash
-pip install -r requirements.txt
+pip install Django
+python -m pip install Pillow
 ```
 
 ### 4. Set environment variables
@@ -78,6 +79,8 @@ DATABASE_URL=your_database_url
 STRIPE_SECRET_KEY=your_stripe_secret
 STRIPE_PUBLISHABLE_KEY=your_stripe_public
 STRIPE_WEBHOOK_SECRET=your_webhook_secret
+EMAIL_HOST =email_host
+EMAIL_PASSWORD =email_pass
 ```
 
 ### 5. Run migrations & start server
