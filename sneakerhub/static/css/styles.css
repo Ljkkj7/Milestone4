@@ -642,6 +642,34 @@ body {
     place-items: center; 
 }
 
+/* Sneaker detail actions row */
+.sneaker-detail-actions-row {
+    width: 100%;
+}
+/* Sneaker detail actions grid */
+.sneaker-detail-actions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.sneaker-detail-action-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+    margin: 0 auto;
+}
+
+@media(max-width:425px) {
+.sneaker-detail-action-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    margin: 0 auto;
+    }
+}
+
 /* ---------------------------
    SNEAKER DESCRIPTION STYLING
 ---------------------------- */
