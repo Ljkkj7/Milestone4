@@ -20,8 +20,9 @@ from django.conf import settings
 from django.conf.urls.static import static
 from core.views import homePage, customerSignupView, customerLogoutView, customerLoginView
 from marketplace.views import marketplaceView, sneakerDetailView
-from account.views import accountPageView, addToWishlistView
+from account.views import accountPageView, addToWishlistView, removeFromWishlistView
 from listings.views import createListingView, deleteListingView, editListingView
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', homePage.as_view(), name='home'),
@@ -32,6 +33,7 @@ urlpatterns = [
     path('customer_login/', customerLoginView, name='login'),
     path('account/<int:user_id>/', accountPageView, name='account'),
     path('account/wishlist/add/<int:sneaker_id>/', addToWishlistView, name='wishlist_add'),
+    path('account/wishlist/remove/<int:sneaker_id>/', removeFromWishlistView, name='wishlist_remove'),
     path('listings/create/', createListingView, name='create_listing'),
     path('listings/delete/<int:sneaker_id>/', deleteListingView, name='delete_listing'),
     path('listings/edit/<int:sneaker_id>/', editListingView, name='edit_listing'),

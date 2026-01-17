@@ -29,16 +29,32 @@
                 <span>Listed on: {{ sneaker.created_at|date:"F j, Y" }}</span>
             </div>
             <div class="sneaker-detail-actions">
-                <form method="post" action="{% url 'cart:add' sneaker.id %}" class="sneaker-detail-action">
-                    {% csrf_token %}
-                    <input type="hidden" name="next" value="{% url 'sneaker_detail' sneaker.id %}">
-                    <button class="btn-secondary cart-btn">Add to Cart</button>
-                </form>
-                <form method="post" action="{% url 'wishlist_add' sneaker.id %}" class="sneaker-detail-action">
-                    {% csrf_token %}
-                    <input type="hidden" name="next" value="{% url 'sneaker_detail' sneaker.id %}">
-                    <button class="btn-secondary wishlist-btn">Add to Wishlist</button>
-                </form>
+                {% if not sneaker.is_sold %}
+                    <form method="post" action="{% url 'cart:add' sneaker.id %}" class="sneaker-detail-action">
+                        {% csrf_token %}
+                        <input type="hidden" name="next" value="{% url 'sneaker_detail' sneaker.id %}">
+                        <button class="btn-secondary cart-btn">Add to Cart</button>
+                    </form>
+                    {% if not in_wishlist %}
+                        <form method="post" action="{% url 'wishlist_add' sneaker.id %}" class="sneaker-detail-action">
+                            {% csrf_token %}
+                            <input type="hidden" name="next" value="{% url 'sneaker_detail' sneaker.id %}">
+                            <button class="btn-secondary wishlist-btn">Add to Wishlist</button>
+                        </form>
+                    {% else %}
+                        <form method="post" action="{% url 'wishlist_remove' sneaker.id %}" class="sneaker-detail-action">
+                            {% csrf_token %}
+                            <input type="hidden" name="next" value="{% url 'sneaker_detail' sneaker.id %}">
+                            <button class="btn-secondary wishlist-btn">Remove from Wishlist</button>
+                        </form>
+                    {% endif %}
+                {% elif sneaker.is_sold and in_wishlist %}
+                    <form method="post" action="{% url 'wishlist_remove' sneaker.id %}" class="sneaker-detail-action">
+                        {% csrf_token %}
+                        <input type="hidden" name="next" value="{% url 'sneaker_detail' sneaker.id %}">
+                        <button class="btn-secondary wishlist-btn">Remove from Wishlist</button>
+                    </form>
+                {% endif %}
             </div>
             {% if sneaker in user.sneakers.all %}
             <div class="listing-management">
@@ -124,6 +140,8 @@
         showErrorBox('This item is already in your cart.');
     } else if (errorMessage === 'already_in_wishlist') {
         showErrorBox('This item is already in your wishlist.');
+    } else if (errorMessage === 'not_in_wishlist') {
+        showErrorBox('This item is not in your wishlist.');
     } else {
         hideErrorBox();
     }

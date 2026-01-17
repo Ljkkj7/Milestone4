@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Sneaker
+from account.models import WishlistItem
 
 
 # Create your views here.
@@ -65,8 +66,13 @@ def sizeReturn(request, size_value):
 
 def sneakerDetailView(request, sneaker_id):
     # Detail view for a single sneaker
+    user = request.user
+
     sneaker = Sneaker.objects.get(id=sneaker_id)
+    in_wishlist = WishlistItem.objects.filter(user=user, sneaker=sneaker).exists()
+
     context = {
         'sneaker': sneaker,
+        'in_wishlist': in_wishlist,
     }
     return render(request, 'sneaker_detail.html', context)

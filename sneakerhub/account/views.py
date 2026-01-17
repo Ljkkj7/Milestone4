@@ -36,3 +36,16 @@ def addToWishlistView(request, sneaker_id):
         return redirect(reverse('sneaker_detail', kwargs={'sneaker_id': sneaker.id, }) + '?error=already_in_wishlist')
 
     return(redirect('sneaker_detail', sneaker_id=sneaker.id))
+
+@login_required
+def removeFromWishlistView(request, sneaker_id):
+    user = request.user
+    sneaker = get_object_or_404(Sneaker, id=sneaker_id)
+
+    wishlist_item = WishlistItem.objects.filter(user=user, sneaker=sneaker)
+    if wishlist_item.exists():
+        wishlist_item.delete()
+    else:
+        return redirect(reverse('sneaker_detail', kwargs={'sneaker_id': sneaker.id, }) + '?error=not_in_wishlist')
+
+    return redirect('sneaker_detail', sneaker_id=sneaker.id)
