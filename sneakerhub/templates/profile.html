@@ -125,8 +125,16 @@
 <script src="{% static 'js/carousel.js' %}"></script>
 <script>
 document.getElementById('view-all-orders-btn').addEventListener('click', function() {
+    event.preventDefault();
     const userOrders = JSON.parse(document.getElementById('user_orders_data').textContent);
-    for (let order of userOrders) {
+    const orderList = document.querySelector('.profile-orders-list');
+    const currentOrderItems = orderList.querySelectorAll('.profile-order-item').length;
+    // Only append if not all items are already shown
+    if (currentOrderItems >= userOrders.length) {
+        return;
+    }
+    for (let i = 0; i < userOrders.length; i++) {
+        let order = userOrders[i];
         let order_div = document.createElement('div');
         order_div.classList.add('profile-order-item');
         order_div.innerHTML = `
@@ -136,10 +144,10 @@ document.getElementById('view-all-orders-btn').addEventListener('click', functio
             </div>
             <p class="profile-order-date">${order.date}</p>
         `;
-        document.querySelector('.profile-orders-list').append(order_div);
+        orderList.append(order_div);
     }
     this.style.display = 'none';
-
+    
     if (!document.getElementById('view-less-orders-btn')) {
         let viewLessBtn = document.createElement('button');
         viewLessBtn.type = 'button';
@@ -147,19 +155,19 @@ document.getElementById('view-all-orders-btn').addEventListener('click', functio
         viewLessBtn.id = 'view-less-orders-btn';
         viewLessBtn.textContent = 'View Less Orders';
         document.querySelector('.view-more-container').append(viewLessBtn);
+        viewLessBtn.addEventListener('click', function() {
+            const orderItems = document.querySelectorAll('.profile-order-item');
+            orderItems.forEach((item, index) => {
+                if (index >= 3) {
+                    item.remove();
+                }
+            });
+            document.getElementById('view-all-orders-btn').style.removeProperty('display');
+            this.style.display = 'none';
+        });
     } else {
         document.getElementById('view-less-orders-btn').style.removeProperty('display');
     }
-    document.getElementById('view-less-orders-btn').addEventListener('click', function() {
-        const orderItems = document.querySelectorAll('.profile-order-item');
-        orderItems.forEach((item, index) => {
-            if (index >= 3) {
-                item.remove();
-            }
-        });
-        document.getElementById('view-all-orders-btn').style.removeProperty('display');
-        this.style.display = 'none';
-    });
 });
 
 </script>
