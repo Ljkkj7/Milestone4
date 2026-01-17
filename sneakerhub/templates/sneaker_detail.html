@@ -32,7 +32,7 @@
 
                 <div class="sneaker-detail-actions-row">
                     <div class="sneaker-detail-actions-grid">
-                        {% if not sneaker.is_sold %}
+                        {% if not sneaker.is_sold and sneaker.owner != user %}
                             <div class="sneaker-detail-action-item">
                                 <form method="post" action="{% url 'cart:add' sneaker.id %}" class="sneaker-detail-action">
                                     {% csrf_token %}
@@ -45,7 +45,7 @@
                                     <form method="post" action="{% url 'wishlist_add' sneaker.id %}" class="sneaker-detail-action">
                                         {% csrf_token %}
                                         <input type="hidden" name="next" value="{% url 'sneaker_detail' sneaker.id %}">
-                                        <button class="btn-secondary wishlist-btn">Add to Wishlist</button>
+                                        <button class="btn-secondary">Add to Wishlist</button>
                                     </form>
                                 </div>
                             {% else %}

@@ -1374,6 +1374,10 @@ body {
     font-weight: 600;
 }
 
+.wishlist-btn {
+    font-size: 0.5rem;
+}
+
 @media (max-width: 900px) {
     .sneaker-detail-card {
         flex-direction: column;
