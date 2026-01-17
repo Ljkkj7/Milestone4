@@ -30,24 +30,29 @@
             </div>
             <div class="sneaker-detail-actions">
                 {% if not sneaker.is_sold %}
+
                     <form method="post" action="{% url 'cart:add' sneaker.id %}" class="sneaker-detail-action">
                         {% csrf_token %}
                         <input type="hidden" name="next" value="{% url 'sneaker_detail' sneaker.id %}">
                         <button class="btn-secondary cart-btn">Add to Cart</button>
                     </form>
+
                     {% if not in_wishlist %}
                         <form method="post" action="{% url 'wishlist_add' sneaker.id %}" class="sneaker-detail-action">
                             {% csrf_token %}
                             <input type="hidden" name="next" value="{% url 'sneaker_detail' sneaker.id %}">
                             <button class="btn-secondary wishlist-btn">Add to Wishlist</button>
                         </form>
+
                     {% else %}
                         <form method="post" action="{% url 'wishlist_remove' sneaker.id %}" class="sneaker-detail-action">
                             {% csrf_token %}
                             <input type="hidden" name="next" value="{% url 'sneaker_detail' sneaker.id %}">
                             <button class="btn-secondary wishlist-btn">Remove from Wishlist</button>
                         </form>
+
                     {% endif %}
+
                 {% elif sneaker.is_sold and in_wishlist %}
                     <form method="post" action="{% url 'wishlist_remove' sneaker.id %}" class="sneaker-detail-action">
                         {% csrf_token %}
@@ -55,20 +60,18 @@
                         <button class="btn-secondary wishlist-btn">Remove from Wishlist</button>
                     </form>
                 {% endif %}
-            </div>
-            {% if sneaker in user.sneakers.all %}
-            <div class="listing-management">
-                <hr>
-                <form method="post" action="{% url 'edit_listing' sneaker.id %}" style="display: inline;">
-                    {% csrf_token %}
-                    <button type="submit" class="btn-secondary">Edit Listing</button>
-                </form>
-                <form method="post" action="{% url 'delete_listing' sneaker.id %}" id="delete-form" style="display: inline;">
-                    {% csrf_token %}
-                    <button type="button" id="delete-open-btn" class="btn-secondary btn-danger">Delete listing</button>
-                </form>
-            </div>
-            {% endif %}
+
+                {% if sneaker in user.sneakers.all %}
+                    <form method="post" action="{% url 'edit_listing' sneaker.id %}" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn-secondary">Edit Listing</button>
+                    </form>
+                    <form method="post" action="{% url 'delete_listing' sneaker.id %}" id="delete-form" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="button" id="delete-open-btn" class="btn-secondary btn-danger">Delete listing</button>
+                    </form>
+                {% endif %}
+                
         </div>
     </div>
 </section>
@@ -86,7 +89,7 @@
             <div class="sneaker-seller-info">
                 <h2>Seller Information</h2>
                 <!-- Link to sellers profile, will need to use URL query params to fetch public profile instead of personal -->
-                <p>Sold by: <a href="">{{ sneaker.owner.username }}</a></p>
+                <p>Sold by: <a href="{% url 'publicprofile:public_profile' sneaker.owner.id %}">{{ sneaker.owner.username }}</a></p>
                 <p>Member since: {{ sneaker.owner.date_joined|date:"F j, Y" }}</p>
             </div>
         </div>

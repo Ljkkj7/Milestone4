@@ -9,7 +9,7 @@ def accountPageView(request, user_id):
     user = request.user
     sneaker = Sneaker.objects.all()
 
-    available_sneakers = user.sneakers.filter(is_sold=False)
+    available_sneakers = user.sneakers.filter(owner=user, is_sold=False)
 
     wishlist_items = WishlistItem.objects.filter(user=user)
     wishlist_sneakers = [item.sneaker_id for item in wishlist_items]

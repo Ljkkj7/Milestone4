@@ -39,4 +39,5 @@ urlpatterns = [
     path('listings/edit/<int:sneaker_id>/', editListingView, name='edit_listing'),
     path('cart/', include('cart.urls')),
     path('checkout/', include('checkout.urls')),
+    path('profile/', include('publicprofile.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

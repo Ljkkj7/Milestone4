@@ -13,7 +13,7 @@ def createListingView(request):
             sneaker = form.save(commit=False)
             sneaker.owner = request.user
             sneaker.save()
-            return render(request, 'profile.html', {'user_id': request.user.id})
+            return redirect('account', user_id=request.user.id)
     else:
         form = ListingCreationForm()
 
