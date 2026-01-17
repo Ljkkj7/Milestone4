@@ -57,13 +57,13 @@
         <!-- Orders -->
         <div class="profile-card">
             <h2>Your Orders</h2>
-            {% if user.orders %}
+            {% if user_orders %}
                 <div class="profile-orders-list">
-                    {% for order in user.orders %}
+                    {% for order in user_orders %}
                         <div class="order-item">
                             <div class="order-header">
-                                <span class="order-id">Order #{{ order.id }}</span>
-                                <span class="order-price">£{{ order.total }}</span>
+                                <span class="order-id">Order #{{ order.order_number }}</span>
+                                <span class="order-price">£{{ order.grand_total }}</span>
                             </div>
                             <p class="order-date">{{ order.date|date:"F j, Y" }}</p>
                         </div>

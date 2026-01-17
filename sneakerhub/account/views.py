@@ -2,6 +2,7 @@ from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from marketplace.models import Sneaker
+from checkout.models import Order
 from .models import WishlistItem
 
 # Create your views here.
@@ -14,6 +15,8 @@ def accountPageView(request, user_id):
     wishlist_items = WishlistItem.objects.filter(user=user)
     wishlist_sneakers = [item.sneaker_id for item in wishlist_items]
 
+    user_orders = Order.objects.filter(user=user).order_by('date')
+
     for sneakers in sneaker:
         if sneakers.id in wishlist_sneakers:
             wishlist_sneakers[wishlist_sneakers.index(sneakers.id)] = sneakers
@@ -22,6 +25,7 @@ def accountPageView(request, user_id):
         'user_id': user_id,
         'available_sneakers': available_sneakers,
         'wishlist_sneakers': wishlist_sneakers,
+        'user_orders': user_orders,
         })
 
 @login_required

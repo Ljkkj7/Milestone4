@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block title %}{{ profile_user.username }}'s Profile • SneakerHub{% endblock %}
+
 {% block content %}
 <section class="public-profile-section">
     <div class="public-profile-header">
@@ -9,14 +10,14 @@
     </div>
     <div class="public-profile-container">
         <div class="public-profile-grid">
-            <div class="public-profile-card">
+            <div class="profile-card">
                 <h2>{{ profile_user.username|title }}'s Listings</h2>
                 {% if sneakers %}
                     <div class="listings-carousel-container">
                         <div class="listings-carousel">
                             {% for sneaker in sneakers %}
                                 <div class="carousel-item">
-                                    <div class="public-profile-listing-item">
+                                    <div class="profile-listing-item">
                                         {% if sneaker.image %}
                                             <img src="{{ sneaker.image.url }}" alt="{{ sneaker.name }}" class="listing-thumb">
                                         {% else %}
@@ -41,13 +42,22 @@
                     <p class="no-data">{{ profile_user.username|title }} has no sneakers listed yet.</p>
                 {% endif %}
             </div>
-            <div class="public-profile-card">
+            <div class="profile-card">
                 <div class="public-profile-past-listings">
                     <h2>{{ profile_user.username|title }}'s Past Listings</h2>
+                    <p>Coming Soon!</p>
+                </div>
+            </div>
+            <div class="profile-card">
+                <div class="public-profile-reviews">
+                    <h2>{{ profile_user.username|title }}'s Reviews</h2>
                     <p>Coming Soon!</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
+{% block scripts %}
+<script src="{% static 'js/carousel.js' %}"></script>
+{% endblock %}
 {% endblock %}
