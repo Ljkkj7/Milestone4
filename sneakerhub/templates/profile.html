@@ -53,29 +53,24 @@
             <a href="{% url 'create_listing' %}" class="btn-primary btn-large">Create a Listing</a>
         </div>
     </div>
-    <div>
-        <!-- Orders -->
-        <div class="profile-card">
-            <h2>Recent Orders</h2>
-            {% if user_orders %}
-                <div class="profile-orders-list">
-                    {% for order in user_orders_recent %}
-                        <div class="profile-order-item">
-                            <div class="profile-order-header">
-                                <span class="profile-order-id">Order #{{ order.order_number }}</span>
-                                <span class="profile-order-price">£{{ order.grand_total }}</span>
-                            </div>
-                            <p class="profile-order-date">{{ order.date|date:"F j, Y" }}</p>
+    <!-- Recent Sales -->
+    <div class="profile-card">
+        <h2>Recent Sales</h2>
+        {% if recent_sales %}
+            <div class="profile-sales-list">
+                {% for sale in recent_sales %}
+                    <div class="profile-sale-item">
+                        <div class="profile-sale-header">
+                            <span class="profile-sale-sneaker">{{ sale.sneaker.brand }} {{ sale.sneaker.name }}</span>
+                            <span class="profile-sale-price">£{{ sale.price }}</span>
                         </div>
-                    {% endfor %}
-                </div>
-                <div class="view-more-container">
-                    <button type="button" class="btn-secondary" id="view-all-orders-btn">View All Orders</button>
-                </div>
-            {% else %}
-                <p class="no-data">You have no orders yet.</p>
-            {% endif %}
-        </div>
+                        <p class="profile-sale-date">Sold on {{ sale.date|date:"F j, Y" }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="no-data">You have no recent sales.</p>
+        {% endif %}
     </div>
     <!-- Wishlist -->
     <div class="profile-card">
@@ -99,6 +94,30 @@
         {% else %}
             <p class="no-data">Your wishlist is empty.</p>
         {% endif %}
+    </div>
+    <div>
+        <!-- Orders -->
+        <div class="profile-card">
+            <h2>Recent Orders</h2>
+            {% if user_orders %}
+                <div class="profile-orders-list">
+                    {% for order in user_orders_recent %}
+                        <div class="profile-order-item">
+                            <div class="profile-order-header">
+                                <span class="profile-order-id">Order #{{ order.order_number }}</span>
+                                <span class="profile-order-price">£{{ order.grand_total }}</span>
+                            </div>
+                            <p class="profile-order-date">{{ order.date|date:"F j, Y" }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="view-more-container">
+                    <button type="button" class="btn-secondary" id="view-all-orders-btn">View All Orders</button>
+                </div>
+            {% else %}
+                <p class="no-data">You have no orders yet.</p>
+            {% endif %}
+        </div>
     </div>
 </section>
 
