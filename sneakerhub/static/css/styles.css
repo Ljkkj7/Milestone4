@@ -1,3 +1,4 @@
+
 /* Stripe Elements custom styling */
 .stripe-card-wrapper {
     border: 2px solid #000;
@@ -559,6 +560,79 @@ body {
     .profile-wishlist-grid {
         grid-template-columns: 1fr;
         gap: 12px;
+    }
+}
+
+/* ---------------------------
+   PROFILE ORDERS STYLING
+---------------------------- */
+
+.profile-orders-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 8px;
+}
+
+.profile-order-item {
+    border: 1px solid #e5e5e5;
+    border-left: 4px solid #000;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    padding: 18px 20px;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.2s, border-left-color 0.2s;
+}
+.profile-order-item:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    border-left-color: #007bff;
+}
+
+.profile-order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.profile-order-id {
+    font-weight: 700;
+    color: #222;
+    font-size: 15px;
+}
+
+.profile-order-price {
+    font-weight: 700;
+    font-size: 17px;
+    color: #007bff;
+}
+
+.profile-order-date {
+    font-size: 13px;
+    color: #666;
+    margin-top: 2px;
+}
+
+@media (max-width: 700px) {
+    .profile-order-item {
+        padding: 12px 10px;
+        border-radius: 6px;
+    }
+    .profile-order-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
+    }
+    .profile-order-id, .profile-order-price {
+        font-size: 14px;
+    }
+    .profile-order-date {
+        font-size: 12px;
     }
 }
 
@@ -1619,6 +1693,11 @@ body {
 }
 
 .no-data {
+    text-align: center;
+}
+
+.view-more-container {
+    margin-top: 40px;
     text-align: center;
 }
 

@@ -56,18 +56,21 @@
     <div>
         <!-- Orders -->
         <div class="profile-card">
-            <h2>Your Orders</h2>
+            <h2>Recent Orders</h2>
             {% if user_orders %}
                 <div class="profile-orders-list">
-                    {% for order in user_orders %}
-                        <div class="order-item">
-                            <div class="order-header">
-                                <span class="order-id">Order #{{ order.order_number }}</span>
-                                <span class="order-price">£{{ order.grand_total }}</span>
+                    {% for order in user_orders_recent %}
+                        <div class="profile-order-item">
+                            <div class="profile-order-header">
+                                <span class="profile-order-id">Order #{{ order.order_number }}</span>
+                                <span class="profile-order-price">£{{ order.grand_total }}</span>
                             </div>
-                            <p class="order-date">{{ order.date|date:"F j, Y" }}</p>
+                            <p class="profile-order-date">{{ order.date|date:"F j, Y" }}</p>
                         </div>
                     {% endfor %}
+                </div>
+                <div class="view-more-container">
+                    <button type="button" class="btn-secondary" id="view-all-orders-btn">View All Orders</button>
                 </div>
             {% else %}
                 <p class="no-data">You have no orders yet.</p>
@@ -101,5 +104,46 @@
 
 {% block scripts %}
 <script src="{% static 'js/carousel.js' %}"></script>
+<script>
+document.getElementById('view-all-orders-btn').addEventListener('click', function() {
+    const userOrders = JSON.parse(document.getElementById('user_orders_data').textContent);
+    for (let order of userOrders) {
+        let order_div = document.createElement('div');
+        order_div.classList.add('profile-order-item');
+        order_div.innerHTML = `
+            <div class="profile-order-header">
+                <span class="profile-order-id">Order #${order.order_number}</span>
+                <span class="profile-order-price">£${order.grand_total}</span>
+            </div>
+            <p class="profile-order-date">${order.date}</p>
+        `;
+        document.querySelector('.profile-orders-list').append(order_div);
+    }
+    this.style.display = 'none';
+
+    if (!document.getElementById('view-less-orders-btn')) {
+        let viewLessBtn = document.createElement('button');
+        viewLessBtn.type = 'button';
+        viewLessBtn.classList.add('btn-secondary');
+        viewLessBtn.id = 'view-less-orders-btn';
+        viewLessBtn.textContent = 'View Less Orders';
+        document.querySelector('.view-more-container').append(viewLessBtn);
+    } else {
+        document.getElementById('view-less-orders-btn').style.removeProperty('display');
+    }
+    document.getElementById('view-less-orders-btn').addEventListener('click', function() {
+        const orderItems = document.querySelectorAll('.profile-order-item');
+        orderItems.forEach((item, index) => {
+            if (index >= 3) {
+                item.remove();
+            }
+        });
+        document.getElementById('view-all-orders-btn').style.removeProperty('display');
+        this.style.display = 'none';
+    });
+});
+
+</script>
 {% endblock %}
+{{ user_orders_serialized|json_script:"user_orders_data" }}
 {% endblock %}

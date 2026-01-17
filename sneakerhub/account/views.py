@@ -15,7 +15,18 @@ def accountPageView(request, user_id):
     wishlist_items = WishlistItem.objects.filter(user=user)
     wishlist_sneakers = [item.sneaker_id for item in wishlist_items]
 
-    user_orders = Order.objects.filter(user=user).order_by('date')
+    user_orders = Order.objects.filter(user=user).order_by('date').reverse()
+    user_orders_recent = user_orders[:3]
+
+    # Serialize orders for JSON
+    user_orders_serialized = [
+        {
+            'order_number': order.order_number,
+            'grand_total': float(order.grand_total),
+            'date': order.date.strftime('%B %d, %Y'),
+        }
+        for order in user_orders[3:]
+    ]
 
     for sneakers in sneaker:
         if sneakers.id in wishlist_sneakers:
@@ -26,6 +37,8 @@ def accountPageView(request, user_id):
         'available_sneakers': available_sneakers,
         'wishlist_sneakers': wishlist_sneakers,
         'user_orders': user_orders,
+        'user_orders_recent': user_orders_recent,
+        'user_orders_serialized': user_orders_serialized,
         })
 
 @login_required
