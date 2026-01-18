@@ -49,6 +49,9 @@ def addToWishlistView(request, sneaker_id):
     user = request.user
     sneaker = get_object_or_404(Sneaker, id=sneaker_id)
 
+    if not user.is_authenticated:
+        return redirect('errorhandler:not_authenticated')
+
     if not WishlistItem.objects.filter(user=user, sneaker=sneaker).exists():
         wishlist_item = WishlistItem(user=user, sneaker=sneaker)
         wishlist_item.save()

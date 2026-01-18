@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from .models import Sneaker
 from account.models import WishlistItem
 
@@ -67,6 +67,9 @@ def sizeReturn(request, size_value):
 def sneakerDetailView(request, sneaker_id):
     # Detail view for a single sneaker
     user = request.user
+
+    if not user.is_authenticated:
+        return redirect('errorhandler:not_authenticated')
 
     sneaker = Sneaker.objects.get(id=sneaker_id)
     in_wishlist = WishlistItem.objects.filter(user=user, sneaker=sneaker).exists()
