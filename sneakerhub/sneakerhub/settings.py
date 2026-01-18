@@ -52,7 +52,8 @@ INSTALLED_APPS = [
     'listings',
     'cart',
     'checkout',
-    'publicprofile', 
+    'publicprofile',
+    'errorhandler',
 ]
 
 MIDDLEWARE = [

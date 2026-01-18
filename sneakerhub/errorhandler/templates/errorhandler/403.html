@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}403 Forbidden{% endblock %}
+
+{% block content %}
+<section class="error-section">
+    <div class="error-container">
+        <h1 class="error-code">403</h1>
+        <h2 class="error-message">Permission Denied</h2>
+        <p class="error-description">You do not have permission to access this page.</p>
+        <a href="{% url 'marketplace' %}" class="btn-primary btn-large">Return to Marketplace</a>
+    </div>
+</section>
+{% endblock %}

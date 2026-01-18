@@ -32,14 +32,17 @@ def accountPageView(request, user_id):
         if sneakers.id in wishlist_sneakers:
             wishlist_sneakers[wishlist_sneakers.index(sneakers.id)] = sneakers
 
-    return render(request, 'profile.html', { 
-        'user_id': user_id,
-        'available_sneakers': available_sneakers,
-        'wishlist_sneakers': wishlist_sneakers,
-        'user_orders': user_orders,
-        'user_orders_recent': user_orders_recent,
-        'user_orders_serialized': user_orders_serialized,
-        })
+    if request.user.id != user_id:
+        return redirect('errorhandler:permission_denied')
+    else:
+        return render(request, 'profile.html', { 
+            'user_id': user_id,
+            'available_sneakers': available_sneakers,
+            'wishlist_sneakers': wishlist_sneakers,
+            'user_orders': user_orders,
+            'user_orders_recent': user_orders_recent,
+            'user_orders_serialized': user_orders_serialized,
+            })
 
 @login_required
 def addToWishlistView(request, sneaker_id):

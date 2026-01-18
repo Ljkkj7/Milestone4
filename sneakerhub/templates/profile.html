@@ -129,10 +129,12 @@ document.getElementById('view-all-orders-btn').addEventListener('click', functio
     const userOrders = JSON.parse(document.getElementById('user_orders_data').textContent);
     const orderList = document.querySelector('.profile-orders-list');
     const currentOrderItems = orderList.querySelectorAll('.profile-order-item').length;
+
     // Only append if not all items are already shown
     if (currentOrderItems >= userOrders.length) {
         return;
     }
+    
     for (let i = 0; i < userOrders.length; i++) {
         let order = userOrders[i];
         let order_div = document.createElement('div');
@@ -147,7 +149,7 @@ document.getElementById('view-all-orders-btn').addEventListener('click', functio
         orderList.append(order_div);
     }
     this.style.display = 'none';
-    
+
     if (!document.getElementById('view-less-orders-btn')) {
         let viewLessBtn = document.createElement('button');
         viewLessBtn.type = 'button';
