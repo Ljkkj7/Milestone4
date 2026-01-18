@@ -177,6 +177,7 @@ body {
         z-index: 2000;
         transition: right 0.25s ease;
         padding: 28px 20px;
+        border-left: 2px solid #000;    
     }
 
     .mobile-nav--open { right: 0; }
@@ -220,27 +221,27 @@ body {
 }
 
 .hero-text {
-    background-color: rgba(255, 255, 255, 0.9);
-    border: 2px solid #000;
+    border: 1px solid #6b6b6b;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
     border-radius: 10px;
     margin: 0 auto;
     padding: 80px;
 }
-
 
 .hero-text h1 {
     font-size: 36px;
     font-weight: 800;
     margin-bottom: 16px;
     text-align: center;
+    color: #000;
 }
 
 .hero-text p {
     margin-bottom: 24px;
     margin-top: 48px;
-    font-size: 16px;
+    font-size: 24px;
+    font-weight: 700;
     color: #000;
-    font-weight: 600;
 }
 
 .hero-image img {
@@ -847,6 +848,11 @@ body {
         align-items: center;
         justify-content: center;
         padding: 2rem;
+        background-image: url('../images/authbackground.svg');
+        background-size: cover;
+        background-repeat: repeat-y;
+        background-position: center;
+
     }
 
 .auth-container {
@@ -1840,6 +1846,14 @@ body {
 
 .hidden {
     display: none !important;
+}
+
+.background-white {
+    background-color: #fff !important;
+}
+
+.background-peach {
+    background-color: #ffbd59 !important;
 }
 
 /* ---------------------------

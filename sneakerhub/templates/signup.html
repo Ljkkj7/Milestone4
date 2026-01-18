@@ -67,4 +67,16 @@
         </p>
     </div>
 </section>
+<footer class="site-footer" style="margin-top: 0px;">
+    <div class="footer-inner">
+        <p>&copy; {{ now.year }} SneakerHub - Crafted for sneaker lovers</p>
+    </div>
+</footer>
+{% block scripts %}
+<script>
+    // Hide the base footer on the login page
+    // [No margin needed]
+    document.getElementById('base-site-footer').classList.add('hidden');
+</script>
+{% endblock %}
 {% endblock %}

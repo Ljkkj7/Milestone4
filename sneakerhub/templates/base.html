@@ -12,11 +12,12 @@
         <script src="https://js.stripe.com/v3/"></script>
         <script src="{% static 'js/confirm.js' %}"></script>
         <script src="{% static 'js/menu.js' %}"></script>
+        <script src="{% static 'js/nav_colour_change.js' %}"></script>
     {% endblock %}
 </head>
 <body class="bg-white text-gray-900">
 
-<header class="site-header">
+<header class="site-header background-white" id="id-site-header">
     <div class="container header-inner">
         <a href="{% if user.is_authenticated %}{% url 'marketplace' %}{% else %}{% url 'home' %}{% endif %}" class="logo">SneakerHub</a>
 
@@ -44,9 +45,9 @@
     {% block content %}{% endblock %}
 </main>
 
-<footer class="site-footer">
+<footer class="site-footer" id="base-site-footer">
     <div class="container footer-inner">
-        © {{ now.year }} SneakerHub — Crafted for sneaker lovers
+        © {{ now.year }} SneakerHub - Crafted for sneaker lovers
     </div>
 </footer>
 
