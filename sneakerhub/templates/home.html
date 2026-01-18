@@ -10,10 +10,6 @@
         <p>Discover the latest releases and classic trainers from top brands. Free shipping on orders over £75.</p>
         <a href="{% url 'marketplace' %}" class="btn-primary">Shop now</a>
     </div>
-
-    <div class="hero-image">
-        <img src="{% static 'images/sneakerhubsquare.png' %}" alt="Sneakers hero">
-    </div>
 </section>
 <section class="signup-cta">
     {% if not user.is_authenticated %}

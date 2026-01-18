@@ -35,9 +35,8 @@ body {
 /* Containers */
 .container {
     width: 100%;
-    max-width: 1100px;
+    max-width: 1900px;
     margin: 0 auto;
-    padding: 0 16px;
 }
 
 /* Header */
@@ -64,6 +63,7 @@ body {
     letter-spacing: -1px;
     text-transform: uppercase;
     transition: all 0.2s ease;
+    margin: 0 24px;
 }
 
 .logo:hover {
@@ -75,6 +75,7 @@ body {
     display: flex;
     gap: 32px;
     align-items: center;
+    margin: 0 24px;
 }
 
 .nav a {
@@ -86,7 +87,8 @@ body {
     letter-spacing: 0.5px;
     position: relative;
     transition: all 0.3s ease;
-    padding: 8px 0;
+    padding: 8px 0  ;
+    margin: 0 4px;
 }
 
 .nav a::after {
@@ -183,11 +185,6 @@ body {
     .mobile-nav .mobile-nav-links a { font-size: 16px; }
 }
 
-/* Main content */
-.main-content {
-    padding: 32px 0;
-}
-
 /* Footer */
 .site-footer {
     border-top: 1px solid #e5e5e5;
@@ -211,13 +208,25 @@ body {
     align-items: center;
     margin-bottom: 48px;
     text-align: center;
+    background-image: url('../images/heroimage.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 80px 20px;
+    min-height: 900px;
+    position: relative;
+    color: #000;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.10);
 }
 
-@media (min-width: 768px) {
-    .hero {
-        grid-template-columns: 1fr 1fr;
-    }
+.hero-text {
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 2px solid #000;
+    border-radius: 10px;
+    margin: 0 auto;
+    padding: 80px;
 }
+
 
 .hero-text h1 {
     font-size: 36px;
@@ -230,11 +239,29 @@ body {
     margin-bottom: 24px;
     margin-top: 48px;
     font-size: 16px;
-    color: #444;
+    color: #000;
+    font-weight: 600;
 }
 
 .hero-image img {
     width: 100%;
+}
+
+@media(max-width:320px){
+    .hero-text {
+        padding: 20px;
+    }
+
+    .hero-text h1 {
+        font-size: 24px;
+    }
+
+    .hero {
+        min-height: 600px;
+        padding: 40px 10px;
+    }
+
+
 }
 
 /* ---------------------------
@@ -348,7 +375,8 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 24px;
-    margin: 40px 0;
+    margin: 0 auto;
+    max-width: 1200px;
 }
 
 .card {
@@ -779,6 +807,12 @@ body {
     flex-direction: row;
 }
 
+@media(max-width:768px) {
+    .signup-cta {
+        flex-direction: column;
+    }
+}
+
 .creator-signup, .customer-signup {
     flex: 1;
     padding: 24px;
@@ -980,7 +1014,7 @@ body {
     }
 
     .profile-container {
-        margin-bottom: 48px;
+        margin: 20px 200px;
     }
 
     .profile-grid {
