@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseForbidden
 from .forms import ListingCreationForm
 from marketplace.models import Sneaker
 
@@ -9,6 +8,7 @@ def createListingView(request):
     """Handle creation of a new sneaker listing using a ModelForm."""
     if request.method == 'POST':
         form = ListingCreationForm(request.POST, request.FILES)
+
         if form.is_valid():
             sneaker = form.save(commit=False)
             sneaker.owner = request.user
@@ -38,9 +38,11 @@ def editListingView(request, sneaker_id):
     
     if request.method == 'POST':
         form = ListingCreationForm(request.POST, request.FILES, instance=sneaker)
+
         if form.is_valid():
             form.save()
             return redirect('sneaker_detail', sneaker_id=sneaker.id)
+        
     else:
         form = ListingCreationForm(instance=sneaker)
     return render(request, 'edit_listing.html', {'form': form, 'sneaker': sneaker})

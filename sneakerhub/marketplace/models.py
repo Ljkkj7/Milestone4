@@ -18,5 +18,15 @@ class Sneaker(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     is_sold = models.BooleanField(default=False)
 
+    def cleaned_data(self):
+        """Return a dictionary of cleaned data for the sneaker."""
+        return {
+            'name': self.name,
+            'brand': self.brand,
+            'size': float(self.size),
+            'price': float(self.price),
+            'description': self.description,
+        }
+
     def __str__(self):
         return f"{self.brand} {self.name} (Size: {self.size})"

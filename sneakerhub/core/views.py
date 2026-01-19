@@ -68,9 +68,6 @@ def customerLoginView(request):
         username = request.POST.get('username')
         password = request.POST.get('password')
 
-        username = sanitiseInput(username)
-        password = sanitiseInput(password)
-
         user = authenticate(request, username=username, password=password)
 
         if user is not None:
@@ -86,8 +83,3 @@ def customerLogoutView(request):
     """Customer logout view"""
     logout(request)
     return redirect('home')
-
-def sanitiseInput(input_string):
-    """Sanitise user input to prevent XSS attacks"""
-    import html
-    return html.escape(input_string)
