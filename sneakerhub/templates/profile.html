@@ -36,8 +36,8 @@
                             </div>
                         {% endfor %}
                     </div>
-                    <button class="carousel-btn carousel-prev" onclick="carouselPrev()">&lt;</button>
-                    <button class="carousel-btn carousel-next" onclick="carouselNext()">&gt;</button>
+                    <button type="button" class="carousel-btn carousel-prev" onclick="carouselPrev(this)">&lt;</button>
+                    <button type="button" class="carousel-btn carousel-next" onclick="carouselNext(this)">&gt;</button>
                 </div>
                 <div class="carousel-indicators">
                 </div>
@@ -121,6 +121,8 @@
     </div>
 </section>
 
+{{ user_orders_serialized|json_script:"user_orders_data" }}
+{% endblock %}
 {% block scripts %}
 <script src="{% static 'js/carousel.js' %}"></script>
 <script>
@@ -173,6 +175,4 @@ document.getElementById('view-all-orders-btn').addEventListener('click', functio
 });
 
 </script>
-{% endblock %}
-{{ user_orders_serialized|json_script:"user_orders_data" }}
 {% endblock %}
