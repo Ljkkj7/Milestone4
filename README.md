@@ -64,8 +64,7 @@ venv\Scripts\activate     # Windows
 ### 3. Install dependencies
 
 ```bash
-pip install Django
-python -m pip install Pillow
+pip install -m requirements.txt
 ```
 
 ### 4. Set environment variables
@@ -79,13 +78,14 @@ DATABASE_URL=your_database_url
 STRIPE_SECRET_KEY=your_stripe_secret
 STRIPE_PUBLISHABLE_KEY=your_stripe_public
 STRIPE_WEBHOOK_SECRET=your_webhook_secret
-EMAIL_HOST =email_host
-EMAIL_PASSWORD =email_pass
+EMAIL_HOST_USER =email_host
+EMAIL_HOST_PASSWORD =email_pass
 ```
 
 ### 5. Run migrations & start server
 
 ```bash
+python manage.py makemigrations
 python manage.py migrate
 python manage.py runserver
 ```
@@ -162,7 +162,6 @@ python manage.py test
 Below is an overview of each test suite in the project, what they cover, and where to find them.
 
 - **Listings tests**: [listings/tests.py](listings/tests.py#L1-L200)
-
   - Purpose: Validate the `ListingCreationForm` and the `create_listing` view logic used when users create new sneaker listings.
   - Key test classes & cases:
     - `ListingCreationFormTests`:
@@ -179,7 +178,6 @@ Below is an overview of each test suite in the project, what they cover, and whe
   - Important dependencies: `listings.forms.ListingCreationForm`, `marketplace.models.Sneaker`, and the URL name `create_listing`.
 
 - **Marketplace tests**: [marketplace/tests.py](marketplace/tests.py#L1-L200)
-
   - Purpose: Unit tests for the `Sneaker` model, basic marketplace views, and admin-related behavior.
   - Key test classes & cases:
     - `SneakerModelTests`:
@@ -191,7 +189,6 @@ Below is an overview of each test suite in the project, what they cover, and whe
   - Important dependencies: `marketplace.models.Sneaker`, Django `User` model, and the `marketplace` URL.
 
 - **Account tests**: [account/tests.py](account/tests.py#L1-L60)
-
   - Purpose: Placeholder file currently.
   - Add tests for authentication flows (signup, login, logout), profile views, and permission checks.
 
