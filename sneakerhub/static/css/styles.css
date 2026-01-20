@@ -2140,7 +2140,6 @@ body {
 }
 
 .review-item:hover {
-    transform: translateY(-10px);
     transition: all 0.3s ease;
     box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.7);
     border-left: 3px solid #ffbd59;
@@ -2176,6 +2175,24 @@ body {
 .review-action {
     margin-top: 8px;
     text-align: center;
+}
+
+.public-review-action {
+    display: inline-block;
+    font-size: 12px;
+    text-decoration: none;
+    color: #000;
+    font-weight: 700;
+    margin: 4px 4px;
+}
+
+.public-review-action:hover {
+    text-decoration: underline;
+}
+
+.right-review-action {
+    float: right;
+    margin: 4px 4px;
 }
 
 @media(max-width:600px) {

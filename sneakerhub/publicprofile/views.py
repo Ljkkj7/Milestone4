@@ -6,6 +6,7 @@ from reviews.models import Review
 def publicProfileView(request, profile_user):
     
     user = User.objects.get(id=profile_user)
+    viewing_user = request.user
 
     sneakers = user.sneakers.filter(is_sold=False)
     sold_sneakers = user.sneakers.filter(is_sold=True).order_by('updated_at')
@@ -15,6 +16,7 @@ def publicProfileView(request, profile_user):
     for review in reviews:
         reviewer = User.objects.get(id=review.reviewer_id.id)
         review_items.append({
+            'reviewer_id': review.reviewer_id.id,
             'reviewer_username': reviewer.username,
             'rating': review.rating,
             'comment': review.comment,
@@ -25,6 +27,7 @@ def publicProfileView(request, profile_user):
 
     context = {
         'profile_user': user,
+        'viewing_user': viewing_user,
         'sneakers': sneakers,
         'sold_sneakers': sold_sneakers,
         'review_items': review_items,
