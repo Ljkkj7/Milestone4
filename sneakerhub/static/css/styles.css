@@ -2197,9 +2197,10 @@ body {
 ---------------------------- */
 
 .add-review-section {
-    margin-top: 40px;
     text-align: center;
-    padding: 0 16px;
+    background-image: url('../images/reviewbgtile.svg');
+    background-repeat: repeat;
+    padding: 100px 20px;
 }
 
 .add-review-card {
