@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Add Review • SneakerHub{% endblock %}
+
+{% block content %}
+<section class="add-review-section">
+    <div class="container">
+        <div class="add-review-card">
+            <div class="add-review-card__heading">
+                <h1>Add a Review</h1>
+                <p class="muted">Share your experience with this user.</p>
+            </div>
+
+            <form method="post" action="{% url 'reviews:submit_review' profile_user.id %}" class="add-review-form">
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <label for="rating">Rating</label>
+                    <select name="rating" id="rating" required>
+                        <option value="" disabled selected>Select a rating</option>
+                        <option value="1">1 - Poor</option>
+                        <option value="2">2 - Fair</option>
+                        <option value="3">3 - Good</option>
+                        <option value="4">4 - Very Good</option>
+                        <option value="5">5 - Excellent</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="comment">Comment</label>
+                    <textarea name="comment" id="comment" rows="5" required></textarea>
+                </div>
+
+                <button type="submit" class="btn-primary btn-large">Submit Review</button>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

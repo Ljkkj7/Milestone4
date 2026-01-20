@@ -79,7 +79,25 @@
             <div class="profile-card">
                 <div class="public-profile-reviews">
                     <h2>{{ profile_user.username|title }}'s Reviews</h2>
-                    <p>Coming Soon!</p>
+                    {% if review_items %}
+                        <div class="reviews-list">
+                            {% for review in review_items %}
+                                <div class="review-item">
+                                    <div class="review-header">
+                                        <span class="reviewer-name">{{ review.reviewer.username|title }}</span>
+                                        <span class="review-rating">Rating: {{ review.rating }} / 5</span>
+                                    </div>
+                                    <p class="review-comment">{{ review.comment }}</p>
+                                    <p class="review-date">Reviewed on {{ review.created_at|date:"F j, Y" }}</p>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <p class="no-data">{{ profile_user.username|title }} has no reviews yet.</p>
+                    {% endif %}
+                </div>
+                <div class="review-action">
+                    <a href="{% url 'reviews:add_review' profile_user.id %}" class="btn-primary btn-large">Leave a Review</a>
                 </div>
             </div>
         </div>

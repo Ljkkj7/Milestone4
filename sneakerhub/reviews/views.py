@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .models import Review
@@ -19,8 +19,28 @@ def submitReviewView(request, profile_user):
             rating=rating,
             comment=comment
         )
+
         review.save()
 
-        return render(request, 'review_submitted.html', {'profile_user': profile_user})
+        return redirect('publicprofile:public_profile', profile_user=profile_user)
+    
     else:
-        return render(request, 'submit_review.html', {'profile_user': profile_user})
+
+        error_meessage = "Invalid Request"
+
+        context = {
+            'error_message': error_meessage,
+            'profile_user': profile_user,
+        }
+
+        return redirect('publicprofile:public_profile', context)
+
+@login_required 
+def addReviewView(request, profile_user):
+    user = User.objects.get(id=profile_user)
+
+    context = {
+        'profile_user': user,
+    }
+
+    return render(request, 'reviews/add_review.html', context)
