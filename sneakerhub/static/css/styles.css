@@ -2118,6 +2118,73 @@ body {
     }
 }
 
+.public-profile-reviews {
+    margin-top: 40px;
+}
+
+.reviews-list {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+}
+
+.review-item {
+    border-left: 3px solid #000;
+    padding-left: 12px;
+    padding: 12px;
+    background: #f9f9f9;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+    flex: 1;
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.reviewer-name {
+    font-weight: bold;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.review-comment {
+    margin-top: 8px;
+    color: #444;
+    font-size: 14px;
+    line-height: 1.4;
+    text-align: center;
+}
+
+.review-date {
+    font-size: 12px;
+    color: #999;
+    text-align: left;
+}
+
+.review-action {
+    margin-top: 8px;
+    text-align: center;
+}
+
+@media(max-width:600px) {
+    .public-profile-reviews {
+        margin-top: 20px;
+    }
+
+    .reviews-list {
+        flex-direction: column;
+    }
+
+    .review-item {
+        flex: none;
+    }
+}
+
 /* ---------------------------
    PROFILE SALE STYLING
 ---------------------------- */
