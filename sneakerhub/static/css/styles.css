@@ -2139,6 +2139,13 @@ body {
     flex: 1;
 }
 
+.review-item:hover {
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.7);
+    border-left: 3px solid #ffbd59;
+}
+
 .review-header {
     display: flex;
     justify-content: space-between;
@@ -2183,6 +2190,97 @@ body {
     .review-item {
         flex: none;
     }
+}
+
+/* ---------------------------
+   REVIEW CARD STYLING
+---------------------------- */
+
+.add-review-section {
+    margin-top: 40px;
+    text-align: center;
+    padding: 0 16px;
+}
+
+.add-review-card {
+    border: 2px solid #000;
+    border-radius: 0;
+    padding: 20px;
+    background: #fff;
+    max-width: 600px;
+    margin: 20px auto 20px auto;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+
+.add-review-card-heading h1 {
+    font-size: 20px;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.add-review-card-heading p {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.add-review-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.add-review-form label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 13px;
+}
+
+.add-review-form textarea {
+    width: 90%;
+    padding: 12px 14px;
+    border: 2px solid #000;
+    border-radius: 0;
+    font-size: 14px;
+    box-sizing: border-box;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    resize: vertical;
+    min-height: 100px;
+}
+
+.add-review-form textarea:focus {
+    outline: none;
+    border-color: #ffbd59;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.add-review-form .btn-primary {
+    margin-top: 12px;
+    align-self: center;
+}
+
+.form-group-rating {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0 auto;
+}
+
+.form-group-rating label {
+    margin: 0px 0px 0px 12px;
+    font-size: 14px;
+}
+
+.form-group-rating select {
+    padding: 8px 12px;
+    border: 2px solid #000;
+    font-size: 14px;
+    transition: all 0.3s ease;
 }
 
 /* ---------------------------
