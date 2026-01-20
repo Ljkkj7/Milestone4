@@ -56,15 +56,17 @@
     <!-- Recent Sales -->
     <div class="profile-card">
         <h2>Recent Sales</h2>
-        {% if recent_sales %}
+        {% if user_sale_sneakers %}
             <div class="profile-sales-list">
-                {% for sale in recent_sales %}
-                    <div class="profile-sale-item">
-                        <div class="profile-sale-header">
-                            <span class="profile-sale-sneaker">{{ sale.sneaker.brand }} {{ sale.sneaker.name }}</span>
-                            <span class="profile-sale-price">£{{ sale.price }}</span>
+                {% for sale in user_sale_sneakers %}
+                    <div class="profile-sale-card">
+                        <div class="profile-sale-item">
+                            <div class="profile-sale-header">
+                                <span class="profile-sale-sneaker">{{ sale.brand }} {{ sale.name }}</span>
+                                <span class="profile-sale-price">£{{ sale.price }}</span>
+                            </div>
+                            <p class="profile-sale-date">Sold on {{ sale.updated_at|date:"F j, Y" }}</p>
                         </div>
-                        <p class="profile-sale-date">Sold on {{ sale.date|date:"F j, Y" }}</p>
                     </div>
                 {% endfor %}
             </div>

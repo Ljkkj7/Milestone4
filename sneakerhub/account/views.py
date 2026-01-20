@@ -18,7 +18,10 @@ def accountPageView(request, user_id):
     user_orders = Order.objects.filter(user=user).order_by('date').reverse()
     user_orders_recent = user_orders[:3]
 
-    # Serialize orders for JSON
+    user_sale_items = Sneaker.objects.filter(owner=user, is_sold=True).order_by('updated_at').reverse()
+    user_sale_sneakers = [item.id for item in user_sale_items]
+
+    #Serialize objects for JS consumption
     user_orders_serialized = [
         {
             'order_number': order.order_number,
@@ -31,6 +34,8 @@ def accountPageView(request, user_id):
     for sneakers in sneaker:
         if sneakers.id in wishlist_sneakers:
             wishlist_sneakers[wishlist_sneakers.index(sneakers.id)] = sneakers
+        if sneakers.id in user_sale_sneakers:
+            user_sale_sneakers[user_sale_sneakers.index(sneakers.id)] = sneakers
 
     if request.user.id != user_id:
         return redirect('errorhandler:permission_denied')
@@ -42,6 +47,7 @@ def accountPageView(request, user_id):
             'user_orders': user_orders,
             'user_orders_recent': user_orders_recent,
             'user_orders_serialized': user_orders_serialized,
+            'user_sale_sneakers': user_sale_sneakers,
             })
 
 @login_required

@@ -635,7 +635,7 @@ body {
 }
 .profile-order-item:hover {
     box-shadow: 0 4px 16px rgba(0,0,0,0.12);
-    border-left-color: #007bff;
+    border-left-color: #ffbd59;
 }
 
 .profile-order-header {
@@ -656,7 +656,6 @@ body {
 .profile-order-price {
     font-weight: 700;
     font-size: 17px;
-    color: #007bff;
 }
 
 .profile-order-date {
@@ -1898,12 +1897,14 @@ body {
     margin-bottom: 8px;
     font-weight: 900;
     text-transform: uppercase;
+    text-align: center;
 }
 
 .checkout-subtitle {
     color: #666;
     margin-bottom: 20px;
     font-size: 14px;
+    text-align: center;
 }
 
 .checkout-form .form-group {
@@ -1967,8 +1968,9 @@ body {
     order: 2;
 }
 
-.payment-info-card {
+.checkout-card.payment-info-card {
     margin-top: 20px;
+    border: none;
 }
 
 .payment-info-card h1 {
@@ -2043,4 +2045,54 @@ body {
         max-width: 1200px;
         margin: 0 auto;
     }
+}
+
+/* ---------------------------
+   PROFILE SALE STYLING
+---------------------------- */
+
+.profile-sales-list {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+}
+
+.profile-sale-card {
+    border-left: 3px solid #000;
+    padding-left: 12px;
+    padding: 12px;
+    background: #f9f9f9;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+    flex: 1;
+}
+
+.profile-sale-card:hover {
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.7);
+}
+
+.profile-sale-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.profile-sale-sneaker {
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.profile-sale-price {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.profile-sale-date {
+    font-size: 14px;
+    color: #999;
 }
