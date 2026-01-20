@@ -1,0 +1,14 @@
+# Project runtime dependencies for SneakerHub
+
+# Web framework
+Django==5.2.7
+
+# Environment variable loader
+python-dotenv>=1.0.0
+
+# Stripe payments
+stripe>=5.0.0
+
+# Image handling for `ImageField`
+Pillow>=9.0.0
+
