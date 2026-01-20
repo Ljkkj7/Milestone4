@@ -2192,7 +2192,7 @@ body {
 
 .right-review-action {
     float: right;
-    margin: 4px 4px;
+    margin: 6px 4px;
 }
 
 @media(max-width:600px) {
