@@ -2,15 +2,34 @@
 {% block title %}Login Required{% endblock %}
 
 {% block content %}
-<section class="error-section" style="margin: 40px 0;">
-    <div class="error-container" style="text-align: center; padding: 50px; border: 1px solid #e0e0e0; border-radius: 8px; background-color: #f9f9f9; max-width: 600px; margin: 0 auto;">
-        <h1 class="error-code" style="font-weight: 600; font-size: 38px">Login Required</h1>
-        <p class="error-description" style="font-size: 18px; color: #666;">You must have a SneakerHub account to perform this action.</p>
-        <div class="error-actions" style="margin-top: 20px; display: flex; justify-content: center; align-items: center;">
-            <a href="{% url 'login' %}" class="btn-secondary btn-large" style="padding: 10px 20px; font-size: 18px; border-radius: 5px; text-decoration: none;">Login</a>
-            <p style="color:#000; margin: 0px 10px 15px 10px; font-size: 22px; text-transform: uppercase; font-weight: 600;">or</p>
-            <a href="{% url 'signup' %}" class="btn-secondary btn-large" style="padding: 10px 20px; font-size: 18px; border-radius: 5px; text-decoration: none;">Register</a>
+<section class="error-section">
+    <div class="container">
+        <div class="error-card">
+            <div class="error-card__heading">
+                <h1>Login Required</h1>
+                <p class="muted">You must have a SneakerHub account to perform this action.</p>
+            </div>
+
+            <div class="error-card__actions">
+                <a href="{% url 'login' %}" class="btn-primary">Login</a>
+                <span class="error-or">or</span>
+                <a href="{% url 'signup' %}" class="btn-secondary">Register</a>
+            </div>
+
+            <p class="error-help">If you believe this is a mistake, <a href="mailto:sneakerhub@example.com">contact support</a>.</p>
         </div>
     </div>
 </section>
+<footer class="site-footer" style="margin-top: 0px;">
+    <div class="footer-inner">
+        <p>&copy; {{ now.year }} SneakerHub - Crafted for sneaker lovers</p>
+    </div>
+</footer>
+{% endblock %}
+{% block scripts %}
+<script>
+    // Hide the base footer on the login page
+    // [No margin needed]
+    document.getElementById('base-site-footer').classList.add('hidden');
+</script>
 {% endblock %}
