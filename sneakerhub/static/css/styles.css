@@ -423,7 +423,7 @@ body {
     margin: 48px 0px 0px 0px; 
     background-image: url('../images/errorbgtile.svg');
     background-repeat: repeat;
-    padding: 100px 20px;
+    padding: 25vh 20px;
 }
 
 .error-card {
