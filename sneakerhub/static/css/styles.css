@@ -2122,10 +2122,10 @@ body {
     margin-top: 40px;
 }
 
-.reviews-list {
-    display: flex;
-    flex-direction: row;
-    gap: 12px;
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
 }
 
 .review-item {
@@ -2136,7 +2136,6 @@ body {
     border-radius: 4px;
     margin-bottom: 10px;
     box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
-    flex: 1;
 }
 
 .review-item:hover {
@@ -2198,10 +2197,6 @@ body {
 @media(max-width:600px) {
     .public-profile-reviews {
         margin-top: 20px;
-    }
-
-    .reviews-list {
-        flex-direction: column;
     }
 
     .review-item {
