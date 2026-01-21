@@ -44,3 +44,24 @@ def addReviewView(request, profile_user):
     }
 
     return render(request, 'reviews/add_review.html', context)
+
+@login_required
+def editReviewView(request, review_id):
+    review = Review.objects.get(id=review_id)
+
+    if request.method == 'POST':
+        rating = request.POST.get('rating')
+        comment = request.POST.get('comment')
+
+        review.rating = rating
+        review.comment = comment
+        review.save()
+
+        return redirect('publicprofile:public_profile', profile_user=review.reviewed_user.id)
+    
+    else:
+        context = {
+            'review': review,
+        }
+
+        return render(request, 'reviews/edit_review.html', context)

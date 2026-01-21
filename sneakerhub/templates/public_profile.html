@@ -90,7 +90,7 @@
                                     <p class="review-comment">{{ review.comment }}</p>
                                     <p class="review-date">Reviewed on {{ review.created_at|date:"F j, Y" }}</p>
                                     {% if viewing_user.id == review.reviewer_id %}
-                                        <a href="" class="public-review-action">Edit Review</a>
+                                        <a href="{% url 'reviews:edit_review' review.id %}" class="public-review-action">Edit Review</a>
                                         <a href="" class="public-review-action right-review-action">Delete Review</a>
                                     {% endif %}
                                 </div>

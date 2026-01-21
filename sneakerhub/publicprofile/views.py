@@ -15,9 +15,12 @@ def publicProfileView(request, profile_user):
     review_items = []
     for review in reviews:
         reviewer = User.objects.get(id=review.reviewer_id.id)
+        reviewed = User.objects.get(id=review.reviewed_user.id)
         review_items.append({
+            'id': review.id,
             'reviewer_id': review.reviewer_id.id,
             'reviewer_username': reviewer.username,
+            'reviewed_username': reviewed.username,
             'rating': review.rating,
             'comment': review.comment,
             'created_at': review.created_at,
