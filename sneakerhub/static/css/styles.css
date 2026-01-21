@@ -399,6 +399,23 @@ body {
     max-width: 1200px;
 }
 
+@media (max-width: 600px) {
+    .sneaker-grid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 16px;
+        padding: 0 10px;
+    }
+
+    .sneaker-grid .card {
+        min-width: 140px;
+        max-height: 300px;
+    }
+
+    .sneaker-grid img {
+        height: 180px;
+    }   
+}
+
 /* ---------------------------
    ERROR / NOTICE STYLES
 ---------------------------- */
