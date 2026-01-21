@@ -1,10 +1,10 @@
 // Custom confirmation modal for delete action
 document.addEventListener('DOMContentLoaded', function () {
-    const openBtn = document.getElementById('delete-open-btn');
-    const modal = document.getElementById('confirm-modal');
-    const confirmBtn = document.getElementById('confirm-delete');
-    const cancelBtn = document.getElementById('cancel-delete');
-    const form = document.getElementById('delete-form');
+    const openBtn = document.querySelector('.delete-open-btn');
+    const modal = document.querySelector('.confirm-modal');
+    const confirmBtn = document.querySelector('.confirm-delete');
+    const cancelBtn = document.querySelector('.cancel-delete');
+    const form = document.querySelector('.delete-form');
 
     if (!openBtn || !modal) return;
 

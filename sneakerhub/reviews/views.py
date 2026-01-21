@@ -65,3 +65,10 @@ def editReviewView(request, review_id):
         }
 
         return render(request, 'reviews/edit_review.html', context)
+    
+@login_required
+def deleteReviewView(request, review_id):
+    review = Review.objects.get(id=review_id)
+    profile_user_id = review.reviewed_user.id
+    review.delete()
+    return redirect('publicprofile:public_profile', profile_user=profile_user_id)

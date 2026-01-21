@@ -78,9 +78,9 @@
                             </form>
                         </div>
                         <div class="sneaker-detail-action-item">
-                            <form method="post" action="{% url 'delete_listing' sneaker.id %}" id="delete-form" style="display: inline;">
+                            <form method="post" action="{% url 'delete_listing' sneaker.id %}" class="delete-form" style="display: inline;">
                                 {% csrf_token %}
-                                <button type="button" id="delete-open-btn" class="btn-secondary btn-danger">Delete listing</button>
+                                <button type="button" class="btn-secondary btn-danger delete-open-btn">Delete listing</button>
                             </form>
                         </div>
                     </div>
@@ -112,13 +112,13 @@
 </section>
 
 <!-- Confirmation modal -->
-<div id="confirm-modal" class="confirm-modal" aria-hidden="true">
+<div class="confirm-modal" aria-hidden="true">
     <div class="confirm-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="confirm-title">
         <h3 id="confirm-title">Delete Listing</h3>
         <p class="confirm-message">Are you sure you want to permanently delete this listing? This action cannot be undone.</p>
         <div class="confirm-actions">
-            <button id="confirm-delete" class="btn-primary">Yes, Delete</button>
-            <button id="cancel-delete" class="btn-primary">Cancel</button>
+            <button class="confirm-delete btn-primary">Yes, Delete</button>
+            <button class="cancel-delete btn-primary">Cancel</button>
         </div>
     </div>
 </div>

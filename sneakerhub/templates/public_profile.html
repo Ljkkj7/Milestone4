@@ -89,9 +89,12 @@
                                     </div>
                                     <p class="review-comment">{{ review.comment }}</p>
                                     <p class="review-date">Reviewed on {{ review.created_at|date:"F j, Y" }}</p>
-                                    {% if viewing_user.id == review.reviewer_id %}
+                                    {% if viewing_user.id == review.reviewer_id or viewing_user.id == profile_user.id %}
                                         <a href="{% url 'reviews:edit_review' review.id %}" class="public-review-action">Edit Review</a>
-                                        <a href="" class="public-review-action right-review-action">Delete Review</a>
+                                        <form method="post" action="{% url 'reviews:delete_review' review.id %}" class="delete-form" style="display: inline;">
+                                            {% csrf_token %}
+                                            <a class="public-review-action right-review-action delete-open-btn" style="cursor: pointer;">Delete Review</a>
+                                        </form>
                                     {% endif %}
                                 </div>
                             {% endfor %}
@@ -107,7 +110,16 @@
         </div>
     </div>
 </section>
-{% block scripts %}
-<script src="{% static 'js/carousel.js' %}"></script>
-{% endblock %}
+
+<!-- Confirmation modal -->
+<div class="confirm-modal" aria-hidden="true">
+    <div class="confirm-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="confirm-title">
+        <h3 id="confirm-title">Delete Review</h3>
+        <p class="confirm-message">Are you sure you want to permanently delete this review? This action cannot be undone.</p>
+        <div class="confirm-actions">
+            <button class="confirm-delete btn-primary">Yes, Delete</button>
+            <button class="cancel-delete btn-primary">Cancel</button>
+        </div>
+    </div>
+</div>
 {% endblock %}
