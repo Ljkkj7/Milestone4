@@ -28,8 +28,6 @@ def checkoutView(request):
             order.user = request.user
             order.save()
 
-            delistSoldSneakers(request)
-
             for item_id, data in cart.items():
 
                 try:
@@ -51,7 +49,10 @@ def checkoutView(request):
             
             request.session['cart'] = {}
             request.session.modified = True
+
+            delistSoldSneakers(request)
             send_order_confirmation_email(order, cart)
+            
             return redirect('cart:detail')
             
         else:
@@ -100,6 +101,7 @@ def checkoutView(request):
             'stripe_public_key': stripe_public_key,
             'stripe_client_secret': intent.client_secret,
         }
+        
     return render(request, 'checkout/checkout.html', context)
 
 def delistSoldSneakers(request):
@@ -146,7 +148,7 @@ def send_order_confirmation_email(order, cart):
                 </table>
                 <p style='font-size: 16px;'><b>Total Amount:</b> £{order.grand_total}</p>
                 <p style='font-size: 16px;'>We hope you enjoy your new sneakers!</p>
-                <p style='font-size: 15px; color: #888; margin-top: 32px;'>Best regards,<br>SneakerHub Team</p>
+                <p style='font-size: 15px; color: #888; margin-top: 32px; text-align: center;'>Best Regards,<br>SneakerHub Team</p>
             </div>
         </div>
         """

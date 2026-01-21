@@ -4,6 +4,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
+from django.core.mail import send_mail
+from django.conf import settings
 
 
 class CustomerUserCreationForm(UserCreationForm):
@@ -38,8 +40,41 @@ class CustomerUserCreationForm(UserCreationForm):
         user.email = self.cleaned_data['email']
         if commit:
             user.save()
+            sendSignUpConfirmationEmail(user)
         return user
-    
+
+def sendSignUpConfirmationEmail(user):
+
+    subject = "Welcome to SneakerHub!"
+
+    # Plain text fallback message
+    plain_message = f"Hello {user.username},\n\nThank you for signing up at SneakerHub! We're excited to have you on board."
+
+    html_message = f"""
+    <div style='font-family: Arial, sans-serif; background: #fff; color: #1a1a1a; max-width: 600px; margin: 0 auto; border: 1px solid #eee; border-radius: 8px; box-shadow: 0 2px 8px #f0f0f0;'>
+        <div style='background: #fff; border-bottom: 2px solid #000; padding: 24px 32px 12px 32px; text-align: center;'>
+            <h1 style='margin: 0; font-size: 28px; font-weight: 900; letter-spacing: -1px; color: #000; text-transform: uppercase;'>SneakerHub</h1>
+        </div>
+        <div style='padding: 32px;'>
+            <h2 style='font-size: 22px; color: #000; margin-top: 0;'>Welcome to SneakerHub!</h2>
+            <p style='font-size: 16px; color: #1a1a1a;'>Hi <b>{user.username}</b>,</p>
+            <p style='font-size: 16px;'>Thank you for signing up at SneakerHub! We're excited to have you on board.</p>
+            <p style='font-size: 16px;'>Start exploring our marketplace and find your perfect pair of sneakers today.</p>
+            <p style='font-size: 16px;'>If you have any questions or need assistance, feel free to reach out to our support team.</p>
+            <p style='font-size: 15px; color: #888; margin-top: 32px; text-align: center;'>Best Regards,<br>SneakerHub Team</p>
+        </div>
+    </div>
+    """
+
+    send_mail(
+        subject,
+        plain_message,
+        settings.EMAIL_HOST_USER,
+        [user.email],
+        fail_silently=False,
+        html_message=html_message,
+    )
+
 # class CreatorUserCreationForm(UserCreationForm):
     
 
