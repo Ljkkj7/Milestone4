@@ -24,11 +24,20 @@
                     {{ form.brand_bio.errors }}
                     {{ form.brand_bio }}
                 </div>
-                <div class="form-group">
-                    {{ form.brand_banner.label_tag }}
-                    {{ form.brand_banner.errors }}
-                    {{ form.brand_banner }}
+
+                <div class="form-row">
+                    <div class="form-group form-half">
+                        {{ form.brand_banner.label_tag }}
+                        {{ form.brand_banner.errors }}
+                        {{ form.brand_banner }}
+                    </div>
+                    <div class="form-group form-half">
+                        {{ form.brand_logo.label_tag }}
+                        {{ form.brand_logo.errors }}
+                        {{ form.brand_logo }}
+                    </div>
                 </div>
+
                 <div class="form-actions">
                     <button type="submit" class="btn-primary btn-large">Create Brand</button>
                     <a href="{% url 'creatorspace:creatorspace' %}" class="btn-secondary create-btn">Cancel</a>

@@ -5,7 +5,7 @@ from .models import Brand
 class BrandForm(forms.ModelForm):
     class Meta:
         model = Brand
-        fields = ['brand_name', 'brand_bio', 'brand_banner']
+        fields = ['brand_name', 'brand_bio', 'brand_banner', 'brand_logo']
 
     def clean_brand_name(self):
         brand_name = self.cleaned_data.get('brand_name')
@@ -24,6 +24,12 @@ class BrandForm(forms.ModelForm):
         if brand_banner.size > 2 * 1024 * 1024:  # 2MB limit
             raise forms.ValidationError("Banner file size must be under 2MB.")
         return brand_banner
+    
+    def clean_brand_logo(self):
+        brand_logo = self.cleaned_data.get('brand_logo')
+        if brand_logo.size > 2 * 1024 * 1024:  # 2MB limit
+            raise forms.ValidationError("Logo file size must be under 2MB.")
+        return brand_logo
     
     def save(self, commit=True):
         brand = super().save(commit=False)
