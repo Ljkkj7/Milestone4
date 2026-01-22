@@ -103,7 +103,6 @@
         <div class="sneaker-detail-tertiary-card">
             <div class="sneaker-seller-info">
                 <h2>Seller Information</h2>
-                <!-- Link to sellers profile, will need to use URL query params to fetch public profile instead of personal -->
                 <p>Sold by: <a href="{% url 'publicprofile:public_profile' sneaker.owner.id %}">{{ sneaker.owner.username }}</a></p>
                 <p>Member since: {{ sneaker.owner.date_joined|date:"F j, Y" }}</p>
             </div>

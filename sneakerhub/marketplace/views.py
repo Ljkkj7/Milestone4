@@ -44,7 +44,11 @@ def marketplaceView(request):
 
     # Distinct brand names from current sneakers
     brands_qs = Sneaker.objects.values_list('brand', flat=True).distinct()
+    brands_qs = brands_qs.filter(is_sold=False)
+
+    # Distinct sizes from current sneakers
     size_qs = Sneaker.objects.values_list('size', flat=True).distinct()
+    size_qs = size_qs.filter(is_sold=False)
 
     # Convert to a sorted list for predictable template ordering
     brands = sorted([b for b in brands_qs if b])
@@ -59,6 +63,7 @@ def marketplaceView(request):
         'selected_price_range': selected_price_range,
         'selected_sort_by': selected_sort_by,
     }   
+
     return render(request, 'marketplace.html', context)
 
 
