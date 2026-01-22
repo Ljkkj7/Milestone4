@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'publicprofile',
     'errorhandler',
     'reviews',
+    'creatorspace'
 ]
 
 MIDDLEWARE = [
