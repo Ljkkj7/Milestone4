@@ -3,4 +3,19 @@
 {% block title %}Creator Space • SneakerHub{% endblock %}
 
 {% block content %}
+<section class="creator-space-hero">
+    {% if not isBrand %}
+    <div class="creator-space-text">
+        <h1>Welcome to the Creator Space</h1>
+        <p>Join our community of sneaker creators and showcase your unique designs to a global audience. Start selling your custom sneakers today!</p>
+        <a href="" class="btn-primary btn-large">Get Started</a>
+    </div>
+    {% else %}
+    <div class="creator-space-text">
+        <h1>Welcome Back, {{ user.username|title }}</h1>
+        <p>Manage your creator profile, upload new sneaker designs, and track your sales all in one place.</p>
+        <a href="" class="btn-primary btn-large">Go to Dashboard</a>
+    </div>
+    {% endif %}
+</section>
 {% endblock %}
