@@ -42,4 +42,5 @@ urlpatterns = [
     path('profile/', include('publicprofile.urls')),
     path('errorhandler/', include('errorhandler.urls')),
     path('reviews/', include('reviews.urls')),
+    path('creatorspace/', include('creatorspace.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

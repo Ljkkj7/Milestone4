@@ -73,10 +73,7 @@ def sendSignUpConfirmationEmail(user):
         [user.email],
         fail_silently=False,
         html_message=html_message,
-    )
-
-# class CreatorUserCreationForm(UserCreationForm):
-    
+    ) 
 
 
 class homePage(TemplateView):
