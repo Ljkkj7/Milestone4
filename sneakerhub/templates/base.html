@@ -29,6 +29,9 @@
         <nav class="nav">
             <a href="{% url 'marketplace' %}">Marketplace</a>
             <a href="{% url 'creatorspace:creatorspace' %}">Creator Space</a>
+            {% if isBrand %}
+                <a href="{% url 'creatorspace:creatorspace' %}">Creator Dashboard</a>
+            {% endif %}
             <a href="{% url 'cart:detail' %}">Cart (<span id="cart-count">{{ cart.count|default:0 }}</span>) — £<span id="cart-total">{{ cart.total|default:0|floatformat:2 }}</span></a>
             {% if user.is_authenticated %}
                 <a href="{% url 'account' user.id %}">Account</a>
