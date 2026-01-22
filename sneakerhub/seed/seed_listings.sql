@@ -1,7 +1,5 @@
 -- Seed file for SneakerHub (SQLite)
 -- Creates 10 users (ids 1000-1009) and 30 sneaker listings owned by those users.
--- WARNING: This file inserts explicit primary keys (1000+). Adjust ids if they conflict with your database.
--- Note: Passwords are empty placeholders; these users cannot authenticate via Django login unless you set proper hashed passwords.
 
 PRAGMA foreign_keys = OFF;
 BEGIN TRANSACTION;
@@ -63,9 +61,3 @@ INSERT INTO marketplace_sneaker (name, brand, size, price, description, image, o
 
 COMMIT;
 PRAGMA foreign_keys = ON;
-
--- Instructions:
--- Run from repository root (where db.sqlite3 lives):
--- sqlite3 sneakerhub/db.sqlite3 < seed/seed_listings.sql
---
--- If you prefer to use Django fixtures, I can generate a JSON fixture instead that will import cleanly with `python manage.py loaddata`.
