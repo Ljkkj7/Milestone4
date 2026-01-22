@@ -1871,7 +1871,7 @@ body {
     letter-spacing: -0.5px;
 }
 
-.create-listing-subtitle {
+.create-listing-subtitle, .create-brand-subtitle {
     color: #666;
     margin-bottom: 32px;
     text-align: center;
@@ -1879,11 +1879,11 @@ body {
     line-height: 1.6;
 }
 
-.create-listing-form .form-group {
+.create-listing-form .form-group, .create-brand-form .form-group {
     margin-bottom: 24px;
 }
 
-.create-listing-form label {
+.create-listing-form label, .create-brand-form label {
     display: block;
     margin-bottom: 8px;
     font-weight: 700;
@@ -1892,10 +1892,10 @@ body {
     font-size: 13px;
 }
 
-.create-listing-form input[type="text"],
+.create-listing-form input[type="text"], .create-brand-form input[type="text"],
 .create-listing-form input[type="number"],
-.create-listing-form input[type="file"],
-.create-listing-form textarea {
+.create-listing-form input[type="file"], .create-brand-form input[type="file"],
+.create-listing-form textarea, .create-brand-form textarea {
     width: 100%;
     padding: 12px 14px;
     border: 2px solid #000;
