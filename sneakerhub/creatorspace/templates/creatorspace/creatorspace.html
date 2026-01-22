@@ -18,4 +18,22 @@
     </div>
     {% endif %}
 </section>
+<section class="brand-grid-section">
+    <div class="container">
+        <h2>Brands</h2>
+        <div class="brand-grid">
+            {% for brand in brands %}
+            <div class="brand-card">
+                {% if brand.brand_logo %}
+                    <img src="{{ brand.brand_logo.url }}" alt="{{ brand.brand_name }}" class="brand-logo">
+                {% else %}
+                    <div class="brand-logo-placeholder">No Logo</div>
+                {% endif %}
+                <h3>{{ brand.brand_name }}</h3>
+                <p>{{ brand.brand_bio|truncatewords:20 }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
 {% endblock %}
