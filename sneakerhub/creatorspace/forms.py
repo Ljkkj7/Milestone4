@@ -9,7 +9,7 @@ class BrandForm(forms.ModelForm):
 
     def clean_brand_name(self):
         brand_name = self.cleaned_data.get('brand_name')
-        if Brand.objects.filter(name__iexact=brand_name).exists():
+        if Brand.objects.filter(brand_name=brand_name).exists():
             raise forms.ValidationError("A brand with this name already exists.")
         return brand_name
     
