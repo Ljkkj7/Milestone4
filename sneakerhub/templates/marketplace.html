@@ -19,17 +19,17 @@
         <select name="size" class="filter-select">
             <option value="">All Sizes</option>
             {% for size in sizes %}
-            <option value="{{ size|floatformat }}" {% if size == selected_size %}selected{% endif %}>{{ size }}</option>
+            <option value="{{ size }}" {% if size == selected_size %}selected{% endif %}>{{ size }}</option>
             {% endfor %}
         </select>
-        <select class="filter-select">
+        <select name="price_range" class="filter-select">
             <option value="">Price Range</option>
             <option value="0-50">£0 - £50</option>
             <option value="51-100">£51 - £100</option>
             <option value="101-150">£101 - £150</option>
             <option value="151+">£151+</option>
         </select>
-        <select class="filter-select">
+        <select name="sort_by" class="filter-select">
             <option value="">Sort By</option>
             <option value="newest">Newest Arrivals</option>
             <option value="price-low-high">Price: Low to High</option>
