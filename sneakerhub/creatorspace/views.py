@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
+from .forms import BrandForm
 from .models import Brand
 
 # Create your views here.
@@ -17,3 +18,28 @@ def creatorSpaceView(request):
     }
 
     return render(request, 'creatorspace/creatorspace.html', context)
+
+def brandCreateView(request):
+    if request.method == 'POST':
+
+        form = BrandForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            brand_name = request.POST.get('brand_name')
+            brand_description = request.POST.get('brand_description')
+            owner = request.user
+
+            # Create and save the brand
+            brand = Brand(
+                name=brand_name,
+                description=brand_description,
+                owner=owner
+            )
+
+            brand.save()
+            return redirect('creatorspace:creatorspace')
+        
+    else:
+        form = BrandForm()
+
+    return render(request, 'creatorspace/brandcreate.html', {'form': form})

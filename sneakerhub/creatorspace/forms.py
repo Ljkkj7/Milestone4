@@ -2,33 +2,33 @@ from django import forms
 from django.contrib.auth.models import User
 from .models import Brand 
 
-class CreatorSpaceForm(forms.ModelForm):
+class BrandForm(forms.ModelForm):
     class Meta:
         model = Brand
-        fields = ['name', 'description', 'logo']
+        fields = ['brand_name', 'brand_bio', 'brand_banner']
 
-    def clean_name(self):
-        name = self.cleaned_data.get('name')
-        if Brand.objects.filter(name__iexact=name).exists():
+    def clean_brand_name(self):
+        brand_name = self.cleaned_data.get('brand_name')
+        if Brand.objects.filter(name__iexact=brand_name).exists():
             raise forms.ValidationError("A brand with this name already exists.")
-        return name
+        return brand_name
     
-    def clean_description(self):
-        description = self.cleaned_data.get('description')
-        if len(description) < 20:
+    def clean_brand_bio(self):
+        brand_bio = self.cleaned_data.get('brand_bio')
+        if len(brand_bio) < 20:
             raise forms.ValidationError("Description must be at least 20 characters long.")
-        return description
+        return brand_bio
     
-    def clean_logo(self):
-        logo = self.cleaned_data.get('logo')
-        if logo.size > 2 * 1024 * 1024:  # 2MB limit
-            raise forms.ValidationError("Logo file size must be under 2MB.")
-        return logo
+    def clean_brand_banner(self):
+        brand_banner = self.cleaned_data.get('brand_banner')
+        if brand_banner.size > 2 * 1024 * 1024:  # 2MB limit
+            raise forms.ValidationError("Banner file size must be under 2MB.")
+        return brand_banner
     
     def save(self, commit=True):
         brand = super().save(commit=False)
-        name = self.cleaned_data.get('name')
-        brand.name = name.title()  # Ensure brand name is title cased
+        brand_name = self.cleaned_data.get('brand_name')
+        brand.brand_name = brand_name.title()  # Ensure brand name is title cased
         if commit:
             brand.save()
         return brand
