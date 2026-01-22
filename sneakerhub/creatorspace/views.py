@@ -25,16 +25,9 @@ def brandCreateView(request):
         form = BrandForm(request.POST, request.FILES)
 
         if form.is_valid():
-            brand_name = request.POST.get('brand_name')
-            brand_description = request.POST.get('brand_description')
-            owner = request.user
-
-            # Create and save the brand
-            brand = Brand(
-                name=brand_name,
-                description=brand_description,
-                owner=owner
-            )
+            
+            brand = form.save(commit=False)
+            brand.owner = request.user
 
             brand.save()
             return redirect('creatorspace:creatorspace')
