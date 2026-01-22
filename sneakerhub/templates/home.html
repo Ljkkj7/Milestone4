@@ -15,19 +15,15 @@
     {% if not user.is_authenticated %}
         <div class="customer-signup">
             <h2>New to SneakerHub?</h2>
-            <p>Create an account to browse, buy or even sell your own shoes!</p>
+            <p>Create an account to browse, buy and sell your old shoes!</p>
+            <p>You can also join our platform to setup your own creator space to sell your own designs.</p>
             <a href="{% url 'signup' %}" class="btn-secondary">Create Account</a>
-        </div>
-        <div class="creator-signup">
-            <h2>Are you a creator?</h2>
-            <p>Join SneakerHub today and showcase your unique sneaker designs to a global audience. Sign up now to start selling!</p>
-            <a href="" class="btn-secondary">Sign Up</a>
         </div>
     {% else %}
         <div class="creator-signup">
             <h2>Thinking about being a creator?</h2>
             <p>Join SneakerHub today and showcase your unique sneaker designs to a global audience. Sign up now to start selling!</p>
-            <a href="" class="btn-secondary">Sign Up</a>
+            <a href="{% url 'creatorspace' %}" class="btn-secondary">Sign Up</a>
         </div>
     {% endif %}
 </section>
