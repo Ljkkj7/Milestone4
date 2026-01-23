@@ -20,6 +20,7 @@ def creatorSpaceView(request):
     return render(request, 'creatorspace/creatorspace.html', context)
 
 def brandCreateView(request):
+
     if request.method == 'POST':
 
         form = BrandForm(request.POST, request.FILES)
@@ -33,6 +34,12 @@ def brandCreateView(request):
             return redirect('creatorspace:creatorspace')
         
     else:
+
+        user = request.user
+
+        if not user.is_authenticated:
+            return redirect('errorhandler:login_required')
+
         form = BrandForm()
 
     return render(request, 'creatorspace/brandcreate.html', {'form': form})

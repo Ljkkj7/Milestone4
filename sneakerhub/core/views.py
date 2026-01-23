@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
+from creatorspace.models import Brand
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.core.mail import send_mail
@@ -74,7 +75,6 @@ def sendSignUpConfirmationEmail(user):
         fail_silently=False,
         html_message=html_message,
     ) 
-
 
 class homePage(TemplateView):
     template_name = "home.html"

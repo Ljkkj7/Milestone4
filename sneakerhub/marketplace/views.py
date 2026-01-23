@@ -1,5 +1,6 @@
 from django.shortcuts import redirect, render
 from .models import Sneaker
+from creatorspace.models import Brand
 from account.models import WishlistItem
 
 
@@ -54,6 +55,15 @@ def marketplaceView(request):
     brands = sorted([b for b in brands_qs if b])
     sizes = sorted([s for s in size_qs if s])
 
+    # Check if user is a brand owner
+    user = request.user
+    brandCheck = Brand.objects.filter(owner=user).exists()
+
+    if brandCheck:
+        isBrand = True
+    else:
+        isBrand = False
+
     context = {
         'sneakers': sneakers,
         'brands': brands,
@@ -62,6 +72,7 @@ def marketplaceView(request):
         'selected_size': selected_size,
         'selected_price_range': selected_price_range,
         'selected_sort_by': selected_sort_by,
+        'isBrand': isBrand,
     }   
 
     return render(request, 'marketplace.html', context)
