@@ -2387,7 +2387,7 @@ body {
     letter-spacing: -1px;
 }
 
-.brand-grid {
+.brand-grid, .dashboard-brand-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 16px;
@@ -2463,4 +2463,76 @@ body {
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+}
+
+/* ---------------------------
+   BRAND DASHBOARD STYLING
+---------------------------- */
+
+.dashboard-header {
+    text-align: center;
+    padding: 40px 0;
+    border-bottom: 2px solid #000;
+    margin-bottom: 40px;
+}
+
+.dashboard-header h1 {
+    font-size: 48px;
+    font-weight: 900;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+}
+
+.dashboard-header p {
+    color: #888;
+    font-size: 14px;
+    text-transform: titlecase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+}
+
+.dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    margin: 40px auto 40px auto;
+    width: 90%;
+    max-width: 800px;
+}
+
+.dashboard-card {
+    background: #fff;
+    border: 2px solid #000;
+    border-radius: 0;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+
+.dashboard-card h2 {
+    font-size: 20px;
+    font-weight: 900;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+}
+
+.dashboard-card p {
+    font-size: 16px;
+    color: #444;
+}
+
+.dashboard-brands {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.dashboard-brand-grid .brand-card {
+    padding: 12px;
+    margin: 20px 20px;
 }

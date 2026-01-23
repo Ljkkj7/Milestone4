@@ -43,3 +43,14 @@ def brandCreateView(request):
         form = BrandForm()
 
     return render(request, 'creatorspace/brandcreate.html', {'form': form})
+
+def brandDashboardView(request):
+    user = request.user
+
+    getBrands = Brand.objects.filter(owner=user)
+
+    context = {
+        'brands': getBrands,
+    }
+
+    return render(request, 'creatorspace/creatordashboard.html', context)
