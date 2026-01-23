@@ -2436,3 +2436,31 @@ body {
     justify-content: center;
     border-radius: 0;
 }
+
+/* ---------------------------
+   CREATOR CTA STYLING
+---------------------------- */
+
+.creator-cta-section {
+    padding: 80px 20px;
+    text-align: center;
+    margin-top: 60px;
+}
+
+.creator-cta-section h2 {
+    font-size: 36px;
+    font-weight: 900;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+}
+
+.creator-cta-section p {
+    color: #666;
+    font-size: 16px;
+    margin-bottom: 32px;
+    line-height: 1.6;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
