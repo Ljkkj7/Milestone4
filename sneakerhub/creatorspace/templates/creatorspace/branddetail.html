@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}{{ brand.brand_name }} • SneakerHub{% endblock %}
+
+{% block content %}
+<section class="brand-detail-section">
+    <section class="brand-detail-column-left">
+        <div class="container">
+            <div class="brand-detail-logo">
+                {% if brand.brand_logo %}
+                <img src="{{ brand.brand_logo.url }}" alt="{{ brand.brand_name }} Logo" class="brand-logo">
+                {% else %}
+                <div class="brand-logo-placeholder">No Logo</div>
+                {% endif %}
+            </div>
+            <div class="brand-detail-bio">
+                <h1>{{ brand.brand_name }}</h1>
+                <p>{{ brand.brand_bio }}</p>
+            </div>
+        </div>
+    </section>
+    <section class="brand-detail-column-right">
+        <div class="brand-detail-banner">
+            {% if brand.brand_banner %}
+            <img src="{{ brand.brand_banner.url }}" alt="{{ brand.brand_name }} Banner" class="brand-banner">
+            {% else %}
+            <div class="brand-banner-placeholder">No Banner</div>
+            {% endif %}
+        </div>
+        <div class="brand-detail-product-grid">
+            <div class="brand-detail-product">
+                <p class="no-data">No products available for this brand yet.</p>
+            </div>
+        </div>
+    </section>
+</section>
+<footer class="site-footer" style="margin-top: 0px;">
+    <div class="footer-inner">
+        <p>&copy; {{ now.year }} SneakerHub - Crafted for sneaker lovers</p>
+    </div>
+</footer>
+{% endblock %}
+{% block scripts %}
+<script>
+    // Hide the base footer on the login page
+    // [No margin needed]
+    document.getElementById('base-site-footer').classList.add('hidden');
+</script>
+{% endblock %}

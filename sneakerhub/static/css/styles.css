@@ -2557,3 +2557,64 @@ body {
     padding: 12px;
     margin: 20px 20px;
 }
+
+/* ---------------------------
+   BRAND DETAIL STYLING 
+---------------------------- */
+
+.brand-detail-section {
+    display: flex;
+}
+
+.brand-detail-column-left {
+    flex: 1;
+    padding-right: 20px;
+    border-right: 2px solid #000;
+    width: 40%;
+    max-width: 300px;
+    margin-left: 20px;
+}
+
+.brand-detail-banner {
+    width: 80%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 0;
+    margin: 0 auto 20px auto;
+}
+
+.brand-detail-banner img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 0;
+}
+
+.brand-detail-logo {
+    width: 150px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 0;
+    background: transparent;
+    margin: 0 auto 20px auto;
+}
+
+.brand-detail-bio {
+    font-size: 14px;
+    color: #444;
+    line-height: 1.6;
+    text-align: center;
+}
+
+.brand-detail-bio h1 {
+    font-size: 24px;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    color: #000;
+}
+
+.brand-detail-column-right {
+    flex: 2;
+    padding-left: 20px;
+}

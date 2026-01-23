@@ -10,7 +10,7 @@
         </div>
         <div class="brand-grid">
             {% for brand in brands %}
-            <a href="" class="brand-card-link">
+            <a href="{% url 'creatorspace:brand_detail' brand.id %}" class="brand-card-link">
                 <div class="brand-card">
                     {% if brand.brand_logo %}
                         <img src="{{ brand.brand_logo.url }}" alt="{{ brand.brand_name }}" class="brand-logo">
@@ -31,8 +31,8 @@
 <section class="creator-cta-section">
     <div class="container">
         <h2>Become a Creator</h2>
-        <p>Join SneakerHub today and showcase your unique sneaker designs to a global audience. Sign up now to start selling!</p>
-        <a href="{% url 'creatorspace:brand_create' %}" class="btn-primary btn-large">Sign Up</a>
+        <p>Join SneakerHub today and showcase your unique sneaker designs to a global audience. Create your own space and start selling now!</p>
+        <a href="{% url 'creatorspace:brand_create' %}" class="btn-primary btn-large">Create Space</a>
     </div>
 </section>
 {% endif %}

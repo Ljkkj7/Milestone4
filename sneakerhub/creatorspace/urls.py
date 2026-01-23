@@ -7,4 +7,5 @@ urlpatterns = [
     path('', views.creatorSpaceView, name='creatorspace'),
     path('create/', views.brandCreateView, name='brand_create'),
     path('dashboard/', views.brandDashboardView, name='brand_dashboard'),
+    path('brand/<int:brand_id>/', views.brandDetailView, name='brand_detail'),
 ]
