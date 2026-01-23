@@ -2374,9 +2374,18 @@ body {
    BRAND GRID STYLING
 ---------------------------- */
 
+.brand-header {
+    text-align: center;
+    border-bottom: 2px solid #000;
+    margin-bottom: 80px;
+    padding-bottom: 40px;
+}
+
 .brand-grid-section {
     text-align: center;
     margin: 60px 0;
+    border-bottom: 2px solid #000;
+    padding-bottom: 80px;
 }
 
 .brand-grid-section h2 {
@@ -2409,6 +2418,11 @@ body {
 .brand-card:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.brand-card-link {
+    text-decoration: none;
+    color: inherit;
 }
 
 .brand-card h3 {
@@ -2445,6 +2459,13 @@ body {
     padding: 80px 20px;
     text-align: center;
     margin-top: 60px;
+}
+
+.creator-cta-section .container {
+    border: 2px solid #000;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .creator-cta-section h2 {
