@@ -2679,6 +2679,15 @@ body {
     box-shadow: 0 4px 16px rgba(0,0,0,0.1);
 }
 
+.manage-brand-card h2 {
+    font-size: 24px;
+    font-weight: 900;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 10px 10px;
+}
+
 .manage-brand-details {
     display: flex;
     flex-direction: column;
@@ -2691,6 +2700,15 @@ body {
     flex-direction: column;
     gap: 20px;
     margin-bottom: 20px;
+}   
+
+.brand-images-section h3 {
+    font-size: 20px;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    text-align: center;
+    margin: 20px 0;
 }
 
 .manage-brand-logo {
@@ -2714,4 +2732,42 @@ body {
     height: auto;
     object-fit: cover;
     border-radius: 0;
+}
+
+.brand-info-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.brand-info-section h3 {
+    font-size: 20px;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.brand-info-section p {
+    font-size: 18px;
+    color: #444;
+    line-height: 1.6;
+}
+
+.brand-actions {
+    margin: 0 auto;
+    text-align: center;
+    padding: 10px 0; 
+}
+
+.brand-actions .btn-primary {
+    margin: 0 10px;
+    padding: 12px 20px;
+}
+
+.manage-brand-action {
+    margin: 0 10px;
+    padding: 12px 20px;
+    text-align: center;
 }
