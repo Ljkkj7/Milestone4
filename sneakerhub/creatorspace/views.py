@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
 from .forms import BrandForm
-from .models import Brand
+from .models import Brand, BrandProducts
 
 # Create your views here.
 def creatorSpaceView(request):
@@ -63,3 +63,15 @@ def brandDetailView(request, brand_id):
     }
 
     return render(request, 'creatorspace/branddetail.html', context)
+
+
+def manageBrandView(request, brand_id):
+    brand = Brand.objects.get(id=brand_id)
+    brand_products = BrandProducts.objects.filter(brand_id=brand_id)
+
+    context = {
+        'brand': brand,
+        'brand_products': brand_products,
+    }
+
+    return render(request, 'creatorspace/managebrand.html', context)

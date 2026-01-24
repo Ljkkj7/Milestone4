@@ -24,7 +24,7 @@
                         <p>{{ brand.brand_bio|truncatewords:20 }}</p>
                     </div>
                     <div class="brand-actions">
-                        <a href="#" class="btn-secondary">Manage Brand</a>
+                        <a href="{% url 'creatorspace:manage_brand' brand.id %}" class="btn-secondary">Manage Brand</a>
                     </div>
                 </div>
                 {% endfor %}
@@ -37,9 +37,9 @@
                 <a href="#" class="btn-primary btn-large">View Sales</a>
             </div>
             <div class="dashboard-card">
-                <h2>Manage Listings</h2>
-                <p>Add, edit, or remove your sneaker listings.</p>
-                <a href="#" class="btn-primary btn-large">Manage Listings</a>
+                <h2>Manage Collaborators</h2>
+                <p>Add, edit, or remove your brand collaborators.</p>
+                <a href="#" class="btn-primary btn-large">Manage Collaborators</a>
             </div>
         </div>
     </div>
