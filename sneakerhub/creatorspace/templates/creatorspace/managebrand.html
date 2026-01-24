@@ -1,13 +1,33 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %}Manage {{ brand.name }} • SneakerHub{% endblock %}
+{% block title %}Manage {{ brand.brand_name }} • SneakerHub{% endblock %}
 
 {% block content %}
 <section class="manage-brand-section">
     <div class="container">
         <div class="manage-brand-header">
-            <h1>Manage {{ brand.name }}</h1>
+            <h1>Manage {{ brand.brand_name }}</h1>
             <p>Update your brand details and manage your sneaker listings.</p>
+        </div>
+        <div class="manage-brand-card">
+            <h2>Brand Details</h2>
+            <div class="manage-brand-details">
+                <div class="brand-logo-section">
+                    {% if brand.brand_logo %}
+                        <img src="{{ brand.brand_logo.url }}" alt="{{ brand.brand_name }} Logo" class="brand-logo">
+                    {% else %}
+                        <div class="brand-logo-placeholder">No Logo</div>
+                    {% endif %}
+                </div>
+                <div class="brand-info-section">
+                    <h3>{{ brand.brand_name }}</h3>
+                    <p>{{ brand.brand_bio }}</p>
+                </div>
+                <div class="brand-actions">
+                    <a href="" class="btn-primary">Edit Brand</a>
+                    <a href="" class="btn-secondary">Delete Brand</a>
+                </div>
+            </div>
         </div>
         <div class="manage-brand-card">
             <h2>Listings</h2>
