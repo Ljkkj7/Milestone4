@@ -19,21 +19,21 @@
         <select name="size" class="filter-select">
             <option value="">All Sizes</option>
             {% for size in sizes %}
-            <option value="{{ size }}" {% if size == selected_size %}selected{% endif %}>{{ size }}</option>
+            <option value="{{ size }}" {% if size|stringformat:"s" == selected_size %}selected{% endif %}>{{ size|floatformat }}</option>
             {% endfor %}
         </select>
         <select name="price_range" class="filter-select">
-            <option value="">Price Range</option>
-            <option value="0-50">£0 - £50</option>
-            <option value="51-100">£51 - £100</option>
-            <option value="101-150">£101 - £150</option>
-            <option value="151+">£151+</option>
+            <option value="{{ selected_price_range }}" {% if selected_price_range == "" %}selected{% endif %}>Price Range</option>
+            <option value="0-50" {% if selected_price_range == "0-50" %}selected{% endif %}>£0 - £50</option>
+            <option value="51-100" {% if selected_price_range == "51-100" %}selected{% endif %}>£51 - £100</option>
+            <option value="101-150" {% if selected_price_range == "101-150" %}selected{% endif %}>£101 - £150</option>
+            <option value="151+" {% if selected_price_range == "151+" %}selected{% endif %}>£151+</option>
         </select>
         <select name="sort_by" class="filter-select">
-            <option value="">Sort By</option>
-            <option value="newest">Newest Arrivals</option>
-            <option value="price-low-high">Price: Low to High</option>
-            <option value="price-high-low">Price: High to Low</option>
+            <option value="{{ selected_sort_by }}" {% if selected_sort_by == "" %}selected{% endif %}>Sort By</option>
+            <option value="newest" {% if selected_sort_by == "newest" %}selected{% endif %}>Newest Arrivals</option>
+            <option value="price-low-high" {% if selected_sort_by == "price-low-high" %}selected{% endif %}>Price: Low to High</option>
+            <option value="price-high-low" {% if selected_sort_by == "price-high-low" %}selected{% endif %}>Price: High to Low</option>
         </select>
         <button class="btn-secondary" type="submit">Filter</button>
     </form>
@@ -53,7 +53,7 @@
             </div>
         </article>
         {% empty %}
-        <p>There is no listings.</p>
+        <p>There are no listings.</p>
         {% endfor %}
     </div>
 </section>

@@ -38,7 +38,7 @@ def brandCreateView(request):
         user = request.user
 
         if not user.is_authenticated:
-            return redirect('errorhandler:login_required')
+            return redirect('errorhandler:not_authenticated')
 
         form = BrandForm()
 
