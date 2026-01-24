@@ -2618,3 +2618,100 @@ body {
     flex: 2;
     padding-left: 20px;
 }
+
+/* ---------------------------
+   BRAND MANAGEMENT STYLING
+---------------------------- */
+
+.manage-brand-section {
+    padding: 40px 20px;
+}
+
+.manage-brand-grid {
+    display: flex;
+}
+
+.manage-brand-column-left {
+    flex: 1;
+    width: 40%;
+    max-width: 450px;
+    margin-left: 40px;
+    padding-right: 20px;
+}
+
+.manage-brand-column-right {
+    flex: 2;
+    padding-left: 40px;
+    width: 60%;
+    max-width: 700px;
+}
+
+.manage-brand-header {
+    text-align: center;
+    padding: 20px 0;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #000;
+}
+
+.manage-brand-header h1 {
+    font-size: 36px;
+    font-weight: 900;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+}
+
+.manage-brand-header p {
+    color: #666;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+}
+
+.manage-brand-card {
+    background: #fff;
+    border: 2px solid #000;
+    border-radius: 0;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto 40px auto;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+
+.manage-brand-details {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.brand-images-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.manage-brand-logo {
+    flex: 1;
+}
+
+.manage-brand-logo img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 0;
+    background: transparent;
+}
+
+.manage-brand-banner {
+    flex: 2;
+}
+
+.manage-brand-banner img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 0;
+}

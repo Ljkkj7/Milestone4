@@ -3,62 +3,79 @@
 {% block title %}Manage {{ brand.brand_name }} • SneakerHub{% endblock %}
 
 {% block content %}
+<div class="manage-brand-header">
+    <h1>Manage {{ brand.brand_name }}</h1>
+    <p>Update your brand details and manage your sneaker listings.</p>
+</div>
 <section class="manage-brand-section">
     <div class="container">
-        <div class="manage-brand-header">
-            <h1>Manage {{ brand.brand_name }}</h1>
-            <p>Update your brand details and manage your sneaker listings.</p>
-        </div>
-        <div class="manage-brand-card">
-            <h2>Brand Details</h2>
-            <div class="manage-brand-details">
-                <div class="brand-logo-section">
-                    {% if brand.brand_logo %}
-                        <img src="{{ brand.brand_logo.url }}" alt="{{ brand.brand_name }} Logo" class="brand-logo">
-                    {% else %}
-                        <div class="brand-logo-placeholder">No Logo</div>
-                    {% endif %}
-                </div>
-                <div class="brand-info-section">
-                    <h3>{{ brand.brand_name }}</h3>
-                    <p>{{ brand.brand_bio }}</p>
-                </div>
-                <div class="brand-actions">
-                    <a href="" class="btn-primary">Edit Brand</a>
-                    <a href="" class="btn-secondary">Delete Brand</a>
-                </div>
-            </div>
-        </div>
-        <div class="manage-brand-card">
-            <h2>Listings</h2>
-            <div class="manage-brand-listings">
-                {% if brand_products %}
-                    {% for sneaker in brand_products %}
-                    <div class="manage-brand-listing-item">
-                        {% if sneaker.product_image %}
-                            <img src="{{ sneaker.product_image.url }}" alt="{{ sneaker.product_name }}" class="listing-thumb">
-                        {% else %}
-                            <div class="listing-thumb-placeholder">No Image</div>
-                        {% endif %}
-                        <div class="listing-info">
-                            <h3>{{ sneaker.product_name }}</h3>
-                            <p class="listing-size">Size's available: {% for size in sneaker.product_sizes %}{{ size }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
-                            <p class="listing-price">£{{ sneaker.product_price }}</p>
-                            <p class="listing-quantity">Quantity: {{ sneaker.quantity }}</p>
-                            <p class="listing-description">{{ sneaker.product_description|truncatewords:15 }}</p>
+        <div class="manage-brand-grid">
+            <div class="manage-brand-column-left">
+                <div class="manage-brand-card">
+                    <h2>Brand Details</h2>
+                    <div class="manage-brand-details">
+                        <div class="brand-images-section">
+                            {% if brand.brand_logo %}
+                                <div class="manage-brand-logo">
+                                    <h3>Brand Logo</h3>
+                                    <img src="{{ brand.brand_logo.url }}" alt="{{ brand.brand_name }} Logo" class="brand-logo">
+                                </div>
+                            {% else %}
+                                <div class="brand-logo-placeholder">No Logo</div>
+                            {% endif %}
+                            {% if brand.brand_banner %}
+                                <div class="manage-brand-banner">
+                                    <h3>Brand Banner</h3>
+                                    <img src="{{ brand.brand_banner.url }}" alt="{{ brand.brand_name }} Banner" class="brand-banner">
+                                </div>
+                            {% else %}
+                                <div class="brand-banner-placeholder">No Banner</div>
+                            {% endif %}
                         </div>
-                        <div class="listing-actions">
-                            <a href="" class="btn-primary">Edit</a>
-                            <a href="" class="btn-secondary">Delete</a>
+                        <div class="brand-info-section">
+                            <h3>{{ brand.brand_name }}</h3>
+                            <p>{{ brand.brand_bio }}</p>
+                        </div>
+                        <div class="brand-actions">
+                            <a href="" class="btn-primary">Edit Brand</a>
+                            <a href="" class="btn-secondary">Delete Brand</a>
                         </div>
                     </div>
-                    {% endfor %}
-                {% else %}
-                    <p class="no-data">No sneakers listed under this brand yet.</p>
-                {% endif %}
+                </div>
             </div>
-            <div class="manage-brand-action">
-                <a href="" class="btn-primary btn-large">Add New Listing</a>
+            <div class="manage-brand-column-right">
+                <div class="manage-brand-card">
+                    <h2>Listings</h2>
+                    <div class="manage-brand-listings">
+                        {% if brand_products %}
+                            {% for sneaker in brand_products %}
+                            <div class="manage-brand-listing-item">
+                                {% if sneaker.product_image %}
+                                    <img src="{{ sneaker.product_image.url }}" alt="{{ sneaker.product_name }}" class="listing-thumb">
+                                {% else %}
+                                    <div class="listing-thumb-placeholder">No Image</div>
+                                {% endif %}
+                                <div class="listing-info">
+                                    <h3>{{ sneaker.product_name }}</h3>
+                                    <p class="listing-size">Size's available: {% for size in sneaker.product_sizes %}{{ size }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+                                    <p class="listing-price">£{{ sneaker.product_price }}</p>
+                                    <p class="listing-quantity">Quantity: {{ sneaker.quantity }}</p>
+                                    <p class="listing-description">{{ sneaker.product_description|truncatewords:15 }}</p>
+                                </div>
+                                <div class="listing-actions">
+                                    <a href="" class="btn-primary">Edit</a>
+                                    <a href="" class="btn-secondary">Delete</a>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        {% else %}
+                            <p class="no-data">No sneakers listed under this brand yet.</p>
+                        {% endif %}
+                    </div>
+                    <div class="manage-brand-action">
+                        <a href="" class="btn-primary btn-large">Add New Listing</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
