@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Create Brand Listing • SneakerHub{% endblock %}
+
+{% block content %}
+<div class="create-brand-header">
+    <h1>Create a Product Listing</h1>
+    <p>Create a new product listing for your brand and reach sneaker enthusiasts worldwide.</p>
+    <hr>
+</div>
+<section class="create-brand-section">
+    <div class="container">
+        <div class="create-brand-card">
+            <h2>New Product Listing</h2>
+            <form method="post" enctype="multipart/form-data" class="create-brand-form">
+                {% csrf_token %}
+
+                {{ form.non_field_errors }}
+
+                <div class="form-group">
+                    {{ form.product_name.label_tag }}
+                    {{ form.product_name.errors }}
+                    {{ form.product_name }}
+                </div>
+
+                <div class="form-group">
+                    {{ form.product_description.label_tag }}
+                    {{ form.product_description.errors }}
+                    {{ form.product_description }}
+                </div>
+
+                <div class="form-group">
+                    {{ form.product_sizes.label_tag }}
+                    {{ form.product_sizes.errors }}
+                    {{ form.product_sizes }}
+                </div>
+
+                <div class="form-row">
+
+                    <div class="form-group form-half">
+                            {{ form.product_price.label_tag }}
+                            {{ form.product_price.errors }}
+                            {{ form.product_price }}
+                    </div>
+
+                    <div class="form-group form-half">
+                        {{ form.quantity.label_tag }}
+                        {{ form.quantity.errors }}
+                        {{ form.quantity }}
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group form-half">
+                        {{ form.release_date.label_tag }}
+                        {{ form.release_date.errors }}
+                        {{ form.release_date }}
+                    </div>
+
+                    <div class="form-group form-half">
+                        {{ form.is_active.label_tag }}
+                        {{ form.is_active.errors }}
+                        {{ form.is_active }}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    {{ form.product_image.label_tag }}
+                    {{ form.product_image.errors }}
+                    {{ form.product_image }}
+                </div>
+
+                <button type="submit" class="btn-primary btn-large">Create Listing</button>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

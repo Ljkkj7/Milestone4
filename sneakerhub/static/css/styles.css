@@ -1853,7 +1853,7 @@ body {
    LISTING CREATION STYLING
 ---------------------------- */
 
-.create-card {
+.create-card, .create-brand-card {
     background: #fff;
     border: 2px solid #000;
     border-radius: 0;

@@ -1,5 +1,5 @@
 from django.shortcuts import redirect, render
-from .forms import BrandForm
+from .forms import BrandForm, BrandProductsForm
 from .models import Brand, BrandProducts
 
 # Create your views here.
@@ -75,3 +75,28 @@ def manageBrandView(request, brand_id):
     }
 
     return render(request, 'creatorspace/managebrand.html', context)
+
+def createBrandProductView(request, brand_id):
+
+    if request.method == 'POST':
+
+        form = BrandProductsForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            
+            brand_product = form.save(commit=False)
+            brand_product.brand_id = brand_id
+
+            brand_product.save()
+            return redirect('creatorspace:manage_brand', brand_id=brand_id)
+        
+    else:
+
+        user = request.user
+
+        if not user.is_authenticated:
+            return redirect('errorhandler:not_authenticated')
+
+        form = BrandProductsForm()
+
+    return render(request, 'creatorspace/createbrandlisting.html', {'form': form, 'brand_id': brand_id})

@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from .models import Brand 
+from .models import Brand, BrandProducts 
 
 class BrandForm(forms.ModelForm):
     class Meta:
@@ -38,3 +38,22 @@ class BrandForm(forms.ModelForm):
         if commit:
             brand.save()
         return brand
+    
+class BrandProductsForm(forms.ModelForm):
+    class Meta:
+        model = BrandProducts
+        fields = ['product_name', 'product_description', 'product_image', 'product_sizes', 'product_price'
+                  , 'quantity', 'release_date', 'is_active']
+
+
+    def clean_product_name(self):
+        product_name = self.cleaned_data.get('product_name')
+        if len(product_name) < 5:
+            raise forms.ValidationError("Product name must be at least 5 characters long.")
+        return product_name
+
+    def clean_product_description(self):
+        product_description = self.cleaned_data.get('product_description')
+        if len(product_description) < 20:
+            raise forms.ValidationError("Product description must be at least 20 characters long.")
+        return product_description
