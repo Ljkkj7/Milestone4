@@ -6,7 +6,6 @@
 <div class="create-brand-header">
     <h1>Create a Product Listing</h1>
     <p>Create a new product listing for your brand and reach sneaker enthusiasts worldwide.</p>
-    <hr>
 </div>
 <section class="create-brand-section">
     <div class="container">
@@ -31,6 +30,7 @@
 
                 <div class="form-group">
                     {{ form.product_sizes.label_tag }}
+                    <p class="form-help-text">Enter available sizes separated by commas (e.g., 6, 7, 8, 9).</p>
                     {{ form.product_sizes.errors }}
                     {{ form.product_sizes }}
                 </div>

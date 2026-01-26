@@ -39,11 +39,17 @@ class BrandForm(forms.ModelForm):
             brand.save()
         return brand
     
+class DateInput(forms.DateInput):
+    input_type = 'date'
+    
 class BrandProductsForm(forms.ModelForm):
     class Meta:
         model = BrandProducts
         fields = ['product_name', 'product_description', 'product_image', 'product_sizes', 'product_price'
                   , 'quantity', 'release_date', 'is_active']
+        widgets = {
+            'release_date': DateInput(),
+        }
 
 
     def clean_product_name(self):
