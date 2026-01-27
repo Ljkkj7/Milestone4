@@ -2773,7 +2773,7 @@ body {
 }
 
 /* ---------------------------
-   BRAND PRODUCT LISTING STYLING
+   BRAND PRODUCT LISTING FORM STYLING
 ---------------------------- */
 
 .create-brand-header {
@@ -2794,4 +2794,81 @@ body {
     font-size: 12px;
     color: #888;
     margin-top: 4px;
+}
+
+.create-brand-form .form-row {
+    display: flex;
+    gap: 16px;
+    border: 2px solid #000;
+    padding: 20px;
+    margin-bottom: 24px;
+}
+
+.create-brand-form .form-half label {
+    text-align: center;
+    display: block;
+    margin-bottom: 24px;
+}
+
+.create-brand-form .form-half input {
+    margin: 0 auto;
+    display: block;
+    justify-content: center;
+}
+
+/* ---------------------------
+   BRAND PRODUCT LISTING STYLING
+---------------------------- */
+
+.manage-brand-listing-item {
+    width: 90%;
+    margin: 0 auto 20px auto;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    border: 2px solid #000;
+    border-radius: 10px;
+    padding: 20px;
+    background: #fff;
+}
+
+.manage-brand-listing-item:hover {
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.manage-brand-listing-item .listing-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.listing-info h3 {
+    font-size: 18px;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    text-align: center;
+}
+
+.listing-size, .listing-price, .listing-quantity {
+    font-size: 14px;
+    color: #444;
+    font-weight: 600;
+}
+
+.listing-size {
+    text-align: center;
+    margin-top: 18px;
+}
+
+.brand-listing-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+}
+
+.listing-actions {
+    display: flex;
+    justify-content: space-between;
 }

@@ -27,7 +27,7 @@ class BrandProducts(models.Model):
     product_name = models.CharField(max_length=200)
     product_description = models.TextField()
     product_image = models.ImageField(upload_to='brand_products/', null=True, blank=True)
-    product_sizes = models.JSONField()
+    product_sizes = models.TextField()
     product_price = models.DecimalField(max_digits=10, decimal_places=2)
     quantity = models.PositiveIntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)

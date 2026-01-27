@@ -40,7 +40,7 @@
                     <div class="form-group form-half">
                             {{ form.product_price.label_tag }}
                             {{ form.product_price.errors }}
-                            {{ form.product_price }}
+                            {{ form.product_price}}
                     </div>
 
                     <div class="form-group form-half">
@@ -70,7 +70,10 @@
                     {{ form.product_image }}
                 </div>
 
-                <button type="submit" class="btn-primary btn-large">Create Listing</button>
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary btn-large">Create Listing</button>
+                    <a href="{% url 'creatorspace:brand_dashboard' %}" class="btn-secondary btn-large create-btn">Cancel</a>
+                </div>
             </form>
         </div>
     </div>

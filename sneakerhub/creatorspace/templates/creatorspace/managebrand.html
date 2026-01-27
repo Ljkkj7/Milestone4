@@ -57,13 +57,15 @@
                                 {% endif %}
                                 <div class="listing-info">
                                     <h3>{{ sneaker.product_name }}</h3>
-                                    <p class="listing-size">Size's available: {% for size in sneaker.product_sizes %}{{ size }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
-                                    <p class="listing-price">£{{ sneaker.product_price }}</p>
-                                    <p class="listing-quantity">Quantity: {{ sneaker.quantity }}</p>
+                                    <p class="listing-size">Size's available: {{ sneaker.product_sizes }}</p>
+                                    <div class="brand-listing-row">
+                                        <p class="listing-price">£{{ sneaker.product_price }}</p>
+                                        <p class="listing-quantity">Quantity: {{ sneaker.quantity }}</p>
+                                    </div>
                                     <p class="listing-description">{{ sneaker.product_description|truncatewords:15 }}</p>
                                 </div>
                                 <div class="listing-actions">
-                                    <a href="" class="btn-primary">Edit</a>
+                                    <a href="" class="btn-secondary">Edit</a>
                                     <a href="" class="btn-secondary">Delete</a>
                                 </div>
                             </div>
