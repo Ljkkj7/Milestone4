@@ -115,3 +115,15 @@ def customerLogoutView(request):
     """Customer logout view"""
     logout(request)
     return redirect('home')
+
+def authCheck(request):
+    """Error view for unauthenticated access"""
+
+    user = request.user
+
+    print(user.is_authenticated)
+
+    if not user.is_authenticated:
+        return False
+    
+    return True

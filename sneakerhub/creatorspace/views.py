@@ -1,6 +1,7 @@
 from django.shortcuts import redirect, render
 from .forms import BrandForm, BrandProductsForm
 from .models import Brand, BrandProducts
+from core.views import authCheck
 from django.contrib.auth.models import User
 
 # Create your views here.
@@ -35,10 +36,7 @@ def brandCreateView(request):
             return redirect('creatorspace:creatorspace')
         
     else:
-
-        user = request.user
-
-        if not user.is_authenticated:
+        if not authCheck(request):
             return redirect('errorhandler:not_authenticated')
 
         form = BrandForm()
@@ -97,11 +95,19 @@ def createBrandProductView(request, brand_id):
         
     else:
 
-        user = request.user
-
-        if not user.is_authenticated:
+        if not authCheck(request):
             return redirect('errorhandler:not_authenticated')
 
         form = BrandProductsForm()
 
     return render(request, 'creatorspace/createbrandlisting.html', {'form': form, 'brand_id': brand_id})
+
+
+def manageCollaboratorsView(request):
+    
+    if not authCheck(request):
+        return redirect('errorhandler:not_authenticated')
+
+    # Future implementation for managing collaborators will go here
+
+    return render(request, 'creatorspace/managecollaborators.html')

@@ -2,6 +2,7 @@ from django.shortcuts import redirect, render
 from .models import Sneaker
 from creatorspace.models import Brand
 from account.models import WishlistItem
+from core.views import authCheck
 
 
 # Create your views here.
@@ -72,7 +73,7 @@ def sneakerDetailView(request, sneaker_id):
     # Detail view for a single sneaker
     user = request.user
 
-    if not user.is_authenticated:
+    if not authCheck(request):
         return redirect('errorhandler:not_authenticated')
 
     sneaker = Sneaker.objects.get(id=sneaker_id)
