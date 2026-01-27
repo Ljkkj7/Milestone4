@@ -2820,7 +2820,7 @@ body {
    BRAND PRODUCT LISTING STYLING
 ---------------------------- */
 
-.manage-brand-listing-item {
+.manage-brand-listing-item, .brand-product-item {
     width: 90%;
     margin: 0 auto 20px auto;
     box-shadow: 0 4px 16px rgba(0,0,0,0.1);
@@ -2830,7 +2830,7 @@ body {
     background: #fff;
 }
 
-.manage-brand-listing-item:hover {
+.manage-brand-listing-item:hover, .brand-product-item:hover {
     transform: translateY(-2px);
     transition: all 0.3s ease;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
@@ -2871,4 +2871,23 @@ body {
 .listing-actions {
     display: flex;
     justify-content: space-between;
+}
+
+/* ---------------------------
+   BRAND PRODUCT STYLING
+---------------------------- */
+
+.brand-detail-product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    margin-bottom: 32px;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.brand-product-link {
+    text-decoration: none;
+    color: inherit;
 }

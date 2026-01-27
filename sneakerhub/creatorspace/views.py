@@ -57,9 +57,11 @@ def brandDashboardView(request):
 
 def brandDetailView(request, brand_id):
     brand = Brand.objects.get(id=brand_id)
+    brand_products = BrandProducts.objects.filter(brand_id=brand_id)
 
     context = {
         'brand': brand,
+        'brand_products': brand_products,
     }
 
     return render(request, 'creatorspace/branddetail.html', context)

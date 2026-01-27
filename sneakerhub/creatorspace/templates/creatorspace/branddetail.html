@@ -29,7 +29,30 @@
         </div>
         <div class="brand-detail-product-grid">
             <div class="brand-detail-product">
-                <p class="no-data">No products available for this brand yet.</p>
+                {% if brand_products %}
+                    {% for sneaker in brand_products %}
+                    <a href="" class="brand-product-link">
+                        <div class="brand-product-item">
+                            {% if sneaker.product_image %}
+                                <img src="{{ sneaker.product_image.url }}" alt="{{ sneaker.product_name }}" class="listing-thumb">
+                            {% else %}
+                                <div class="listing-thumb-placeholder">No Image</div>
+                            {% endif %}
+                            <div class="listing-info">
+                                <h3>{{ sneaker.product_name }}</h3>
+                                <p class="listing-size">Size's available: {{ sneaker.product_sizes }}</p>
+                                <div class="brand-listing-row">
+                                    <p class="listing-price">£{{ sneaker.product_price }}</p>
+                                    <p class="listing-quantity">Quantity: {{ sneaker.quantity }}</p>
+                                </div>
+                                <p class="listing-description">{{ sneaker.product_description|truncatewords:15 }}</p>
+                            </div>
+                        </div>
+                    </a>
+                    {% endfor %}
+                {% else %}
+                    <p class="no-data">No products available for this brand yet.</p>
+                {% endif %}
             </div>
         </div>
     </section>
