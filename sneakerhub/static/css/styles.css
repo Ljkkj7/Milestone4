@@ -2643,7 +2643,7 @@ body {
     flex: 2;
     padding-left: 40px;
     width: 60%;
-    max-width: 700px;
+    max-width: 900px;
 }
 
 .manage-brand-header {
@@ -2772,6 +2772,13 @@ body {
     text-align: center;
 }
 
+.manage-brand-listings {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
 /* ---------------------------
    BRAND PRODUCT LISTING FORM STYLING
 ---------------------------- */
@@ -2820,7 +2827,7 @@ body {
    BRAND PRODUCT LISTING STYLING
 ---------------------------- */
 
-.manage-brand-listing-item, .brand-product-item {
+.manage-brand-listing-item {
     width: 90%;
     margin: 0 auto 20px auto;
     box-shadow: 0 4px 16px rgba(0,0,0,0.1);
@@ -2890,4 +2897,24 @@ body {
 .brand-product-link {
     text-decoration: none;
     color: inherit;
+}
+
+.brand-product-item {
+    border: 2px solid #000;
+    border-radius: 10px;
+    padding: 20px;
+    background: #fff;
+    text-align: center;
+    transition: all 0.3s ease;
+    max-height: 400px;
+    margin: 12px auto 24px auto;
+}
+
+.brand-product-item .listing-description {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin: 12px 0;
+    font-size: 14px;
+    color: #444;
 }

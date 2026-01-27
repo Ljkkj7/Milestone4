@@ -28,9 +28,8 @@
             {% endif %}
         </div>
         <div class="brand-detail-product-grid">
-            <div class="brand-detail-product">
-                {% if brand_products %}
-                    {% for sneaker in brand_products %}
+            {% if brand_products %}
+                {% for sneaker in brand_products %}
                     <a href="" class="brand-product-link">
                         <div class="brand-product-item">
                             {% if sneaker.product_image %}
@@ -40,7 +39,7 @@
                             {% endif %}
                             <div class="listing-info">
                                 <h3>{{ sneaker.product_name }}</h3>
-                                <p class="listing-size">Size's available: {{ sneaker.product_sizes }}</p>
+                                <p class="listing-size">Size's available: <br>{{ sneaker.product_sizes }}</p>
                                 <div class="brand-listing-row">
                                     <p class="listing-price">£{{ sneaker.product_price }}</p>
                                     <p class="listing-quantity">Quantity: {{ sneaker.quantity }}</p>
@@ -49,11 +48,10 @@
                             </div>
                         </div>
                     </a>
-                    {% endfor %}
-                {% else %}
-                    <p class="no-data">No products available for this brand yet.</p>
-                {% endif %}
-            </div>
+                {% endfor %}
+            {% else %}
+                <p class="no-data">No products available for this brand yet.</p>
+            {% endif %}
         </div>
     </section>
 </section>
