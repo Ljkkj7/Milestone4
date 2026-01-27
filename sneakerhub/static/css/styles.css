@@ -2619,6 +2619,46 @@ body {
     padding-left: 20px;
 }
 
+.container .brand-users-description {
+    border-top: 2px solid #000;
+    padding-top: 5px;
+}
+
+.brand-users-description {
+    margin-bottom: 20px;
+}
+
+.brand-users-description h2 {
+    font-size: 22px;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    padding-bottom: 20px;
+    color: #000;
+    text-align: center;
+    border-bottom: 2px solid #000;
+}
+
+.brand-users-description h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.brand-users-description span {
+    text-transform: none;
+}
+
+.brand-users-description p {
+    font-size: 18px;
+    color: #444;
+    line-height: 1.6;
+    text-align: center;
+    text-transform: uppercase;
+}
+
 /* ---------------------------
    BRAND MANAGEMENT STYLING
 ---------------------------- */

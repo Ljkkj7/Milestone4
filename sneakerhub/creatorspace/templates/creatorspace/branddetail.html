@@ -18,6 +18,19 @@
                 <p>{{ brand.brand_bio }}</p>
             </div>
         </div>
+        <div class="container">
+            <div class="brand-users-description">
+                <h2>Space Collaborators</h2>
+                <h3>Owner</h3>
+                <p>{{ brand_owner.username }} <span>- Socials Placheolder</span></p>
+                {% if collaborators %} <!-- Dummy django to start building out initial Django logic -->
+                    <h3>Additional Collaborators:</h3>
+                    {% for collaborator in collaborators %}
+                        <p>{{ collaborator.username }}</p>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
     </section>
     <section class="brand-detail-column-right">
         <div class="brand-detail-banner">
