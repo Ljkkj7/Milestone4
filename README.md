@@ -2,7 +2,7 @@
 
 ## 📘 Project Overview
 
-SneakerHub is a full-stack e-commerce web application designed for sneaker enthusiasts and small retailers/brands. It allows users to browse, search, and purchase trainers from independent listers (2nd hand) & independent/small brands or creators. The site integrates with Stripe for payments and provides user authentication, product & user reviews, and order management.
+SneakerHub is a full-stack e-commerce web application designed for sneaker enthusiasts and small retailers/brands. It allows users to browse, search, and purchase trainers from independent listers (2nd hand) & independent/small brands or creators. The site integrates with Stripe for payments and provides user authentication, product & user reviews, and receipting.
 
 ---
 
@@ -111,6 +111,33 @@ Order 1—1 Payment
 2. Stripe Checkout → secure payment.
 3. Stripe webhook → confirms success and finalizes order.
 4. Order receipt sent to user.
+
+---
+
+## User Experience
+
+### User Stories
+
+#### **Customer**
+
+##### **Persona:**
+
+General shopper browsing SneakerHub to buy sneakers.
+
+##### **Story:**
+
+As a customer, I want to quickly find sneakers that match my preferences (brand, size, price, condition), review clear photos and descriptions, add items to a cart, and complete a secure checkout so I can confidently purchase sneakers that fit my needs.
+
+##### **Acceptance Criteria:**
+
+1. Search and filters return relevant results
+2. product pages show images, size/condition details, seller info, & shipping estimate
+3. checkout integrates with Stripe and sends confirmation email
+4. order history displays.
+
+##### **Typical Flow:**
+
+- Search → apply filters → select listing → add to cart → checkout via Stripe → receive confirmation and email receipt.
 
 ---
 
