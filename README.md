@@ -160,6 +160,27 @@ As a brand owner, I want to create and manage a verified brand profile, add offi
 
 Complete verification → create brand page → create products → review analytics.
 
+#### **Marketplace Seller**
+
+##### **Persona:**
+
+Individual reseller listing second‑hand sneakers.
+
+##### **Story:**
+
+As a marketplace seller, I want to create accurate listings quickly & manage active inventory.
+
+##### **Acceptance Criteria:**
+
+1. Fast listing workflow (title, size, price, photos)
+2. Seller dashboard for listings & orders;
+3. Order workflow locks inventory at checkout and notifies seller
+4. Order tracking and clear payout/fee info.
+
+##### **Typical Flow:**
+
+Publish listing → buyer purchases → seller notified → order delisted → receive reciept.
+
 ---
 
 ## 🧪 Testing
