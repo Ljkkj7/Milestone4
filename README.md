@@ -103,19 +103,56 @@ MS4/
 
 ## 🧮 Data Model Overview
 
-**Core Models:**
+This section summarizes the Django models currently defined across the apps and their key fields and relationships.
 
-- `Sneaker` — product details (name, brand, size, price, image, created_at, updated_at, owner)
-- `UserReview` — user reviews
-- `Order`, `OrderItem`, `Payment` — order and transaction data
+Core models (concise):
 
-ER Diagram example:
+- `Sneaker` (`marketplace.models.Sneaker`)
+  - Fields: `name`, `brand`, `size` (Decimal), `price` (Decimal), `description`, `image`, `owner` (FK → `auth.User`), `created_at`, `updated_at`, `is_sold`
+  - Notes: Owner is the listing user; used by marketplace listings and order items.
+
+- `Review` (`reviews.models.Review`)
+  - Fields: `reviewed_user` (FK → `auth.User`), `reviewer_id` (FK → `auth.User`, related_name=`reviews_made`), `rating`, `comment`, `created_at`, `updated_at`
+  - Notes: Stores ratings/comments between users (sellers/buyers or creators).
+
+- `Brand` (`creatorspace.models.Brand`)
+  - Fields: `owner` (FK → `auth.User`), `brand_name`, `brand_bio`, `brand_banner`, `brand_logo`
+  - Notes: Represents verified brand profiles and owner relationship.
+
+- `BrandCollaborators` (`creatorspace.models.BrandCollaborators`)
+  - Fields: `brand` (FK → `Brand`), `collaborator` (FK → `auth.User`), permission booleans (`product_edit_permission`, `product_upload_permission`, `product_delete_permission`, `profile_edit_permission`)
+  - Notes: Role-based collaborator records with scoped permissions.
+
+- `BrandProducts` (`creatorspace.models.BrandProducts`)
+  - Fields: `brand` (FK → `Brand`), `product_name`, `product_description`, `product_image`, `product_sizes` (text), `product_price`, `quantity`, `created_at`, `updated_at`, `release_date`, `is_active`
+  - Notes: Official brand SKUs / product records (variants stored in `product_sizes` text field).
+
+- `Order` (`checkout.models.Order`)
+  - Fields: `user` (FK → `auth.User`), `order_number` (unique), `full_name`, `email`, `phone_number`, `country`, `postcode`, `town_or_city`, `street_address1/2`, `county`, `date`, `delivery_cost`, `order_total`, `grand_total`
+  - Notes: Order totals are computed from related `OrderItem` lineitems; order number generated on save.
+
+- `OrderItem` (`checkout.models.OrderItem`)
+  - Fields: `order` (FK → `Order`, related_name=`lineitems`), `sneaker` (FK → `marketplace.Sneaker`), `line_total`
+  - Notes: Line total is set to the linked `Sneaker.price` on save; order ↔ items form the order lifecycle.
+
+- `CreatorAccountModel` (`account.models.CreatorAccountModel`)
+  - Fields: `user` (FK → `auth.User`), `bio`, `created_at`, `updated_at`
+  - Notes: Creator/brand owner profile metadata (can be used to store creator-specific information).
+
+- `WishlistItem` (`account.models.WishlistItem`)
+  - Fields: `user` (FK → `auth.User`, related_name=`wishlist_items`), `sneaker` (FK → `marketplace.Sneaker`), `added_at`
+  - Notes: Unique constraint on (`user`,`sneaker`) enforces one wishlist entry per user per sneaker.
+
+Quick ER overview:
 
 ```
-User 1—∞ Sneaker
-User 1—∞ UserReview
-Sneaker ∞—∞ Order (via OrderItem)
-Order 1—1 Payment
+auth.User 1—∞ Sneaker
+auth.User 1—∞ Review (as reviewer and reviewed_user)
+Brand 1—∞ BrandProducts
+Brand 1—∞ BrandCollaborators
+Order 1—∞ OrderItem → Sneaker
+auth.User 1—∞ Order
+auth.User 1—∞ WishlistItem
 ```
 
 ---
