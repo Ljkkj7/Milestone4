@@ -181,6 +181,28 @@ As a marketplace seller, I want to create accurate listings quickly & manage act
 
 Publish listing → buyer purchases → seller notified → order delisted → receive reciept.
 
+#### **Brand Collaborator**
+
+##### **Persona:**
+
+Designer, photographer, or influencer collaborating with a brand.
+
+##### **Story:**
+
+As a brand collaborator, I want role-based access to contribute content, preview draft listings, and access analytics so I can coordinate with the brand.
+
+##### **Acceptance Criteria:**
+
+1. Role-based invitations and scoped permissions
+2. Draft and approval workflow (submit → review → publish)
+3. Asset upload
+4. Collaboration metrics for wishlists
+5. Audit trail of approvals and changes.
+
+##### **Typical Flow:**
+
+Brand invites collaborator → collaborator uploads assets to draft listing → brand approves → listing goes live and both view analytics.
+
 ---
 
 ## 🧪 Testing
