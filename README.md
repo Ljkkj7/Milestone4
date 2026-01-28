@@ -1,5 +1,9 @@
 # SneakerHub — Full-Stack E-commerce Web Application
 
+<div style="text-align: center;">
+    <img src="sneakerhub/static/images/sneakherhubreadmelogo.png">
+</div>
+
 ## Table of Contents
 
 - [Project Overview](#project-overview)
