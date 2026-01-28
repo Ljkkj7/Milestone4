@@ -39,7 +39,7 @@
             <div class="dashboard-card">
                 <h2>Manage Collaborators</h2>
                 <p>Add, edit, or remove your brand collaborators.</p>
-                <a href="#" class="btn-primary btn-large">Manage Collaborators</a>
+                <a href="{% url 'creatorspace:manage_collaborators' user_id=user.id %}" class="btn-primary btn-large">Manage Collaborators</a>
             </div>
         </div>
     </div>

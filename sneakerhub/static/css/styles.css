@@ -2915,7 +2915,7 @@ body {
     margin-top: 12px;
 }
 
-.listing-actions {
+.listing-actions-brand {
     display: flex;
     justify-content: space-between;
 }

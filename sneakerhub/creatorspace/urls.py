@@ -10,4 +10,5 @@ urlpatterns = [
     path('brand/<int:brand_id>/', views.brandDetailView, name='brand_detail'),
     path('brand/manage/<int:brand_id>/', views.manageBrandView, name='manage_brand'),
     path('brand/<int:brand_id>/add-products/', views.createBrandProductView, name='add_brand_products'),
-]
+    path('collaborators/<int:user_id>/', views.manageCollaboratorsView, name='manage_collaborators'),
+]   

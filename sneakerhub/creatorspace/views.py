@@ -103,11 +103,13 @@ def createBrandProductView(request, brand_id):
     return render(request, 'creatorspace/createbrandlisting.html', {'form': form, 'brand_id': brand_id})
 
 
-def manageCollaboratorsView(request):
+def manageCollaboratorsView(request, user_id):
+
+    user_id = request.user.id
     
     if not authCheck(request):
         return redirect('errorhandler:not_authenticated')
 
     # Future implementation for managing collaborators will go here
 
-    return render(request, 'creatorspace/managecollaborators.html')
+    return render(request, 'creatorspace/managecollaborators.html', {'user_id': user_id})
