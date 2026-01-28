@@ -1,5 +1,22 @@
 # SneakerHub — Full-Stack E-commerce Web Application
 
+## Table of Contents
+
+- [Project Overview](#project-overview)
+- [Purpose & Target Audience](#purpose--target-audience)
+- [Tech Stack](#tech-stack)
+- [Project Structure](#project-structure)
+- [Features](#features)
+- [User Experience](#user-experience)
+  - [User Stories](#user-stories)
+  - [UX Testing Grid](#ux-testing-grid)
+- [Data Model Overview](#data-model-overview)
+- [Stripe Integration](#stripe-integration)
+- [Testing](#testing)
+  - [Test Suites (per app)](#test-suites-per-app)
+- [Installation & Setup](#installation--setup)
+- [Deployment Guide](#deployment-guide)
+
 ## 📘 Project Overview
 
 SneakerHub is a full-stack e-commerce web application designed for sneaker enthusiasts and small retailers/brands. It allows users to browse, search, and purchase trainers from independent listers (2nd hand) & independent/small brands or creators. The site integrates with Stripe for payments and provides user authentication, product & user reviews, and receipting.
