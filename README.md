@@ -139,6 +139,27 @@ As a customer, I want to quickly find sneakers that match my preferences (brand,
 
 - Search → apply filters → select listing → add to cart → checkout via Stripe → receive confirmation and email receipt.
 
+#### **Brand Owner**
+
+##### **Persona:**
+
+Small brand owner managing official product listings and brand presence.
+
+##### **Story:**
+
+As a brand owner, I want to create and manage a verified brand profile, add official product listings (with variants), view sales analytics, and run promotions so I can grow my brand and convert visitors into customers
+
+##### **Acceptance Criteria:**
+
+1. Brand verification workflow; brand page with logo/banner/bio
+2. Listing creation supports sizes, images, quantities & release dates.
+3. Dashboard shows sales, top products and wishlists
+4. Promotions management and analytics.
+
+##### **Typical Flow:**
+
+Complete verification → create brand page → create products → review analytics.
+
 ---
 
 ## 🧪 Testing
