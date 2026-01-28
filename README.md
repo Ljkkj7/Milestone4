@@ -29,68 +29,43 @@ SneakerHub is a full-stack e-commerce web application designed for sneaker enthu
 
 ```
 MS4/
-├─ Sneakerhub/
-│  ├─ core/
-│  ├─ marketplace/
+├─ README.md
+├─ requirements.txt
+├─ sneakerhub/
 │  ├─ account/
+│  ├─ cart/
+│  ├─ checkout/
+│  ├─ core/
+│  ├─ creatorspace/
+│  ├─ errorhandler/
 │  ├─ listings/
-│  └─ sneakerhub/
-├─ templates/
+│  ├─ marketplace/
+│  ├─ publicprofile/
+│  ├─ reviews/
+│  ├─ seed/
+│  │  └─ seed_listings.sql
+│  ├─ sneakerhub/        # Django project package
+│  ├─ manage.py
+│  ├─ static/
+│  │  ├─ css/
+│  │  ├─ images/
+│  │  └─ js/
+│  └─ templates/
 ├─ static/
-├─ media/
-├─ manage.py
-└─ requirements.txt
+│  ├─ css/
+│  ├─ images/
+│  └─ js/
+├─ templates/
+│  ├─ 404.html
+│  ├─ base.html
+│  ├─ home.html
+│  └─ ...
+└─ media/
+  ├─ brand_banners/
+  ├─ brand_logos/
+  ├─ brand_products/
+  └─ media/
 ```
-
----
-
-## ⚙️ Installation & Setup
-
-### 1. Clone repository
-
-```bash
-git clone https://github.com/<yourusername>/sneakerhub.git
-cd sneakerhub
-```
-
-### 2. Create and activate a virtual environment
-
-```bash
-python -m venv venv
-source venv/bin/activate  # Mac/Linux
-venv\Scripts\activate     # Windows
-```
-
-### 3. Install dependencies
-
-```bash
-pip install -m requirements.txt
-```
-
-### 4. Set environment variables
-
-Create a `.env` file in the root directory:
-
-```
-DEBUG=True
-SECRET_KEY=your_secret_key
-DATABASE_URL=your_database_url
-STRIPE_SECRET_KEY=your_stripe_secret
-STRIPE_PUBLISHABLE_KEY=your_stripe_public
-STRIPE_WEBHOOK_SECRET=your_webhook_secret
-EMAIL_HOST_USER =email_host
-EMAIL_HOST_PASSWORD =email_pass
-```
-
-### 5. Run migrations & start server
-
-```bash
-python manage.py makemigrations
-python manage.py migrate
-python manage.py runserver
-```
-
----
 
 ## 🧩 Features
 
@@ -196,7 +171,55 @@ Below is an overview of each test suite in the project, what they cover, and whe
   - Purpose: Placeholder file currently.
   - Add tests for cart-to-checkout flow, Stripe webhook handling (use mocks), and order creation/validation.
 
-## 🚀 Deployment Guide
+---
+
+## ⚙️ Installation & Setup
+
+### 1. Clone repository
+
+```bash
+git clone https://github.com/<yourusername>/sneakerhub.git
+cd sneakerhub
+```
+
+### 2. Create and activate a virtual environment
+
+```bash
+python -m venv venv
+source venv/bin/activate  # Mac/Linux
+venv\Scripts\activate     # Windows
+```
+
+### 3. Install dependencies
+
+```bash
+pip install -m requirements.txt
+```
+
+### 4. Set environment variables
+
+Create a `.env` file in the root directory:
+
+```
+DEBUG=True
+SECRET_KEY=your_secret_key
+DATABASE_URL=your_database_url
+STRIPE_SECRET_KEY=your_stripe_secret
+STRIPE_PUBLISHABLE_KEY=your_stripe_public
+STRIPE_WEBHOOK_SECRET=your_webhook_secret
+EMAIL_HOST_USER =email_host
+EMAIL_HOST_PASSWORD =email_pass
+```
+
+### 5. Run migrations & start server
+
+```bash
+python manage.py makemigrations
+python manage.py migrate
+python manage.py runserver
+```
+
+---
 
 ### On Render / Heroku
 
@@ -239,5 +262,9 @@ Below is an overview of each test suite in the project, what they cover, and whe
 - Payments: Stripe API
 - Icons: Lucide / FontAwesome
 - UI Framework:
+
+### External Code
+
+- Django date input [StackOverflow](https://stackoverflow.com/questions/3367091/whats-the-cleanest-simplest-to-get-running-datepicker-in-django)
 
 ---
