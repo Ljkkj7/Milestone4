@@ -194,6 +194,15 @@ As a customer, I want to quickly find sneakers that match my preferences (brand,
 3. checkout integrates with Stripe and sends confirmation email
 4. order history displays.
 
+##### **Testing Matrix (Customer)**
+
+| Acceptance Criteria                                                        | Test(s)                                                                                  | Status  | Notes                                                                              |
+| -------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | :-----: | ---------------------------------------------------------------------------------- |
+| Search and filters return relevant results                                 | marketplace/tests.py — `SneakerViewTests` (search/filter cases)                          | ✅ Pass | Basic marketplace view tests included; extend with specific filter tests as needed |
+| Product pages show images, size/condition, seller info & shipping estimate | marketplace/tests.py — `SneakerViewTests` / templates tests                              | ✅ Pass | Sneaker view and templates verified in marketplace tests                           |
+| Checkout integrates with Stripe and sends confirmation email               | checkout/tests.py — `CheckoutViewTests.test_checkout_post_creates_order_and_clears_cart` | ✅ Pass | Payment intent creation covered in view; send_mail patched and asserted in tests   |
+| Order history displays                                                     | account/tests.py — `AccountPageTests.test_account_page_renders_for_owner`                | ✅ Pass | Account page tests assert `user_orders` in context                                 |
+
 ##### **Typical Flow:**
 
 - Search → apply filters → select listing → add to cart → checkout via Stripe → receive confirmation and email receipt.
@@ -219,6 +228,15 @@ As a brand owner, I want to create and manage a verified brand profile, add offi
 
 Complete verification → create brand page → create products → review analytics.
 
+##### **Testing Matrix (Brand Owner)**
+
+| Acceptance Criteria                                                 | Test(s)                                                                  |     Status     | Notes                                                                                              |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------------ | :------------: | -------------------------------------------------------------------------------------------------- |
+| Brand verification workflow; brand page with logo/banner/bio        | creatorspace/tests.py — brand/profile tests                              | ⚠️ Not covered | No dedicated tests yet; consider adding creatorspace tests to validate brand page and media fields |
+| Listing creation supports sizes, images, quantities & release dates | listings/tests.py — `ListingCreationFormTests`, `createListingViewTests` |    ✅ Pass     | Listing form and create view tests validate field handling and successful creation                 |
+| Dashboard shows sales, top products and wishlists                   | analytics/dashboard tests                                                | ⚠️ Not covered | Add dashboard integration tests to validate aggregated metrics                                     |
+| Promotions management and analytics                                 | promotions/tests.py                                                      | ⚠️ Not covered | Not currently covered by tests                                                                     |
+
 #### **Marketplace Seller**
 
 ##### **Persona:**
@@ -239,6 +257,15 @@ As a marketplace seller, I want to create accurate listings quickly & manage act
 ##### **Typical Flow:**
 
 Publish listing → buyer purchases → seller notified → order delisted → receive reciept.
+
+##### **Testing Matrix (Marketplace Seller)**
+
+| Acceptance Criteria                                            | Test(s)                                                                   |        Status        | Notes                                                                             |
+| -------------------------------------------------------------- | ------------------------------------------------------------------------- | :------------------: | --------------------------------------------------------------------------------- |
+| Fast listing workflow (title, size, price, photos)             | listings/tests.py — `ListingCreationFormTests` & `createListingViewTests` |       ✅ Pass        | Form and view tests cover required fields and image handling                      |
+| Seller dashboard for listings & orders                         | seller/dashboard tests                                                    |    ⚠️ Not covered    | Dashboard views and permissions need dedicated tests                              |
+| Order workflow locks inventory at checkout and notifies seller | checkout/tests.py, marketplace integration tests                          | ⚠️ Partially covered | Order creation tested; inventory locking/notification to seller not fully covered |
+| Order tracking and clear payout/fee info                       | orders/tests.py                                                           |    ⚠️ Not covered    | Add tests for payout calculations and order tracking UI/API                       |
 
 #### **Brand Collaborator**
 
@@ -261,6 +288,16 @@ As a brand collaborator, I want role-based access to contribute content, preview
 ##### **Typical Flow:**
 
 Brand invites collaborator → collaborator uploads assets to draft listing → brand approves → listing goes live and both view analytics.
+
+##### **Testing Matrix (Brand Collaborator)**
+
+| Acceptance Criteria                                     | Test(s)                                               |     Status     | Notes                                                      |
+| ------------------------------------------------------- | ----------------------------------------------------- | :------------: | ---------------------------------------------------------- |
+| Role-based invitations and scoped permissions           | creatorspace/tests.py — collaborator permission tests | ⚠️ Not covered | Add tests for invite flow and role permissions             |
+| Draft and approval workflow (submit → review → publish) | listings/tests.py integration                         | ⚠️ Not covered | Draft/publish workflow tests are needed                    |
+| Asset upload                                            | listings/tests.py — image handling                    |    ✅ Pass     | Listing form tests validate optional image upload handling |
+| Collaboration metrics for wishlists                     | analytics/tests.py                                    | ⚠️ Not covered | Add tests to validate metrics aggregation from wishlists   |
+| Audit trail of approvals and changes                    | audit/tests.py                                        | ⚠️ Not covered | Implement and test audit logs for collaborator actions     |
 
 ---
 
