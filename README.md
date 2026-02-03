@@ -103,47 +103,45 @@ MS4/
 
 ## 🧮 Data Model Overview
 
-This section summarizes the Django models currently defined across the apps and their key fields and relationships.
-
-Core models (concise):
+Core models:
 
 - `Sneaker` (`marketplace.models.Sneaker`)
   - Fields: `name`, `brand`, `size` (Decimal), `price` (Decimal), `description`, `image`, `owner` (FK → `auth.User`), `created_at`, `updated_at`, `is_sold`
-  - Notes: Owner is the listing user; used by marketplace listings and order items.
+  - Owner is the listing user; used by marketplace listings and order items.
 
 - `Review` (`reviews.models.Review`)
   - Fields: `reviewed_user` (FK → `auth.User`), `reviewer_id` (FK → `auth.User`, related_name=`reviews_made`), `rating`, `comment`, `created_at`, `updated_at`
-  - Notes: Stores ratings/comments between users (sellers/buyers or creators).
+  - Stores ratings/comments between users (sellers/buyers or creators).
 
 - `Brand` (`creatorspace.models.Brand`)
   - Fields: `owner` (FK → `auth.User`), `brand_name`, `brand_bio`, `brand_banner`, `brand_logo`
-  - Notes: Represents verified brand profiles and owner relationship.
+  - Represents verified brand profiles and owner relationship.
 
 - `BrandCollaborators` (`creatorspace.models.BrandCollaborators`)
   - Fields: `brand` (FK → `Brand`), `collaborator` (FK → `auth.User`), permission booleans (`product_edit_permission`, `product_upload_permission`, `product_delete_permission`, `profile_edit_permission`)
-  - Notes: Role-based collaborator records with scoped permissions.
+  - Role-based collaborator records with scoped permissions.
 
 - `BrandProducts` (`creatorspace.models.BrandProducts`)
   - Fields: `brand` (FK → `Brand`), `product_name`, `product_description`, `product_image`, `product_sizes` (text), `product_price`, `quantity`, `created_at`, `updated_at`, `release_date`, `is_active`
-  - Notes: Official brand SKUs / product records (variants stored in `product_sizes` text field).
+  - Official brand SKUs / product records (variants stored in `product_sizes` text field).
 
 - `Order` (`checkout.models.Order`)
   - Fields: `user` (FK → `auth.User`), `order_number` (unique), `full_name`, `email`, `phone_number`, `country`, `postcode`, `town_or_city`, `street_address1/2`, `county`, `date`, `delivery_cost`, `order_total`, `grand_total`
-  - Notes: Order totals are computed from related `OrderItem` lineitems; order number generated on save.
+  - Order totals are computed from related `OrderItem` lineitems; order number generated on save.
 
 - `OrderItem` (`checkout.models.OrderItem`)
   - Fields: `order` (FK → `Order`, related_name=`lineitems`), `sneaker` (FK → `marketplace.Sneaker`), `line_total`
-  - Notes: Line total is set to the linked `Sneaker.price` on save; order ↔ items form the order lifecycle.
+  - Line total is set to the linked `Sneaker.price` on save; order ↔ items form the order lifecycle.
 
 - `CreatorAccountModel` (`account.models.CreatorAccountModel`)
   - Fields: `user` (FK → `auth.User`), `bio`, `created_at`, `updated_at`
-  - Notes: Creator/brand owner profile metadata (can be used to store creator-specific information).
+  - Creator/brand owner profile metadata (can be used to store creator-specific information).
 
 - `WishlistItem` (`account.models.WishlistItem`)
   - Fields: `user` (FK → `auth.User`, related_name=`wishlist_items`), `sneaker` (FK → `marketplace.Sneaker`), `added_at`
-  - Notes: Unique constraint on (`user`,`sneaker`) enforces one wishlist entry per user per sneaker.
+  - Unique constraint on (`user`,`sneaker`) enforces one wishlist entry per user per sneaker.
 
-Quick ER overview:
+ER Overview:
 
 ```
 auth.User 1—∞ Sneaker
@@ -154,6 +152,8 @@ Order 1—∞ OrderItem → Sneaker
 auth.User 1—∞ Order
 auth.User 1—∞ WishlistItem
 ```
+
+ER Diagrams:
 
 ---
 
@@ -265,16 +265,26 @@ Brand invites collaborator → collaborator uploads assets to draft listing → 
 
 ## 🧪 Testing
 
-Run all tests:
+Run the full Django test suite from the project root:
 
 ```bash
 python manage.py test
 ```
 
+Quick commands:
+
+```bash
+# run tests for a specfic django app only
+python manage.py test <Django App Name>
+
+# run a single test case [Example]
+python manage.py test core.tests.CustomerFormTests.test_signup_creates_user_and_sends_email
+```
+
 ### Test coverage:
 
 - Models (Sneaker, Brand, Order)
-- Form Usage (Listing CRUD)
+- Form usage (listing creation, signup forms)
 - Cart logic (add, remove, update)
 - Checkout integration (mock Stripe webhooks)
 - Authentication and permissions
@@ -311,6 +321,23 @@ Below is an overview of each test suite in the project, what they cover, and whe
     - `SneakerAdminTests`:
       - Admin user creation and login checks to ensure admin site interactions can be performed in tests.
   - Important dependencies: `marketplace.models.Sneaker`, Django `User` model, and the `marketplace` URL.
+
+- **Core tests**: [core/tests.py](core/tests.py#L1-L200)
+  - Purpose: Unit and integration tests for authentication-related forms, views, email utilities, and small helper functions used across the site.
+  - Key test classes & cases:
+    - `CustomerFormTests`:
+      - `test_clean_email_duplicate`: rejects signup when an existing user email is supplied.
+      - `test_signup_creates_user_and_sends_email`: valid signup creates a `User`, logs in, and triggers `send_mail` (patched).
+    - `AuthViewsTests`:
+      - `test_login_success_redirects`: posts valid credentials and expects redirect to `marketplace`.
+      - `test_login_invalid_shows_error`: invalid credentials renders `login` with an error message.
+      - `test_logout_redirects_home`: authenticated user logout redirects to `home`.
+    - `EmailFunctionTests`:
+      - `test_send_signup_confirmation_email`: patches `send_mail` and asserts it's called with the new user's email.
+    - `AuthCheckTests`:
+      - `test_authcheck_anonymous`: `authCheck` returns `False` for anonymous users.
+      - `test_authcheck_authenticated`: `authCheck` returns `True` for authenticated users.
+  - Important dependencies: `core.views` (forms and helpers), Django `User` model, `django.test.Client`, `django.test.RequestFactory`, and the URL names `signup`, `login`, `logout`, `marketplace`, and `home`.
 
 - **Account tests**: [account/tests.py](account/tests.py#L1-L60)
   - Purpose: Placeholder file currently.
