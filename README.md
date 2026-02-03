@@ -340,8 +340,17 @@ Below is an overview of each test suite in the project, what they cover, and whe
   - Important dependencies: `core.views` (forms and helpers), Django `User` model, `django.test.Client`, `django.test.RequestFactory`, and the URL names `signup`, `login`, `logout`, `marketplace`, and `home`.
 
 - **Account tests**: [account/tests.py](account/tests.py#L1-L60)
-  - Purpose: Placeholder file currently.
-  - Add tests for authentication flows (signup, login, logout), profile views, and permission checks.
+  - Purpose: Unit and integration tests for user account features — profile rendering, wishlist behaviour, and creator account metadata.
+  - Key test classes & cases:
+    - `CreatorAccountModelTests`:
+      - `test_str`: `CreatorAccountModel.__str__` contains the owner's username.
+    - `WishlistViewTests`:
+      - `test_add_to_wishlist_creates_item_and_prevents_duplicates`: a logged-in user can add a `Sneaker` to their wishlist; duplicate adds are prevented.
+      - `test_remove_from_wishlist_deletes_item_or_errors`: removing a wishlist item deletes it; attempting to remove a non-existent item redirects with an error.
+    - `AccountPageTests`:
+      - `test_account_page_permission_denied_for_other_user`: users cannot view other users' account pages and are redirected to a permission error.
+      - `test_account_page_renders_for_owner`: owners can access their account page and receive the expected context variables (e.g., `available_sneakers`).
+  - Important dependencies: `account.views` (profile and wishlist views), `account.models.WishlistItem`, `CreatorAccountModel`, `marketplace.models.Sneaker`, `checkout.models.Order`, and URL names `account` / `wishlist_add` / `wishlist_remove` / `sneaker_detail`.
 
 - **Checkout tests**: [checkout/tests.py](checkout/tests.py#L1-L200)
   - Purpose: Unit and integration tests for the checkout flow — validating `Order`/`OrderItem` model behaviour, `CheckoutForm` rendering, and the `checkoutView` POST flow including email sending and cart handling.
