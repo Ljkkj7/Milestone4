@@ -74,6 +74,44 @@ This project uses Django templates for server-rendered pages, a handcrafted CSS 
   - Consider a light utility class set or a micro-framework (Tailwind or similar) if the project grows large.
   - Minify and bundle static assets for production.
 
+## 🔤 Fonts & Colours
+
+This section details the current font and colour choices, the rationale tied to the site's purpose and audience, accessibility considerations, and recommended next steps.
+
+- Fonts (current):
+  - System sans-serif stack is used as the default: `font-family: Arial, sans-serif;` (see `static/css/styles.css`). This provides predictable rendering across platforms and a neutral, modern baseline.
+  - Typography usage in templates:
+    - Logo and navigation use heavy weight and uppercase (`font-weight: 900`, `text-transform: uppercase`) to create a bold brand presence.
+    - Headlines use larger sizes and strong weights (700–900) to emphasize product names and hero messaging.
+    - Body copy uses comfortable sizes (13–16px) and readable line-height for listing and detail pages.
+
+  Rationale: system sans-serif keeps load fast (no external font requests) and fits the streetwear/urban aesthetic.
+
+- Colours (current palette):
+  - Primary text/brand: `#000` (black) - used for logos, buttons, and primary copy.
+  - Background: `#fff` (white) - clean canvas for product photography and high contrast with black text.
+  - Muted text / UI: `#1a1a1a` and `#666` - for secondary content and subtle UI elements.
+  - Footer background: `#fafafa`, borders `#e5e5e5` - soft separation of page areas.
+  - Error/alert: `#fa755a` / `#FF746C` - warm orange/red to signal issues and draw attention.
+  - Accent / success hover: `#BEE5B0` - pale green used for secondary hover states and to suggest positive actions.
+
+  Rationale: the monochrome primary palette (black/white and greys) signals premium minimalism and keeps the focus on sneaker photography and product detail - an aesthetic consistent with sneaker culture and small creator brands. Accent colours are used sparingly to indicate status (errors, success) without competing with product imagery.
+
+- Mapping palette to audience & purpose:
+  - Sneaker collectors and streetwear shoppers respond well to high-contrast, imagery-first layouts that highlight product photos - the black/white palette achieves this by lowering visual noise and emphasizing visuals.
+  - Bold, uppercase branding conveys energy and confidence common in sneaker culture; heavy weights and condensed spacing support the brand voice.
+  - Small brands and creators benefit from a neutral canvas that doesn't clash with product photography and allows diverse brand aesthetics to show through.
+
+- Accessibility & contrast:
+  - High contrast of black on white.
+  - Actionable checks:
+    - Run color-contrast checks (e.g., axe, Lighthouse) on primary CTA buttons and overlay text on images.
+    - Ensure interactive elements have focus outlines and sufficiently large hit areas.
+
+- Implementation notes and next steps:
+  - Centralize color and font tokens using CSS variables (e.g., `--color-bg`, `--color-text`, `--brand-accent`) to make theme changes trivial.
+  - Create a short `STYLEGUIDE.md` or a living component library documenting button styles, form controls, and typography scales.
+
 ---
 
 ## 🗂️ Project Structure
