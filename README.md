@@ -333,7 +333,7 @@ python manage.py test core.tests.CustomerFormTests.test_signup_creates_user_and_
 
 Below is an overview of each test suite in the project, what they cover, and where to find them.
 
-- **Listings tests**: [listings/tests.py](listings/tests.py#L1-L200)
+- **Listings tests**: [listings/tests.py](sneakerhub/listings/tests.py#L1-L200)
   - Purpose: Validate the `ListingCreationForm` and the `create_listing` view logic used when users create new sneaker listings.
   - Key test classes & cases:
     - `ListingCreationFormTests`:
@@ -349,7 +349,7 @@ Below is an overview of each test suite in the project, what they cover, and whe
       - Edge cases: description-too-short rejected, and successful submissions redirect appropriately.
   - Important dependencies: `listings.forms.ListingCreationForm`, `marketplace.models.Sneaker`, and the URL name `create_listing`.
 
-- **Marketplace tests**: [marketplace/tests.py](marketplace/tests.py#L1-L200)
+- **Marketplace tests**: [marketplace/tests.py](sneakerhub/marketplace/tests.py#L1-L200)
   - Purpose: Unit tests for the `Sneaker` model, basic marketplace views, and admin-related behavior.
   - Key test classes & cases:
     - `SneakerModelTests`:
@@ -360,7 +360,7 @@ Below is an overview of each test suite in the project, what they cover, and whe
       - Admin user creation and login checks to ensure admin site interactions can be performed in tests.
   - Important dependencies: `marketplace.models.Sneaker`, Django `User` model, and the `marketplace` URL.
 
-- **Core tests**: [core/tests.py](core/tests.py#L1-L200)
+- **Core tests**: [core/tests.py](sneakerhub/core/tests.py#L1-L200)
   - Purpose: Unit and integration tests for authentication-related forms, views, email utilities, and small helper functions used across the site.
   - Key test classes & cases:
     - `CustomerFormTests`:
@@ -377,7 +377,7 @@ Below is an overview of each test suite in the project, what they cover, and whe
       - `test_authcheck_authenticated`: `authCheck` returns `True` for authenticated users.
   - Important dependencies: `core.views` (forms and helpers), Django `User` model, `django.test.Client`, `django.test.RequestFactory`, and the URL names `signup`, `login`, `logout`, `marketplace`, and `home`.
 
-- **Account tests**: [account/tests.py](account/tests.py#L1-L60)
+- **Account tests**: [account/tests.py](sneakerhub/account/tests.py#L1-L60)
   - Purpose: Unit and integration tests for user account features — profile rendering, wishlist behaviour, and creator account metadata.
   - Key test classes & cases:
     - `CreatorAccountModelTests`:
@@ -390,7 +390,7 @@ Below is an overview of each test suite in the project, what they cover, and whe
       - `test_account_page_renders_for_owner`: owners can access their account page and receive the expected context variables (e.g., `available_sneakers`).
   - Important dependencies: `account.views` (profile and wishlist views), `account.models.WishlistItem`, `CreatorAccountModel`, `marketplace.models.Sneaker`, `checkout.models.Order`, and URL names `account` / `wishlist_add` / `wishlist_remove` / `sneaker_detail`.
 
-- **Checkout tests**: [checkout/tests.py](checkout/tests.py#L1-L200)
+- **Checkout tests**: [checkout/tests.py](sneakerhub/checkout/tests.py#L1-L200)
   - Purpose: Unit and integration tests for the checkout flow — validating `Order`/`OrderItem` model behaviour, `CheckoutForm` rendering, and the `checkoutView` POST flow including email sending and cart handling.
   - Key test classes & cases:
     - `CheckoutFormTests`:
@@ -428,31 +428,31 @@ python manage.py test
 This project follows several defensive-programming practices to reduce bugs, prevent data corruption, and make integrations robust. Key measures and where to find them:
 
 - **Input validation (forms):** use of Django `Form`/`ModelForm` validations and custom `clean_...` methods to validate user input (e.g. email uniqueness and password rules). See `core.views.CustomerUserCreationForm` for examples.
-  - File: [core/views.py](core/views.py#L1-L200)
+  - File: [core/views.py](sneakerhub/core/views.py#L1-L200)
 
 - **Authentication & authorization:** views guarded with `@login_required`, explicit user checks and redirects to permission/error handlers to prevent unauthorized access.
-  - Files: [account/views.py](account/views.py#L1-L200), [core/views.py](core/views.py#L1-L200)
+  - Files: [account/views.py](sneakerhub/account/views.py#L1-L200), [core/views.py](sneakerhub/core/views.py#L1-L200)
 
 - **Error handling & rollback:** use of `get_object_or_404`, try/except blocks, user-facing `messages.error()`, and cleanup (e.g., deleting a partially-created order when an item is missing) to avoid leaving inconsistent state.
-  - File: [checkout/views.py](checkout/views.py#L1-L200)
+  - File: [checkout/views.py](sneakerhub/checkout/views.py#L1-L200)
 
 - **Data integrity & constraints:** database-level uniqueness (`unique_together`), typed fields for money (`DecimalField`), and model `save()` overrides that ensure consistent derived fields (e.g., `Order.order_number`).
-  - Files: [account/models.py](account/models.py#L1-L200), [checkout/models.py](checkout/models.py#L1-L200)
+  - Files: [account/models.py](sneakerhub/account/models.py#L1-L200), [checkout/models.py](sneakerhub/checkout/models.py#L1-L200)
 
 - **External integration safety:** secrets and keys are read from `settings` (not hard-coded); external calls (email, Stripe) are invoked server-side and are patched/mocked in tests to avoid side effects during CI.
-  - Files: [checkout/views.py](checkout/views.py#L1-L200), [core/views.py](core/views.py#L1-L200)
+  - Files: [checkout/views.py](sneakerhub/checkout/views.py#L1-L200), [core/views.py](sneakerhub/core/views.py#L1-L200)
 
 - **Session & CSRF protection:** templates include CSRF tokens for form posts; session modifications are explicit (`request.session.modified = True`) when cart is cleared.
-  - Templates and views: `templates/*` (CSRF), [checkout/views.py](checkout/views.py#L1-L200)
+  - Templates and views: `templates/*` (CSRF), [checkout/views.py](sneakerhub/checkout/views.py#L1-L200)
 
 - **User feedback & observability:** consistent use of the Django `messages` framework to surface recoverable errors and validation issues to users.
-  - Example: [checkout/views.py](checkout/views.py#L1-L200)
+  - Example: [checkout/views.py](sneakerhub/checkout/views.py#L1-L200)
 
 - **Defensive tests & mocks:** unit tests cover edge-cases, patch external services (e.g., `send_mail` and Stripe) and use `RequestFactory` and `Client` to validate both view-level and model-level behavior.
-  - See test suites: [core/tests.py](core/tests.py#L1-L200), [checkout/tests.py](checkout/tests.py#L1-L200), [account/tests.py](account/tests.py#L1-L200), and [TESTING.md](TESTING.md)
+  - See test suites: [core/tests.py](sneakerhub/core/tests.py#L1-L200), [checkout/tests.py](sneakerhub/checkout/tests.py#L1-L200), [account/tests.py](sneakerhub/account/tests.py#L1-L200)
 
 - **Principle of least privilege & ownership checks:** model ownership used to scope actions (e.g., `Sneaker.owner`) and views validate the requesting user's identity before exposing profile or owner-only actions.
-  - Files: [marketplace/models.py](marketplace/models.py#L1-L200), [account/views.py](account/views.py#L1-L200)
+  - Files: [marketplace/models.py](sneakerhub/marketplace/models.py#L1-L200), [account/views.py](sneakerhub/account/views.py#L1-L200)
 
 These measures are intentionally lightweight and idiomatic to Django — they prioritize correct server-side validation, clear user feedback, and testable integration points.
 
