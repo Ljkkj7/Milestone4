@@ -18,6 +18,7 @@
 - [Stripe Integration](#stripe-integration)
 - [Testing](#testing)
   - [Test Suites (per app)](#test-suites-per-app)
+  - [Test grid](#test-grid)
 - [Installation & Setup](#installation--setup)
 - [Deployment Guide](#deployment-guide)
 
@@ -367,6 +368,22 @@ Below is an overview of each test suite in the project, what they cover, and whe
       - `test_checkout_post_missing_sneaker_redirects_to_cart`: when a sneaker in the cart is missing, the view redirects back to the cart and does not leave a partial order.
   - Important dependencies: `checkout.forms.CheckoutForm`, `checkout.models.Order`, `checkout.models.OrderItem`, `checkout.views.send_order_confirmation_email` (patched), `marketplace.models.Sneaker`, `django.test.Client`, and the `checkout` URL patterns.
 
+### Test Grid
+
+Run the full test suite:
+
+```bash
+python manage.py test
+```
+
+| App                              | Purpose                                                                      |                                                  Key tests (examples) | Status  | Notes                                                    |
+| -------------------------------- | ---------------------------------------------------------------------------- | --------------------------------------------------------------------: | :-----: | -------------------------------------------------------- |
+| Core                             | Authentication/signup forms, helpers, and email utilities                    | CustomerFormTests, AuthViewsTests, EmailFunctionTests, AuthCheckTests | ✅ Pass | All core tests pass locally                              |
+| Checkout                         | Checkout flow, `Order`/`OrderItem` behaviour, `CheckoutForm`, view POST flow | CheckoutFormTests, OrderModelTests, OrderItemTests, CheckoutViewTests | ✅ Pass | Checkout tests pass; email sending patched in tests      |
+| Account                          | Profile rendering, wishlist add/remove, creator account model                |         CreatorAccountModelTests, WishlistViewTests, AccountPageTests | ✅ Pass | Tests verify permission handling and wishlist uniqueness |
+| Marketplace / Listings / Reviews | Models, views, and admin behaviours across marketplace features              |              SneakerModelTests, ListingCreationFormTests, ReviewTests | ✅ Pass | Existing tests included in full run passed               |
+| Full Run                         | Run all tests                                                                |                                                                     — | ✅ Pass | 34 tests ran successfully at time of report              |
+
 ---
 
 ## ⚙️ Installation & Setup
@@ -374,7 +391,7 @@ Below is an overview of each test suite in the project, what they cover, and whe
 ### 1. Clone repository
 
 ```bash
-git clone https://github.com/<yourusername>/sneakerhub.git
+git clone https://github.com/ljkkj7/sneakerhub.git
 cd sneakerhub
 ```
 
