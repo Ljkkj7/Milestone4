@@ -423,6 +423,45 @@ python manage.py test
 
 ---
 
+## 🛡️ Defensive Programming
+
+This project follows several defensive-programming practices to reduce bugs, prevent data corruption, and make integrations robust. Key measures and where to find them:
+
+- **Input validation (forms):** use of Django `Form`/`ModelForm` validations and custom `clean_...` methods to validate user input (e.g. email uniqueness and password rules). See `core.views.CustomerUserCreationForm` for examples.
+  - File: [core/views.py](core/views.py#L1-L200)
+
+- **Authentication & authorization:** views guarded with `@login_required`, explicit user checks and redirects to permission/error handlers to prevent unauthorized access.
+  - Files: [account/views.py](account/views.py#L1-L200), [core/views.py](core/views.py#L1-L200)
+
+- **Error handling & rollback:** use of `get_object_or_404`, try/except blocks, user-facing `messages.error()`, and cleanup (e.g., deleting a partially-created order when an item is missing) to avoid leaving inconsistent state.
+  - File: [checkout/views.py](checkout/views.py#L1-L200)
+
+- **Data integrity & constraints:** database-level uniqueness (`unique_together`), typed fields for money (`DecimalField`), and model `save()` overrides that ensure consistent derived fields (e.g., `Order.order_number`).
+  - Files: [account/models.py](account/models.py#L1-L200), [checkout/models.py](checkout/models.py#L1-L200)
+
+- **External integration safety:** secrets and keys are read from `settings` (not hard-coded); external calls (email, Stripe) are invoked server-side and are patched/mocked in tests to avoid side effects during CI.
+  - Files: [checkout/views.py](checkout/views.py#L1-L200), [core/views.py](core/views.py#L1-L200)
+
+- **Session & CSRF protection:** templates include CSRF tokens for form posts; session modifications are explicit (`request.session.modified = True`) when cart is cleared.
+  - Templates and views: `templates/*` (CSRF), [checkout/views.py](checkout/views.py#L1-L200)
+
+- **User feedback & observability:** consistent use of the Django `messages` framework to surface recoverable errors and validation issues to users.
+  - Example: [checkout/views.py](checkout/views.py#L1-L200)
+
+- **Defensive tests & mocks:** unit tests cover edge-cases, patch external services (e.g., `send_mail` and Stripe) and use `RequestFactory` and `Client` to validate both view-level and model-level behavior.
+  - See test suites: [core/tests.py](core/tests.py#L1-L200), [checkout/tests.py](checkout/tests.py#L1-L200), [account/tests.py](account/tests.py#L1-L200), and [TESTING.md](TESTING.md)
+
+- **Principle of least privilege & ownership checks:** model ownership used to scope actions (e.g., `Sneaker.owner`) and views validate the requesting user's identity before exposing profile or owner-only actions.
+  - Files: [marketplace/models.py](marketplace/models.py#L1-L200), [account/views.py](account/views.py#L1-L200)
+
+These measures are intentionally lightweight and idiomatic to Django — they prioritize correct server-side validation, clear user feedback, and testable integration points.
+
+Recommended next steps to strengthen defenses:
+
+- Add end-to-end tests for Stripe webhook handling and seller notifications.
+- Add explicit logging around external failures (email, Stripe) and rate-limit sensitive endpoints if exposed via API.
+- Introduce schema-level constraints and migrations to enforce invariants where appropriate.
+
 ## ⚙️ Installation & Setup
 
 ### 1. Clone repository
