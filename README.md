@@ -45,6 +45,35 @@ SneakerHub is a full-stack e-commerce web application designed for sneaker enthu
 **Version Control:** Git & GitHub
 **Testing:** Django TestCase / pytest-django
 
+## 🎨 UI & Styles
+
+This project uses Django templates for server-rendered pages, a handcrafted CSS file, and a few focused JavaScript utilities for UI behaviour. The styling approach is intentionally simple and component-driven so views remain easy to reason about and adapt.
+
+- Templates & layout: page scaffolding and shared components are implemented in Django templates (see [templates/base.html](templates/base.html) and the individual page templates in the `templates/` folder). Templates include semantic markup and partials for headers, footers, and auth sections.
+
+- CSS: the main stylesheet lives under `static/css/` (for example: [static/css/styles.css](static/css/styles.css)). Styles favor utility and component classes such as `auth-section`, `auth-container`, `btn-primary-auth`, and `checkout-input` to keep presentation decoupled from markup.
+
+- JavaScript: small, focused scripts handle client-side UI behaviours (toggle menus, nav color changes, and simple confirmation flows). See `static/js/` for files like `menu.js`, `nav_colour_change.js`, and `confirm.js`.
+
+- Responsive & mobile-first: templates and CSS use responsive containers and media queries. The markup includes accessible hooks like `aria-label` and `aria-describedby` on interactive elements to improve screen-reader experience.
+
+- Forms & inputs: placeholders and ARIA attributes are consistently applied by form classes (e.g., `CheckoutForm` sets placeholders and `checkout-input` classes). This improves usability and testability.
+
+- Accessibility considerations:
+  - Pages include semantic headings, descriptive link text, and explicit `alt` attributes for images where available.
+  - ARIA attributes are used for interactive controls in templates.
+  - Focus states and keyboard navigation are supported by default browser behaviour and reinforced by CSS where appropriate.
+
+- Conventions and maintainability:
+  - Component-style class naming keeps CSS scoped and predictable.
+  - Static assets are organized under `static/` and media uploads under `media/`.
+  - Templates reuse `base.html` for consistent header/footer and meta tags.
+
+- Recommendations to strengthen the UI stack:
+  - Adopt CSS variables for theme values (colors, spacing) to simplify theming.
+  - Consider a light utility class set or a micro-framework (Tailwind or similar) if the project grows large.
+  - Minify and bundle static assets for production.
+
 ---
 
 ## 🗂️ Project Structure
