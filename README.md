@@ -343,9 +343,20 @@ Below is an overview of each test suite in the project, what they cover, and whe
   - Purpose: Placeholder file currently.
   - Add tests for authentication flows (signup, login, logout), profile views, and permission checks.
 
-- **Checkout tests**: [checkout/tests.py](checkout/tests.py#L1-L60)
-  - Purpose: Placeholder file currently.
-  - Add tests for cart-to-checkout flow, Stripe webhook handling (use mocks), and order creation/validation.
+- **Checkout tests**: [checkout/tests.py](checkout/tests.py#L1-L200)
+  - Purpose: Unit and integration tests for the checkout flow — validating `Order`/`OrderItem` model behaviour, `CheckoutForm` rendering, and the `checkoutView` POST flow including email sending and cart handling.
+  - Key test classes & cases:
+    - `CheckoutFormTests`:
+      - `test_placeholders_and_classes`: form fields include `placeholder` text and the `checkout-input` CSS class.
+    - `OrderModelTests`:
+      - `test_order_number_generated_on_save`: saving an `Order` generates a unique `order_number`.
+      - `test_order_update_total_and_delivery`: `update_total` correctly sums line items, applies delivery rules, and sets `grand_total`.
+    - `OrderItemTests`:
+      - `test_orderitem_save_sets_line_total`: saving an `OrderItem` sets `line_total` from the linked `Sneaker.price`.
+    - `CheckoutViewTests`:
+      - `test_checkout_post_creates_order_and_clears_cart`: posting valid checkout data creates an `Order`, persists `OrderItem`s, clears the session cart, and triggers the order confirmation email (email sending is patched in tests).
+      - `test_checkout_post_missing_sneaker_redirects_to_cart`: when a sneaker in the cart is missing, the view redirects back to the cart and does not leave a partial order.
+  - Important dependencies: `checkout.forms.CheckoutForm`, `checkout.models.Order`, `checkout.models.OrderItem`, `checkout.views.send_order_confirmation_email` (patched), `marketplace.models.Sneaker`, `django.test.Client`, and the `checkout` URL patterns.
 
 ---
 
