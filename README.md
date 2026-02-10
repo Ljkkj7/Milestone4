@@ -191,6 +191,25 @@ What they would add: together these features would turn SneakerHub into a strong
 
 ---
 
+## 🖼️ Wireframes
+
+Wireframe images for each major page are available in the `wireframeimages/` folder. Below is a short description for each page and a link to its wireframe image:
+
+- **Home:** Landing hero, featured collections, and quick links to categories — [homewireframesneakerhub.jpg](wireframeimages/homewireframesneakerhub.jpg)
+- **Marketplace:** Product grid with filters and sorting controls — [marketplacewireframesneakerhub.jpg](wireframeimages/marketplacewireframesneakerhub.jpg)
+- **Sneaker detail:** Product images, description, size/price, and seller info — [sneakerdeatilwireframesneakerhub.jpg](wireframeimages/sneakerdeatilwireframesneakerhub.jpg)
+- **Sneaker listing / Create Listing:** Form to create a marketplace listing with images and size/price fields — [sneakerlistingsneakerhub.jpg](wireframeimages/sneakerlistingsneakerhub.jpg)
+- **Cart:** Cart overview, item list, totals, and proceed-to-checkout CTA — [cartwireframesneakerhub.jpg](wireframeimages/cartwireframesneakerhub.jpg)
+- **Checkout:** Address, shipping, and payment fields (Stripe integration) — [checkoutwireframesneakerhub.jpg](wireframeimages/checkoutwireframesneakerhub.jpg)
+- **Order confirmation:** Post-purchase confirmation and order summary/receipt — [orderconfirmationwireframesneakerhub.jpg](wireframeimages/orderconfirmationwireframesneakerhub.jpg)
+- **Account / Dashboard:** User account area showing orders, wishlist, and account settings — [accountwireframesneakerhub.jpg](wireframeimages/accountwireframesneakerhub.jpg)
+- **Public profile:** Public-facing seller/creator profile with listings and bio — [publicprofilewireframesneakerhub.jpg](wireframeimages/publicprofilewireframesneakerhub.jpg)
+- **Brand page:** Creator storefront with banner, logo, and brand products — [brandpagewireframesneakerhub.jpg](wireframeimages/brandpagewireframesneakerhub.jpg)
+- **Creator Space Dashboard:** Creator/brand dashboard for listings, metrics and management — [creatorspacedashboardsneakerhub.jpg](wireframeimages/creatorspacedashboardsneakerhub.jpg)
+- **Login:** User authentication form — [loginwireframesneakerhub.jpg](wireframeimages/loginwireframesneakerhub.jpg)
+- **Signup:** New user registration form — [signupwireframesneakerhub.jpg](wireframeimages/signupwireframesneakerhub.jpg)
+- **Error page:** 404 / error state layout — [errorpagewireframesneakerhub.jpg](wireframeimages/errorpagewireframesneakerhub.jpg)
+
 ## 🧮 Data Model Overview
 
 Core models:
