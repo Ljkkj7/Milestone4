@@ -17,14 +17,15 @@
 - [Wireframes](#️-wireframes)
 - [User Experience](#user-experience)
   - [User Stories](#user-stories)
-- [Data Model Overview](#data-model-overview)
-- [Stripe Integration](#stripe-integration)
-- [Testing](#testing)
+- [Data Model Overview](#-data-model-overview)
+- [Stripe Integration](#-stripe-integration)
+- [Testing](#-testing)
   - [Test Suites (per app)](#test-suites-per-app)
   - [Test grid](#test-grid)
 - [Defensive Programming](#️-defensive-programming)
-- [Installation & Setup](#installation--setup)
-- [Deployment Guide](#deployment-guide)
+- [Installation & Setup](#️-installation--setup)
+- [Future Enhancements](#-future-enhancements)
+- [Credits](#-credits)
 
 ## 📘 Project Overview
 
