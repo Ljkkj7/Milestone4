@@ -38,3 +38,5 @@ def publicProfileView(request, profile_user):
 
     return render(request, 'public_profile.html', context)
 
+
+

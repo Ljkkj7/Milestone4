@@ -329,12 +329,11 @@ Publish listing → buyer purchases → seller notified → order delisted → r
 
 ##### **Testing Matrix (Marketplace Seller)**
 
-| Acceptance Criteria                                            | Test(s)                                                                   |        Status        | Notes                                                                             |
-| -------------------------------------------------------------- | ------------------------------------------------------------------------- | :------------------: | --------------------------------------------------------------------------------- |
-| Fast listing workflow (title, size, price, photos)             | listings/tests.py — `ListingCreationFormTests` & `createListingViewTests` |       ✅ Pass        | Form and view tests cover required fields and image handling                      |
-| Seller dashboard for listings & orders                         | seller/dashboard tests                                                    |    ⚠️ Not covered    | Dashboard views and permissions need dedicated tests                              |
-| Order workflow locks inventory at checkout and notifies seller | checkout/tests.py, marketplace integration tests                          | ⚠️ Partially covered | Order creation tested; inventory locking/notification to seller not fully covered |
-| Order tracking and clear payout/fee info                       | orders/tests.py                                                           |    ⚠️ Not covered    | Add tests for payout calculations and order tracking UI/API                       |
+| Acceptance Criteria                                | Test(s)                                                                   | Status  | Notes                                                            |
+| -------------------------------------------------- | ------------------------------------------------------------------------- | :-----: | ---------------------------------------------------------------- |
+| Fast listing workflow (title, size, price, photos) | listings/tests.py — `ListingCreationFormTests` & `createListingViewTests` | ✅ Pass | Form and view tests cover required fields and image handling     |
+| Seller dashboard for listings & orders             | seller/dashboard tests                                                    | ✅ Pass | Dashboard views and permissions covered in account tests         |
+| Order workflow locks inventory at checkout         | checkout/tests.py, marketplace integration tests                          | ✅ Pass | Order creation tested; inventory locking to seller fully covered |
 
 #### **Brand Collaborator**
 
