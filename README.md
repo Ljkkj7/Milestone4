@@ -13,6 +13,7 @@
 - [Fonts & Colours](#-fonts--colours)
 - [Project Structure](#project-structure)
 - [Features](#features)
+- [Creator Space Scope Reduction](#️-creator-space--planned-features--time-constraints)
 - [User Experience](#user-experience)
   - [User Stories](#user-stories)
 - [Data Model Overview](#data-model-overview)
@@ -168,6 +169,25 @@ MS4/
 - Order management and receipts
 - Product reviews and star ratings
 - Responsive & accessible UI
+
+## 🛠️ Creator Space — Planned Features & Time Constraints
+
+The `creatorspace` app was designed to support small brands and independent creators. Some core models and basic CRUD exist, but several higher‑value creator-focused features were planned and not completed due to time constraints. These features would have meaningfully extended the platform's value for creators and brand collaborators:
+
+- **Brand verification & public brand pages:** verification workflow, storefront pages with banner, logo, and brand bio to increase buyer trust.
+- **Role-based collaborators & invitations:** invite designers, photographers, or team members with scoped permissions (upload, edit, publish).
+- **Drafts & approval workflow:** create draft listings, submit for review, and publish only after approval to support collaborative workflows.
+- **Product variants & inventory management:** first-class variant records (sizes/colors), per-variant stock, and SKU support.
+- **Scheduled releases & pre-orders:** schedule drop times, manage limited releases and pre-order windows.
+- **Bulk CSV/product import:** bulk product upload and updates for efficient catalogue management.
+- **Promotions & discount campaigns:** create discounts, promo codes, and time-limited offers for marketing.
+- **Creator analytics dashboard:** sales, visits, wishlist adds, conversion rates and top products to help creators measure performance.
+- **Payouts & commission reporting:** clear reports for payouts and platform fees to simplify creator accounting.
+- **Rich media galleries & asset management:** multiple images, videos, and asset versioning for higher-quality product pages.
+
+Why these weren't completed: the project timeline prioritized core marketplace, checkout, and listing flows. While the `creatorspace` models (e.g., `Brand`, `BrandProducts`, `BrandCollaborators`) and basic listing functionality were scaffolded, the remaining features require additional implementation time across backend logic, UI, tests, and admin tooling.
+
+What they would add: together these features would turn SneakerHub into a stronger platform for creators — improving brand credibility, enabling collaborative publishing workflows, supporting marketing/promotions, and providing actionable sales insights that help creators grow and scale.
 
 ---
 
@@ -591,14 +611,6 @@ python manage.py runserver
    ```
 
 5. Ensure `DEBUG=False` and `ALLOWED_HOSTS` are set.
-
----
-
-## 📖 Documentation
-
-- `README.md` — project overview & setup
-- `DEPLOYMENT.md` — hosting and environment setup details
-- `TESTING.md` — test plan and TDD evidence
 
 ---
 
