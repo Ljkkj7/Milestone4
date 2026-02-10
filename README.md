@@ -618,7 +618,7 @@ python manage.py runserver
 
 - AI-based sneaker recommendations
 - Limited-edition drop scheduler
-- Wishlist & user notifications
+- User notifications
 - API endpoints for mobile app integration
 - Real-time sneaker price comparison
 
@@ -626,11 +626,10 @@ python manage.py runserver
 
 ## 🏆 Credits
 
-- Developed by:
-- Framework:
+- Developed by: Kian Jenkins
+- Framework: Django
 - Payments: Stripe API
-- Icons: Lucide / FontAwesome
-- UI Framework:
+- UI Framework: CSS
 
 ### External Code
 
