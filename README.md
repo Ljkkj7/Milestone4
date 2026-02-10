@@ -14,6 +14,7 @@
 - [Project Structure](#project-structure)
 - [Features](#features)
 - [Creator Space Scope Reduction](#️-creator-space--planned-features--time-constraints)
+- [Wireframes](#️-wireframes)
 - [User Experience](#user-experience)
   - [User Stories](#user-stories)
 - [Data Model Overview](#data-model-overview)
@@ -263,6 +264,13 @@ auth.User 1—∞ WishlistItem
 ```
 
 ER Diagrams:
+
+<img src="erdimages/erdtitleimagesneakerhub.jpg">
+<img src="erdimages/completeerddiagramsneakerhub.jpg">
+<img src="erdimages/coremodelserdsneakerhub.jpg">
+<img src="erdimages/brandcreatorspaceerdsneakerhub.jpg">
+<img src="erdimages/ordercheckoutmodelssneakerhub.jpg">
+<img src="erdimages/erdsummarysneakerhub.jpg">
 
 ---
 
