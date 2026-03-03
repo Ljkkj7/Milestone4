@@ -8,6 +8,15 @@
         <div class="brand-header">
             <h2>Creators</h2>
         </div>
+        <div class="in-development-popup">
+            <div class="popup-content">
+                <h3>In Development</h3>
+                <p>This feature is currently in development and will be available soon. Stay tuned!</p>
+                <p>In the meantime, feel free to explore our marketplace and discover unique sneakers from various brands.</p>
+                <p>Or coontinue to view a mockup of the creator space.</p>
+                <button class="close-popup-btn">Close</button>
+            </div>
+        </div>
         <div class="brand-grid">
             {% for brand in brands %}
             <a href="{% url 'creatorspace:brand_detail' brand.id %}" class="brand-card-link">
@@ -36,4 +45,18 @@
     </div>
 </section>
 {% endif %}
+{% endblock %}
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const popup = document.querySelector('.in-development-popup');
+        const closeBtn = document.querySelector('.close-popup-btn');
+
+        if (popup && closeBtn) {
+            closeBtn.addEventListener('click', function() {
+                popup.classList.add('hidden');
+            });
+        }
+    });
+</script>
 {% endblock %}
