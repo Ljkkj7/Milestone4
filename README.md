@@ -12,62 +12,46 @@
 - [UI & Styles](#-ui--styles)
 - [Fonts & Colours](#-fonts--colours)
 - [Project Structure](#project-structure)
-- [Features](#features)
 - [Creator Space Scope Reduction](#️-creator-space--planned-features--time-constraints)
 - [Wireframes](#️-wireframes)
-- [User Experience](#user-experience)
   - [User Stories](#user-stories)
 - [Data Model Overview](#-data-model-overview)
-- [Stripe Integration](#-stripe-integration)
 - [Testing](#-testing)
   - [Test Suites (per app)](#test-suites-per-app)
-  - [Test grid](#test-grid)
 - [Defensive Programming](#️-defensive-programming)
 - [Installation & Setup](#️-installation--setup)
-- [Future Enhancements](#-future-enhancements)
 - [Credits](#-credits)
 
-## 📘 Project Overview
 
 SneakerHub is a full-stack e-commerce web application designed for sneaker enthusiasts and small retailers/brands. It allows users to browse, search, and purchase trainers from independent listers (2nd hand) & independent/small brands or creators. The site integrates with Stripe for payments and provides user authentication, product & user reviews, and receipting.
-
 ---
 
-## 🎯 Purpose & Target Audience
 
 **Purpose:** Provide a user friendly and easy to use marketplace for people to list old/collectable shoes. To allow creators/artitst's to list their products for money instead of managing their own brand website.
-**Target audience:** Sneaker collectors, streetwear enthusiasts, small footwear retailers.
 
 ---
 
 ## 🧱 Tech Stack
 
 **Frontend:** HTML5, CSS, JavaScript, Django Templates
-**Backend:** Python 3.11+, Django 4.x
-**Database:** PostgreSQL (production) / SQLite (development)
-**Payments:** Stripe Checkout
 **Deployment:** Render / Heroku / Railway
-**Version Control:** Git & GitHub
 **Testing:** Django TestCase / pytest-django
 
 ## 🎨 UI & Styles
 
 This project uses Django templates for server-rendered pages, a handcrafted CSS file, and a few focused JavaScript utilities for UI behaviour. The styling approach is intentionally simple and component-driven so views remain easy to reason about and adapt.
-
 - Templates & layout: page scaffolding and shared components are implemented in Django templates (see [templates/base.html](templates/base.html) and the individual page templates in the `templates/` folder). Templates include semantic markup and partials for headers, footers, and auth sections.
 
 - CSS: the main stylesheet lives under `static/css/` (for example: [static/css/styles.css](static/css/styles.css)). Styles favor utility and component classes such as `auth-section`, `auth-container`, `btn-primary-auth`, and `checkout-input` to keep presentation decoupled from markup.
 
 - JavaScript: small, focused scripts handle client-side UI behaviours (toggle menus, nav color changes, and simple confirmation flows). See `static/js/` for files like `menu.js`, `nav_colour_change.js`, and `confirm.js`.
 
-- Responsive & mobile-first: templates and CSS use responsive containers and media queries. The markup includes accessible hooks like `aria-label` and `aria-describedby` on interactive elements to improve screen-reader experience.
 
 - Forms & inputs: placeholders and ARIA attributes are consistently applied by form classes (e.g., `CheckoutForm` sets placeholders and `checkout-input` classes). This improves usability and testability.
 
 - Accessibility considerations:
   - Pages include semantic headings, descriptive link text, and explicit `alt` attributes for images where available.
   - ARIA attributes are used for interactive controls in templates.
-  - Focus states and keyboard navigation are supported by default browser behaviour and reinforced by CSS where appropriate.
 
 - Conventions and maintainability:
   - Component-style class naming keeps CSS scoped and predictable.
@@ -77,7 +61,6 @@ This project uses Django templates for server-rendered pages, a handcrafted CSS 
 - Recommendations to strengthen the UI stack:
   - Adopt CSS variables for theme values (colors, spacing) to simplify theming.
   - Consider a light utility class set or a micro-framework (Tailwind or similar) if the project grows large.
-  - Minify and bundle static assets for production.
 
 ## 🔤 Fonts & Colours
 
@@ -86,7 +69,6 @@ This section details the current font and colour choices, the rationale tied to 
 - Fonts (current):
   - System sans-serif stack is used as the default: `font-family: Arial, sans-serif;` (see `static/css/styles.css`). This provides predictable rendering across platforms and a neutral, modern baseline.
   - Typography usage in templates:
-    - Logo and navigation use heavy weight and uppercase (`font-weight: 900`, `text-transform: uppercase`) to create a bold brand presence.
     - Headlines use larger sizes and strong weights (700–900) to emphasize product names and hero messaging.
     - Body copy uses comfortable sizes (13–16px) and readable line-height for listing and detail pages.
 

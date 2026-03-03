@@ -127,3 +127,19 @@ def authCheck(request):
         return False
     
     return True
+
+def returnsView(request):
+    """Returns policy page view"""
+    return render(request, 'returns.html')
+
+def shippingView(request):
+    """Shipping information page view"""
+    return render(request, 'shipping.html')
+
+def faqView(request):
+    """FAQ page view"""
+    return render(request, 'faq.html')
+
+def contactView(request):
+    """Contact information page view"""
+    return render(request, 'contact.html')

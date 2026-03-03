@@ -52,6 +52,12 @@
     <div class="container footer-inner">
         © {{ now.year }} SneakerHub - Crafted for sneaker lovers
     </div>
+    <div class="footer-links">
+        <a href="{% url 'shipping' %}">Shipping</a>
+        <a href="{% url 'returns' %}">Returns</a>
+        <a href="{% url 'faq' %}">FAQ</a>
+        <a href="{% url 'contact' %}">Contact Us</a>
+    </div>
 </footer>
 
 {% block postloadjs %}
