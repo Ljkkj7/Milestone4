@@ -2958,3 +2958,76 @@ body {
     font-size: 14px;
     color: #444;
 }
+
+/* ---------------------------
+   INFO PAGES: CONTACT / FAQ / SHIPPING / RETURNS
+---------------------------- */
+.info-section, .contact-section, .faq-section, .shipping-section, .returns-section {
+    margin: 48px 0;
+    padding: 48px 20px;
+    background: transparent;
+}
+
+.info-section .container, .contact-section .container, .faq-section .container,
+.shipping-section .container, .returns-section .container {
+    max-width: 980px;
+    margin: 0 auto;
+}
+
+.info-section h1, .contact-section h1, .faq-section h1,
+.shipping-section h1, .returns-section h1 {
+    font-size: 36px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    margin-bottom: 12px;
+}
+
+.info-section h2, .contact-section h2, .faq-section h2,
+.shipping-section h2, .returns-section h2 {
+    font-size: 16px;
+    font-weight: 800;
+    margin-top: 18px;
+    margin-bottom: 8px;
+}
+
+.info-section p, .info-section li,
+.contact-section p, .contact-section li,
+.faq-section p, .faq-section li,
+.shipping-section p, .shipping-section li,
+.returns-section p, .returns-section li {
+    font-size: 16px;
+    color: #444;
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.info-section a, .contact-section a, .faq-section a,
+.shipping-section a, .returns-section a {
+    color: #000;
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+.info-card {
+    border: 2px solid #000;
+    background: #fff;
+    padding: 24px;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    margin-top: 18px;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+    .info-section, .contact-section, .faq-section, .shipping-section, .returns-section {
+        padding: 28px 14px;
+    }
+
+    .info-section h1, .contact-section h1, .faq-section h1,
+    .shipping-section h1, .returns-section h1 {
+        font-size: 28px;
+    }
+
+    .info-section p, .info-section li { font-size: 15px; }
+}
