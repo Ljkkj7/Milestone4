@@ -808,6 +808,12 @@ body {
     line-height: 1.6;
 }
 
+@media (max-width: 768px) {
+    .marketplace-intro h1 {
+        font-size: 28px;
+    }
+}
+
 /* ---------------------------
    SNEAKER DETAIL STYLING
 ---------------------------- */
@@ -877,6 +883,24 @@ body {
     justify-content: center;
     width: 250px;
     margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .sneaker-detail {
+        flex-direction: column;
+        margin-left: 0;
+        padding: 0 16px;
+    }
+
+    .sneaker-info {
+        margin-left: 0;
+        max-width: 100%;
+    }
+
+    .sneaker-image {
+        width: 100%;
+        height: 280px;
+    }
 }
 
 @media(max-width:425px) {
