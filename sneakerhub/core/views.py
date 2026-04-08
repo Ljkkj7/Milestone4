@@ -59,7 +59,7 @@ def sendSignUpConfirmationEmail(user):
         <div style='padding: 32px;'>
             <h2 style='font-size: 22px; color: #000; margin-top: 0;'>Welcome to SneakerHub!</h2>
             <p style='font-size: 16px; color: #1a1a1a;'>Hi <b>{user.username}</b>,</p>
-            <p style='font-size: 16px;'>Thank you for signing up at SneakerHub! We're excited to have you on board.</p>
+            <p style='font-size: 16px;'>Thank you for signing up at SneakerHub! Were excited to have you on board.</p>
             <p style='font-size: 16px;'>Start exploring our marketplace and find your perfect pair of sneakers today.</p>
             <p style='font-size: 16px;'>If you have any questions or need assistance, feel free to reach out to our support team.</p>
             <p style='font-size: 15px; color: #888; margin-top: 32px; text-align: center;'>Best Regards,<br>SneakerHub Team</p>
@@ -72,7 +72,7 @@ def sendSignUpConfirmationEmail(user):
         plain_message,
         settings.EMAIL_HOST_USER,
         [user.email],
-        fail_silently=False,
+        fail_silently=True,
         html_message=html_message,
     ) 
 
