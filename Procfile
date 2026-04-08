@@ -1,0 +1,1 @@
+web: cd sneakerhub && gunicorn sneakerhub.wsgi --log-file -
