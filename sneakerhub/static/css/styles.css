@@ -234,6 +234,8 @@ body {
     margin: 0 auto;
     padding: 80px;
     width: 750px;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .hero-text h1 {
@@ -256,9 +258,24 @@ body {
     width: 100%;
 }
 
-@media(max-width:768px){
+@media (max-width: 768px) {
     .hero-text {
-        width: 500px;
+        width: 100%;
+        padding: 32px 20px;
+    }
+
+    .hero-text h1 {
+        font-size: 26px;
+    }
+
+    .hero-text p {
+        font-size: 16px;
+        margin-top: 20px;
+    }
+
+    .hero {
+        min-height: 600px;
+        padding: 40px 16px;
     }
 }
 
