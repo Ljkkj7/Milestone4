@@ -46,7 +46,9 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'cloudinary_storage',
     'django.contrib.staticfiles',
+    'cloudinary'
     'core',
     'marketplace',
     'account',
@@ -57,8 +59,6 @@ INSTALLED_APPS = [
     'errorhandler',
     'reviews',
     'creatorspace',
-    'cloudinary_storage',
-    'cloudinary'
 ]
 
 CLOUDINARY_STORAGE = {
