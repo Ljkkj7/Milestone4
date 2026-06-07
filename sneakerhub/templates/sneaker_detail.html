@@ -9,7 +9,7 @@
 <section class="sneaker-detail-page">
     <div class="sneaker-detail-card" style="margin-top: 40px;">
         <div class="sneaker-detail-image-wrap">
-            <img src="{{ sneaker.image.url }}" alt="{{ sneaker.name }}" class="sneaker-detail-image">
+            <img src="{% if sneaker.image %}{% if 'http' in sneaker.image.name %}{{ sneaker.image.url }}{% else %}{% static sneaker.image %}{% endif %}{% else %}{% static 'images/sneakerhubsquare.jpg' %}{% endif %}" loading="lazy" alt="{{ sneaker.name }}" class="sneaker-detail-image">
         </div>
         <div class="sneaker-detail-info">
             <h1 class="sneaker-detail-title">{{ sneaker.name }}</h1>
