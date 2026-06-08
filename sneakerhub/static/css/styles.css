@@ -1403,20 +1403,21 @@ body {
 
 .listings-carousel-container {
     position: relative;
-    margin: 20px 0;
     overflow: hidden;
+    width: 100%;
 }
 
 .listings-carousel {
     display: flex;
-    transition: transform 0.5s ease-in-out;
+    width: 100%;
+    transition: transform 0.45s ease;
 }
 
 .carousel-item {
-    min-width: calc(50% - 8px);
-    padding: 8px;
-    flex-shrink: 0;
+    min-width: 100%;
+    box-sizing: border-box;
 }
+
 
 .carousel-item .profile-listing-item {
     height: 100%;
