@@ -42,7 +42,17 @@
         {% for sneaker in sneakers %}
         <article class="card">
             <a href="{% url 'sneaker_detail' sneaker.id %}">
-                <img src="{% if sneaker.image %}{% if 'http' in sneaker.image.name %}{{ sneaker.image.url }}{% else %}{% static sneaker.image %}{% endif %}{% else %}{% static 'images/sneakerhubsquare.jpg' %}{% endif %}" loading="lazy" alt="{{ sneaker.name }}" class="card-img">
+                {% if sneaker.image %}
+                    {% with img=sneaker.image|stringformat:"s" %}
+                        {% if 'http' in img %}
+                            <img src="{{ sneaker.image.url }}" alt="{{ sneaker.name }}" class="listing-thumb">
+                        {% else %}
+                            <img src="{% static img %}" alt="{{ sneaker.name }}" class="listing-thumb">
+                        {% endif %}
+                    {% endwith %}
+                {% else %}
+                    <div class="listing-thumb-placeholder">No Image</div>
+                {% endif %}
             </a>
             <div class="card-body">
                 <h3>{{ sneaker.name }}</h3>
