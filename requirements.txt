@@ -19,4 +19,4 @@ urllib3==2.6.3
 whitenoise==6.12.0
 django-anymail
 cloudinary
-django-cloudinary-storage
+django-cloudinary
