@@ -24,9 +24,15 @@
                     <tr>
                         <td>
                             {% if item.sneaker.image %}
-                                <img src="{{ item.sneaker.image.url }}" alt="{{ item.sneaker.name }}" style="width: 100px; height: auto; object-fit: cover;">
+                                {% with img=item.sneaker.image|stringformat:"s" %}
+                                    {% if 'images/' in img %}
+                                        <img src="{% static img %}" loading="lazy" alt="{{ item.sneaker.name }}" class="card-img">
+                                    {% else %}
+                                        {% cloudinary img loading="lazy" alt=item.sneaker.name class="card-img" %}
+                                    {% endif %}
+                                {% endwith %}
                             {% else %}
-                                <div style="width:100px;height:80px;background:#f0f0f0;display:flex;align-items:center;justify-content:center;font-size:11px;color:#999;">No Image</div>
+                                <img src="{% static 'images/sneakerhubsquare.jpg' %}" loading="lazy" alt="{{ item.sneaker.name }}" class="card-img">
                             {% endif %}
                         </td>
                         <td>{{ item.sneaker.brand }} {{ item.sneaker.name }}</td>
