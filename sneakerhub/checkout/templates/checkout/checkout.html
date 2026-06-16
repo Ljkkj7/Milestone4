@@ -13,8 +13,12 @@
                 {% for item in items %}
                     <div class="order-item">
                         <div class="order-item-image">
-                            <img src="{{ item.sneaker.image.url|default_if_none:'No Image' }}" alt="{{ item.sneaker.name }}" style="width: 80px; height: auto;">
-                        </div>
+                            {% if item.sneaker.image %}
+                                <img src="{{ item.sneaker.image.url }}" alt="{{ item.sneaker.name }}" style="width: 80px; height: auto; object-fit: cover;">
+                            {% else %}
+                                <div style="width:80px;height:60px;background:#f0f0f0;display:flex;align-items:center;justify-content:center;font-size:10px;color:#999;">No Image</div>
+                            {% endif %}
+                         </div>
                         <div class="order-item-details">
                             <p>{{ item.sneaker.brand }} // {{ item.sneaker.name }} // {{ item.sneaker.size|floatformat }}</p>
                             <p>£{{ item.line_total|floatformat:2 }}</p>
