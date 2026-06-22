@@ -1286,6 +1286,14 @@ body {
     box-sizing: border-box;
 }
 
+.cart-table .card-img {
+    width: 90px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 4px;
+    display: block;
+}
+
 .cart-subtotal {
     margin: 0;
     font-weight: 800;
