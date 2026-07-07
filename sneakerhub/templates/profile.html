@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}{{ user.username|title }} • Account{% endblock %}
-{% load cloudinary %}
 
 {% block content %}
 <section class="profile-section">
@@ -22,17 +21,7 @@
                         {% for sneaker in available_sneakers %}
                             <div class="carousel-item">
                                 <div class="profile-listing-item">
-                                    {% if sneaker.image %}
-                                        {% with img=sneaker.image|stringformat:"s" %}
-                                            {% if 'images/' in img %}
-                                                <img src="{% static img %}" loading="lazy" alt="{{ sneaker.name }}" class="card-img">
-                                            {% else %}
-                                                {% cloudinary img loading="lazy" alt=sneaker.name class="card-img" %}
-                                            {% endif %}
-                                        {% endwith %}
-                                    {% else %}
-                                        <img src="{% static 'images/sneakerhubsquare.jpg' %}" loading="lazy" alt="{{ sneaker.name }}" class="card-img">
-                                    {% endif %}
+                                    <img src="{{ sneaker.display_image_url }}" loading="lazy" alt="{{ sneaker.name }}" class="card-img" width="300" height="300">
                                     <h3>{{ sneaker.brand }} {{ sneaker.name }}</h3>
                                     <p class="listing-size">Size {{ sneaker.size|floatformat }}</p>
                                     <p class="listing-price">£{{ sneaker.price }}</p>
@@ -90,7 +79,7 @@
                 <a href="{% url 'sneaker_detail' sneaker.id %}">
                     <div class="wishlist-item">
                     {% if sneaker.image %}
-                        <img src="{{ sneaker.image.url }}" alt="{{ sneaker.name }}" class="wishlist-thumb">
+                        <img src="{{ sneaker.display_image_url }}" alt="{{ sneaker.name }}" class="wishlist-thumb" width="80" height="80">
                     {% else %}
                         <div class="wishlist-thumb-placeholder">No Image</div>
                     {% endif %}
