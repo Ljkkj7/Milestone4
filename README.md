@@ -738,8 +738,8 @@ Lighthouse audits were run against the live Render deployment using Chrome
 DevTools. Both audited pages scored above 95 in all four categories —
 Performance, Accessibility, Best Practices, and SEO.
 
-![Lighthouse report — Home](wireframeimages/lighthouse1.jpeg)
-![Lighthouse report — Marketplace](wireframeimages/lighthouse2.jpeg)
+![Lighthouse report — Home](wireframeimages/lighthouse1.png)
+![Lighthouse report — Marketplace](wireframeimages/lighthouse2.png)
 
 Steps taken during development that contributed to these scores:
 
