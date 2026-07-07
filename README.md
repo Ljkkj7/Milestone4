@@ -732,6 +732,27 @@ All 5 JavaScript files validated with JSHint (`esversion: 11`).
 
 ---
 
+## Lighthouse
+
+Lighthouse audits were run against the live Render deployment using Chrome
+DevTools. Both audited pages scored above 95 in all four categories —
+Performance, Accessibility, Best Practices, and SEO.
+
+![Lighthouse report — Home](wireframeimages/lighthouse1.jpeg)
+![Lighthouse report — Marketplace](wireframeimages/lighthouse2.jpeg)
+
+Steps taken during development that contributed to these scores:
+
+- All HTML validated against the W3C Nu checker with zero errors, including
+  ARIA attribute references on the mobile navigation and signup form
+- Explicit `width`/`height` attributes on all listing imagery to prevent
+  Cumulative Layout Shift, with `loading="lazy"` on below-the-fold images
+- Static assets served compressed via whitenoise; user-uploaded images
+  delivered from Cloudflare R2's edge network
+- Semantic heading structure and descriptive alt text on all images
+
+---
+
 ## 🧠 Future Enhancements
 
 - AI-based sneaker recommendations
