@@ -747,10 +747,6 @@ Steps taken during development that contributed to these scores:
   ARIA attribute references on the mobile navigation and signup form
 - Explicit `width`/`height` attributes on all listing imagery to prevent
   Cumulative Layout Shift, with `loading="lazy"` on below-the-fold images
-- Static assets served compressed via whitenoise; user-uploaded images
-  delivered from Cloudflare R2's edge network
-- Semantic heading structure and descriptive alt text on all images
-
 ---
 
 ## 🧠 Future Enhancements
