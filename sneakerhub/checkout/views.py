@@ -161,7 +161,3 @@ def send_order_confirmation_email(order, cart):
                 fail_silently=False,
                 html_message=html_message,
         )
-
-#@login_required
-#def checkoutSuccessView(request):
-    #return render(request, 'checkout/checkout_success.html')
