@@ -3,9 +3,6 @@ from django.db import models
 # Create your models here.
 class CreatorAccountModel(models.Model):
     user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
-
-    # profile_picture = models.ImageField(upload_to='creator_profiles/', blank=True, null=True)
-    # profile_banner = models.ImageField(upload_to='creator_banners/', blank=True, null=True)
     
     bio = models.TextField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
