@@ -2558,7 +2558,7 @@ body {
 .dashboard-header p {
     color: #888;
     font-size: 14px;
-    text-transform: titlecase;
+    text-transform: capitalize;
     letter-spacing: 0.5px;
     font-weight: 600;
 }
