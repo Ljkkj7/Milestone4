@@ -18,6 +18,15 @@ class Sneaker(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     is_sold = models.BooleanField(default=False)
 
+    @property
+    def display_image_url(self):
+        if not self.image:
+            return static('images/sneakerhubsquare.jpg')
+        name = self.image.name
+        if name.startswith(('media/', 'images/')):
+            return static(name)
+        return self.image.url
+
     def cleaned_data(self):
         """Return a dictionary of cleaned data for the sneaker."""
         return {
