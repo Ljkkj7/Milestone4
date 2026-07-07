@@ -642,6 +642,96 @@ python manage.py runserver
 
 ---
 
+# Testing — Code Validation
+
+All validation was performed on **rendered page output** (the app running against its
+database), not on raw Django templates, so template tags do not produce false
+positives. 17 routes were validated, including authenticated pages (sneaker detail,
+account, create listing, cart with items) rendered via a logged-in session.
+
+---
+
+## HTML — W3C Nu HTML Checker
+
+Validated with the official W3C Nu checker
+
+| Page | Route | Result |
+|------|-------|--------|
+| Home | `/` | ✅ Pass — 0 errors |
+| Marketplace | `/marketplace/` | ✅ Pass — 0 errors |
+| Sneaker Detail | `/sneaker/<id>/` | ✅ Pass — 0 errors |
+| Sign Up | `/customer_signup/` | ✅ Pass — 0 errors |
+| Log In | `/customer_login/` | ✅ Pass — 0 errors |
+| Cart (empty) | `/cart/` | ✅ Pass — 0 errors |
+| Cart (with items) | `/cart/` | ✅ Pass — 0 errors |
+| Account | `/account/<id>/` | ✅ Pass — 0 errors |
+| Create Listing | `/listings/create/` | ✅ Pass — 0 errors |
+| Public Profile | `/profile/<id>/` | ✅ Pass — 0 errors |
+| Creator Space | `/creatorspace/` | ✅ Pass — 0 errors |
+| FAQ | `/faq/` | ✅ Pass — 0 errors |
+| Contact | `/contact/` | ✅ Pass — 0 errors |
+| Shipping | `/shipping/` | ✅ Pass — 0 errors |
+| Returns | `/returns/` | ✅ Pass — 0 errors |
+| 403 | `/errorhandler/403/` | ✅ Pass — 0 errors |
+| Login Required | `/errorhandler/login-required/` | ✅ Pass — 0 errors |
+
+**Result: 17/17 pages pass with zero errors or warnings.**
+
+Issues found and fixed during validation:
+- An unclosed `<div>` in `sneaker_detail.html` (structural error)
+- `aria-controls="mobile-nav"` on the menu toggle referenced a non-existent id
+  (fixed by adding the id to the nav element)
+- Dangling `aria-describedby` references on the signup form (fixed by removing
+  the unrendered Django form help text)
+- An unterminated `style` attribute in `checkout.html`
+
+---
+
+## CSS — W3C spec conformance
+
+| File | Result |
+|------|--------|
+| `static/css/styles.css` | ✅ Pass — 0 errors |
+
+Issue found and fixed during validation: `text-transform: titlecase` is not a
+valid CSS value (silently ignored by browsers); corrected to `capitalize`.
+
+---
+
+## Python — PEP8 (pycodestyle)
+
+| App | Files | Result |
+|-----|-------|--------|
+| core | views, models, urls, tests | ✅ Pass |
+| marketplace | views, models, admin, tests | ✅ Pass |
+| cart | views, urls, context_processors, tests | ✅ Pass |
+| checkout | views, models, forms, urls, tests | ✅ Pass |
+| account | views, models, urls, tests | ✅ Pass |
+| listings | views, tests | ✅ Pass |
+| reviews | views, models, forms, urls, tests | ✅ Pass |
+| publicprofile | views, models, urls, tests | ✅ Pass |
+| creatorspace | views, models, forms, urls | ✅ Pass |
+| errorhandler | views, urls | ✅ Pass |
+| sneakerhub (project) | settings, urls | ✅ Pass |
+
+**Result: 0 errors, 0 warnings across the project.**
+
+---
+
+## JavaScript — JSHint
+
+All 5 JavaScript files validated with JSHint (`esversion: 11`).
+
+| File | Result |
+|------|--------|
+| `static/js/carousel.js` | ✅ Pass — 1 advisory |
+| `static/js/confirm.js` | ✅ Pass — 0 warnings |
+| `static/js/menu.js` | ✅ Pass — 0 warnings |
+| `static/js/nav_colour_change.js` | ✅ Pass — 0 warnings |
+| `static/js/stripe_elements.js` | ✅ Pass — 0 warnings |
+
+---
+
 ## 🧠 Future Enhancements
 
 - AI-based sneaker recommendations
