@@ -20,7 +20,7 @@ class CustomerUserCreationForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for field in self.fields.values():
-            field.help_text = none
+            field.help_text = None
             
     def clean_email(self):
         email = self.cleaned_data.get('email')
