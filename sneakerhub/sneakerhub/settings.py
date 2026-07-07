@@ -47,8 +47,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'cloudinary_storage',
-    'cloudinary',
     'core',
     'marketplace',
     'account',
@@ -61,14 +59,27 @@ INSTALLED_APPS = [
     'creatorspace',
 ]
 
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME'),
-    'API_KEY': os.environ.get('CLOUDINARY_API_KEY'),
-    'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET'),
-    'STATICFILES': False,
+STORAGES = {
+    "default": {
+        "BACKEND": "storages.backends.s3.S3Storage",
+        "OPTIONS": {
+            "bucket_name": os.environ.get("R2_BUCKET_NAME"),
+            "endpoint_url": f"https://{os.environ.get('R2_ACCOUNT_ID')}.r2.cloudflarestorage.com",
+            "access_key": os.environ.get("R2_ACCESS_KEY_ID"),
+            "secret_key": os.environ.get("R2_SECRET_ACCESS_KEY"),
+            "region_name": "auto",
+            "signature_version": "s3v4",
+            "default_acl": None,          # R2 has no ACLs — must be None or uploads 400
+            "querystring_auth": False,    # clean public URLs
+            "custom_domain": os.environ.get("R2_PUBLIC_DOMAIN"),  # pub-xxxx.r2.dev
+            "file_overwrite": False,      # duplicate filenames get a suffix instead of clobbering
+        },
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
 }
 
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
