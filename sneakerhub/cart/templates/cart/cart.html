@@ -2,7 +2,6 @@
 {% load static %}
 
 {% block title %}Your Cart • SneakerHub{% endblock %}
-{% load cloudinary %}
 
 {% block content %}
 <section class="cart">
@@ -24,17 +23,7 @@
                 {% for item in items %}
                     <tr>
                         <td>
-                            {% if item.sneaker.image %}
-                                {% with img=item.sneaker.image|stringformat:"s" %}
-                                    {% if 'images/' in img %}
-                                        <img src="{% static img %}" loading="lazy" alt="{{ item.sneaker.name }}" class="card-img">
-                                    {% else %}
-                                        {% cloudinary img loading="lazy" alt=item.sneaker.name class="card-img" %}
-                                    {% endif %}
-                                {% endwith %}
-                            {% else %}
-                                <img src="{% static 'images/sneakerhubsquare.jpg' %}" loading="lazy" alt="{{ item.sneaker.name }}" class="card-img">
-                            {% endif %}
+                            <img src="{{ item.sneaker.display_image_url }}" loading="lazy" alt="{{ item.sneaker.name }}" class="card-img" width="80" height="80">
                         </td>
                         <td>{{ item.sneaker.brand }} {{ item.sneaker.name }}</td>
                         <td>£{{ item.sneaker.price }}</td>
