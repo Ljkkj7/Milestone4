@@ -1,6 +1,6 @@
 from django.db import models
 from django.conf import settings
-
+from django.templatetags.static import static
 
 class Sneaker(models.Model):
     name = models.CharField(max_length=255)
