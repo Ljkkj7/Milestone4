@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% load static %}
-{% load cloudinary %}
 {% block title %}Marketplace • SneakerHub{% endblock %}
 
 {% block content %}
@@ -43,17 +42,7 @@
         {% for sneaker in sneakers %}
         <article class="card">
             <a href="{% url 'sneaker_detail' sneaker.id %}">
-                {% if sneaker.image %}
-                    {% with img=sneaker.image|stringformat:"s" %}
-                        {% if 'images/' in img %}
-                            <img src="{% static img %}" loading="lazy" alt="{{ sneaker.name }}" class="card-img">
-                        {% else %}
-                            {% cloudinary img loading="lazy" alt=sneaker.name class="card-img" %}
-                        {% endif %}
-                    {% endwith %}
-                {% else %}
-                    <img src="{% static 'images/sneakerhubsquare.jpg' %}" loading="lazy" alt="{{ sneaker.name }}" class="card-img">
-                {% endif %}
+                <img src="{{ sneaker.display_image_url }}" loading="lazy" alt="{{ sneaker.name }}" class="card-img" width="300" height="300">
             </a>
             <div class="card-body">
                 <h3>{{ sneaker.name }}</h3>
