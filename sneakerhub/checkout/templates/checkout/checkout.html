@@ -2,7 +2,6 @@
 {% load static %}
 
 {% block title %}Checkout • SneakerHub{% endblock %}
-{% load cloudinary %}
 
 {% block content %}
 <section class="checkout-section">
@@ -14,17 +13,7 @@
                 {% for item in items %}
                     <div class="order-item">
                         <div class="order-item-image">
-                            {% if item.sneaker.image %}
-                                {% with img=item.sneaker.image|stringformat:"s" %}
-                                    {% if 'images/' in img %}
-                                        <img src="{% static img %}" loading="lazy" alt="{{ item.sneaker.name }}" style="width: 80px; height: auto; object-fit: cover;>
-                                    {% else %}
-                                        {% cloudinary img loading="lazy" alt=item.sneaker.name class="card-img" %}
-                                    {% endif %}
-                                {% endwith %}
-                            {% else %}
-                                <img src="{% static 'images/sneakerhubsquare.jpg' %}" loading="lazy" alt="{{ item.sneaker.name }}" class="card-img">
-                            {% endif %}
+                            <img src="{{ item.sneaker.display_image_url }}" loading="lazy" alt="{{ item.sneaker.name }}" class="card-img" width="80" height="80">
                          </div>
                         <div class="order-item-details">
                             <p>{{ item.sneaker.brand }} // {{ item.sneaker.name }} // {{ item.sneaker.size|floatformat }}</p>
